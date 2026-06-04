@@ -31,6 +31,19 @@ The entire app lives in one HTML file with inline CSS and JavaScript. Key sectio
 **Persistence**
 - `localStorage` key `oracle_history_v1` (last 50 readings); falls back to in-memory array if storage is unavailable
 
+## Repository Organisation
+
+This repo (`allprojectsClaude`) serves as a monorepo for multiple independent projects. Each project lives in its own subfolder:
+
+```
+allprojectsClaude/
+├── tarot-oracle-sbp.html  ← standalone single-file project (current)
+├── project-two/           ← future projects go here as subfolders
+└── CLAUDE.md
+```
+
+**Starting a new project:** the "+" button in Claude Code on the web opens a new *session*, not a new folder. To add a project, ask Claude to create a subfolder with the required files. For a completely separate repository, create it on GitHub first, then select it when starting a session.
+
 ## Payment Configuration
 
 To enable payments, edit the `PAY` object near the top of the `<script>` tag:

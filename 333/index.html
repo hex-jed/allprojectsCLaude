@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Компьютерный клуб 3/33 — Ставрополь · 60 ПК, PS5 и игра 24/7</title>
+<meta name="description" content="Игровой клуб 3/33 в Ставрополе: 60 ПК, PlayStation 5 и 370 м² пространства. RTX 5080, Ryzen 9 9800X3D, мониторы до 500 Гц и OLED. Зоны Standart, Squadroom, Arena, BootCamp, Duo и Ultra Duo. Работаем 24/7." />
+<meta name="theme-color" content="#0a0b0d" />
+
+<meta property="og:title" content="Компьютерный клуб 3/33 — Ставрополь" />
+<meta property="og:description" content="60 ПК, PlayStation 5 и 370 м². RTX 5080, мониторы до 500 Гц, игра 24/7." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kk333.ru/" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<!-- ===== SVG icon sprite ===== -->
+<svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="ic-cpu" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v2M12 3v2M15 3v2M9 19v2M12 19v2M15 19v2M3 9h2M3 12h2M3 15h2M19 9h2M19 12h2M19 15h2"/></symbol>
+    <symbol id="ic-gpu" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="11" rx="2"/><circle cx="9" cy="11.5" r="2.6"/><circle cx="16" cy="11.5" r="1.8"/><path d="M5.5 17v3"/></symbol>
+    <symbol id="ic-monitor" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 16.5v4"/></symbol>
+    <symbol id="ic-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 9.5h.01M9 9.5h.01M12 9.5h.01M15 9.5h.01M18 9.5h.01M6 12.5h.01M9 12.5h.01M18 12.5h.01M8.5 15.5h7"/></symbol>
+    <symbol id="ic-headset" viewBox="0 0 24 24"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="12.5" width="3.5" height="6" rx="1.4"/><rect x="17.5" y="12.5" width="3.5" height="6" rx="1.4"/><path d="M20 18.5v.5a3 3 0 0 1-3 3h-3"/></symbol>
+    <symbol id="ic-mouse" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 6.5v4"/></symbol>
+    <symbol id="ic-chair" viewBox="0 0 24 24"><path d="M7 4h10M7 4v8M17 4v8M6 12h12M8 12l-1 4M16 12l1 4M9 20v-4M15 20v-4M9 16h6"/></symbol>
+    <symbol id="ic-gamepad" viewBox="0 0 24 24"><path d="M8 8h8a5 5 0 0 1 5 5l.5 4a2.2 2.2 0 0 1-4.2 1l-1.3-2.5H8l-1.3 2.5a2.2 2.2 0 0 1-4.2-1L3 13a5 5 0 0 1 5-5Z"/><path d="M7 12.5h2.5M8.25 11.25v2.5M15 12h.01M17.5 13.5h.01"/></symbol>
+    <symbol id="ic-tv" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="12" rx="2"/><path d="M8 20.5h8M9 5 12 2l3 3"/></symbol>
+    <symbol id="ic-seat" viewBox="0 0 24 24"><path d="M5 10V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 10h16v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5ZM7 17v3M17 17v3"/></symbol>
+    <symbol id="ic-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></symbol>
+    <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 5-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/></symbol>
+    <symbol id="ic-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="ic-arrow-dr" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24"><path d="M4 12.5 9 17.5 20 6.5"/></symbol>
+    <symbol id="ic-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></symbol>
+    <symbol id="ic-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10.5 3.5 8 4.5 9 8 12 8Zm0 0s1.5-4.5 4-3.5S15 8 12 8Z"/></symbol>
+    <symbol id="ic-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></symbol>
+    <symbol id="ic-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.5a3.2 3.2 0 0 1 0 6.2M17.5 14.2A5.5 5.5 0 0 1 20.5 20"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===== Custom cursor ===== -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__ring"></div>
+  <div class="cursor__dot"></div>
+</div>
+
+<!-- ===== Decorative background ===== -->
+<div class="bg" aria-hidden="true">
+  <div class="bg__grid"></div>
+  <div class="bg__glow bg__glow--1"></div>
+  <div class="bg__glow bg__glow--2"></div>
+  <div class="bg__glow bg__glow--3"></div>
+  <div class="bg__noise"></div>
+</div>
+
+<!-- ===== Preloader ===== -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__logo">3<span>/</span>33</div>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="#top" class="logo" data-cursor>
+      <span class="logo__mark">3<i>/</i>33</span>
+      <span class="logo__sub">computer club</span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#offers" data-cursor>Акции</a>
+      <a href="#zones" data-cursor>Зоны</a>
+      <a href="#tech" data-cursor>Железо</a>
+      <a href="#reviews" data-cursor>Отзывы</a>
+      <a href="#prices" data-cursor>Цены</a>
+      <a href="#contacts" data-cursor>Контакты</a>
+    </nav>
+    <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--sm header__cta" data-cursor data-magnetic>
+      Забронировать
+      <svg class="ic"><use href="#ic-arrow"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" data-cursor>
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Mobile menu ===== -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav>
+    <a href="#offers">Акции</a>
+    <a href="#zones">Зоны</a>
+    <a href="#tech">Железо</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#prices">Цены</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn">Забронировать место</a>
+</div>
+
+<main>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy reveal">
+        <span class="eyebrow"><i class="dot"></i>Ставрополь · ул. Пирогова 15/1 · 24/7</span>
+        <h1 class="hero__title">
+          Игровое пространство
+          <span class="grad">на пределе мощности</span>
+        </h1>
+        <p class="hero__lead">
+          60 игровых ПК, PlayStation 5 и 370 м² на которых живёт игра.
+          RTX 5080, Ryzen 9 9800X3D, мониторы до 500 Гц и кресла, из которых не хочется вставать.
+        </p>
+        <a href="#offers" class="hero__promo" data-cursor>
+          <span class="tag">Акция</span>
+          Новым гостям <b>−50% на первый час</b>
+        </a>
+        <div class="hero__actions">
+          <a href="#zones" class="btn btn--lg" data-cursor data-magnetic>
+            Выбрать зону
+            <svg class="ic"><use href="#ic-arrow"/></svg>
+          </a>
+          <a href="tel:+79187420033" class="btn btn--ghost btn--lg" data-cursor data-magnetic>
+            <svg class="ic"><use href="#ic-phone"/></svg>
+            +7 918 742‑00‑33
+          </a>
+        </div>
+        <ul class="hero__stats">
+          <li><b data-count="60">60</b><span>игровых ПК</span></li>
+          <li><b data-count="8">8</b><span>игровых зон</span></li>
+          <li><b data-count="370" data-suffix=" м²">370</b><span>пространства</span></li>
+          <li><b data-count="500" data-suffix=" Гц">500</b><span>частота монитора</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual reveal" data-parallax>
+        <div class="orb">
+          <div class="orb__chips-top">
+            <span class="orb__chip orb__chip--a"><svg class="ic"><use href="#ic-gpu"/></svg> RTX 5080</span>
+            <span class="orb__chip orb__chip--d"><svg class="ic"><use href="#ic-mouse"/></svg> Logitech Superstrike</span>
+            <span class="orb__chip orb__chip--b"><svg class="ic"><use href="#ic-monitor"/></svg> 500 Гц</span>
+          </div>
+          <div class="orb__ring-wrap">
+            <div class="orb__ring orb__ring--1"></div>
+            <div class="orb__ring orb__ring--2"></div>
+            <div class="orb__ring orb__ring--3"></div>
+            <div class="orb__core">
+              <span class="orb__num">3<i>/</i>33</span>
+              <span class="orb__label">play 24/7</span>
+            </div>
+            <span class="orb__chip orb__chip--a"><svg class="ic"><use href="#ic-gpu"/></svg> RTX 5080</span>
+            <span class="orb__chip orb__chip--b"><svg class="ic"><use href="#ic-monitor"/></svg> 500 Гц</span>
+            <span class="orb__chip orb__chip--c"><svg class="ic"><use href="#ic-gamepad"/></svg> PS5</span>
+            <span class="orb__chip orb__chip--d"><svg class="ic"><use href="#ic-mouse"/></svg> Logitech Superstrike</span>
+            <span class="orb__chip orb__chip--e"><svg class="ic"><use href="#ic-chair"/></svg> Кресла METTA</span>
+            <span class="orb__chip orb__chip--f"><svg class="ic"><use href="#ic-mouse"/></svg> AJAZZ AJ179 APEX</span>
+          </div>
+          <div class="orb__chips-bottom">
+            <span class="orb__chip orb__chip--c"><svg class="ic"><use href="#ic-gamepad"/></svg> PS5</span>
+            <span class="orb__chip orb__chip--e"><svg class="ic"><use href="#ic-chair"/></svg> Кресла METTA</span>
+            <span class="orb__chip orb__chip--f"><svg class="ic"><use href="#ic-mouse"/></svg> AJAZZ AJ179 APEX</span>
+          </div>
+        </div>
+
+        <!-- Mobile banner: replaces orb on small screens -->
+        <div class="mob-banner">
+          <div class="mob-banner__bg"></div>
+          <div class="mob-banner__glow"></div>
+          <div class="mob-banner__content">
+            <span class="mob-banner__label">play 24/7</span>
+            <div class="mob-banner__logo">3<span>/</span>33</div>
+            <p class="mob-banner__sub">Игровой клуб · Ставрополь</p>
+          </div>
+          <div class="mob-banner__chips">
+            <span class="mob-banner__chip"><svg class="ic"><use href="#ic-gpu"/></svg> RTX 5080</span>
+            <span class="mob-banner__chip"><svg class="ic"><use href="#ic-monitor"/></svg> 500 Гц</span>
+            <span class="mob-banner__chip"><svg class="ic"><use href="#ic-gamepad"/></svg> PS5</span>
+            <span class="mob-banner__chip"><svg class="ic"><use href="#ic-mouse"/></svg> Logitech Superstrike</span>
+            <span class="mob-banner__chip"><svg class="ic"><use href="#ic-chair"/></svg> Кресла METTA</span>
+            <span class="mob-banner__chip"><svg class="ic"><use href="#ic-mouse"/></svg> AJ179 APEX</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <a href="#zones" class="hero__scroll" data-cursor aria-label="Листать вниз">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===== Brand marquee ===== -->
+  <section class="marquee" aria-label="Бренды нашего железа">
+    <div class="marquee__track">
+      <span>AMD Ryzen</span><i>•</i><span>GeForce RTX</span><i>•</i><span>MSI</span><i>•</i><span>ASUS ROG</span><i>•</i><span>Palit</span><i>•</i><span>HyperX</span><i>•</i><span>Logitech</span><i>•</i><span>LAMZU</span><i>•</i><span>DXRacer</span><i>•</i><span>METTA</span><i>•</i><span>Audeze</span><i>•</i><span>PlayStation 5</span><i>•</i>
+      <span>AMD Ryzen</span><i>•</i><span>GeForce RTX</span><i>•</i><span>MSI</span><i>•</i><span>ASUS ROG</span><i>•</i><span>Palit</span><i>•</i><span>HyperX</span><i>•</i><span>Logitech</span><i>•</i><span>LAMZU</span><i>•</i><span>DXRacer</span><i>•</i><span>METTA</span><i>•</i><span>Audeze</span><i>•</i><span>PlayStation 5</span><i>•</i>
+    </div>
+  </section>
+
+  <!-- ===== Offers / Акции ===== -->
+  <section class="section section--offers" id="offers">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Акции и выгода</span>
+        <h2 class="section__title">Играй <span class="grad">выгоднее</span></h2>
+        <p class="section__sub">Специальные предложения, которые действуют прямо сейчас. Успей забронировать на лучших условиях.</p>
+      </header>
+      <div class="offers">
+        <article class="offer offer--feat reveal" data-cursor data-tilt>
+          <span class="offer__badge"><svg class="ic"><use href="#ic-percent"/></svg> Новым гостям</span>
+          <svg class="offer__ic"><use href="#ic-percent"/></svg>
+          <div class="offer__big">−50%<span> на первый час</span></div>
+          <h3>Первый визит</h3>
+          <p>Приходи впервые — играй первый час за полцены в любой зоне. Просто скажи администратору, что ты у нас впервые.</p>
+          <span class="offer__note"><svg class="ic"><use href="#ic-clock"/></svg> Каждому новому гостю</span>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Я%20впервые,%20хочу%20−50%25%20на%20первый%20час%20в%203/33" target="_blank" rel="noopener" class="btn btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+
+        <article class="offer reveal" data-cursor data-tilt>
+          <span class="offer__badge"><svg class="ic"><use href="#ic-clock"/></svg> Утром дешевле</span>
+          <svg class="offer__ic"><use href="#ic-clock"/></svg>
+          <div class="offer__big">150 ₽<span>/час</span></div>
+          <h3>Счастливые часы</h3>
+          <p>Каждый день с 08:00 до 14:00 — фиксированная цена 150 ₽/час на зону Standart. Идеально для утренних каток.</p>
+          <span class="offer__note"><svg class="ic"><use href="#ic-check"/></svg> Ежедневно · 08:00–14:00</span>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20по%20акции%20Счастливые%20часы%20в%203/33" target="_blank" rel="noopener" class="btn btn--ghost btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+
+        <article class="offer reveal" data-cursor data-tilt>
+          <span class="offer__badge"><svg class="ic"><use href="#ic-users"/></svg> С друзьями</span>
+          <svg class="offer__ic"><use href="#ic-gift"/></svg>
+          <div class="offer__big">+1 час<span> в подарок</span></div>
+          <h3>Приведи друга</h3>
+          <p>Приходи с другом, который у нас впервые, — и получи час игры в подарок. Чем больше компания, тем веселее.</p>
+          <span class="offer__note"><svg class="ic"><use href="#ic-check"/></svg> За каждого нового друга</span>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20прийти%20с%20другом%20по%20акции%20в%203/33" target="_blank" rel="noopener" class="btn btn--ghost btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why 3/33 ===== -->
+  <section class="section" id="why">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Почему 3/33</span>
+        <h2 class="section__title">Не просто клуб — <span class="grad">твоя арена</span></h2>
+        <p class="section__sub">Шесть причин, почему игроки Ставрополя выбирают нас снова и снова.</p>
+      </header>
+      <div class="benefits">
+        <article class="benefit reveal">
+          <div class="benefit__ic"><svg class="ic"><use href="#ic-gpu"/></svg></div>
+          <div>
+            <h3>Железо нового поколения</h3>
+            <p>RTX 5080, Ryzen 9 9800X3D и мониторы до 500 Гц — оборудование, на котором играют профессионалы.</p>
+          </div>
+        </article>
+        <article class="benefit reveal">
+          <div class="benefit__ic"><svg class="ic"><use href="#ic-bolt"/></svg></div>
+          <div>
+            <h3>8 зон под любой стиль</h3>
+            <p>От доступного Standart до флагманской Ultra Duo — каждый найдёт зону под свой уровень и бюджет.</p>
+          </div>
+        </article>
+        <article class="benefit reveal">
+          <div class="benefit__ic"><svg class="ic"><use href="#ic-phone"/></svg></div>
+          <div>
+            <h3>Бронь за 1 минуту</h3>
+            <p>Напишите в WhatsApp или позвоните — резервируем место мгновенно, без предоплаты и очередей.</p>
+          </div>
+        </article>
+        <article class="benefit reveal">
+          <div class="benefit__ic"><svg class="ic"><use href="#ic-clock"/></svg></div>
+          <div>
+            <h3>Открыты круглосуточно</h3>
+            <p>Дневные, вечерние и ночные тарифы с 23:00 до 08:00 — играй столько, сколько захочешь.</p>
+          </div>
+        </article>
+        <article class="benefit reveal">
+          <div class="benefit__ic"><svg class="ic"><use href="#ic-chair"/></svg></div>
+          <div>
+            <h3>Про-кресла и периферия</h3>
+            <p>DXRacer Master, METTA Equalizer и киберспортивная периферия — комфорт даже в многочасовых сессиях.</p>
+          </div>
+        </article>
+        <article class="benefit reveal">
+          <div class="benefit__ic"><svg class="ic"><use href="#ic-seat"/></svg></div>
+          <div>
+            <h3>370 м² для компании</h3>
+            <p>Просторный зал, приватные комнаты Duo, командная Squadroom и PlayStation 5 на шесть человек.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Zones ===== -->
+  <section class="section" id="zones">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Игровые зоны</span>
+        <h2 class="section__title">Выбери свою <span class="grad">зону</span></h2>
+        <p class="section__sub">Восемь зон под разный стиль игры — от стартовой Standart до флагманской Ultra Duo с RTX 5080. Полные конфигурации каждого ПК — ниже.</p>
+      </header>
+
+      <div class="zones">
+
+        <!-- 01 STANDART -->
+        <article class="zone reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">01</span>
+            <span class="zone__badge">RTX 4060 Ti</span>
+          </div>
+          <h3 class="zone__name">Standart</h3>
+          <p class="zone__tag">Стартовая зона · от 220 ₽/час</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-cpu"/></svg><span class="specs__k">Процессор</span><span class="specs__v">AMD Ryzen 7 5700X3D</span></li>
+            <li><svg class="ic"><use href="#ic-gpu"/></svg><span class="specs__k">Видеокарта</span><span class="specs__v">GeForce RTX 4060 Ti</span></li>
+            <li><svg class="ic"><use href="#ic-monitor"/></svg><span class="specs__k">Монитор</span><span class="specs__v">ASUS TUF Gaming · 280 Гц</span></li>
+            <li><svg class="ic"><use href="#ic-keyboard"/></svg><span class="specs__k">Клавиатура</span><span class="specs__v">Red Square Keyrox TKL</span></li>
+            <li><svg class="ic"><use href="#ic-headset"/></svg><span class="specs__k">Наушники</span><span class="specs__v">HyperX Cloud II</span></li>
+            <li><svg class="ic"><use href="#ic-mouse"/></svg><span class="specs__k">Мышь</span><span class="specs__v">Ajazz × NACODEX AJ179 Apex</span></li>
+            <li><svg class="ic"><use href="#ic-chair"/></svg><span class="specs__k">Кресло</span><span class="specs__v">METTA Samurai L2‑9D‑TS</span></li>
+          </ul>
+        </article>
+
+        <!-- 02 SQUADROOM -->
+        <article class="zone reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">02</span>
+            <span class="zone__badge">RTX 4070 Ti</span>
+          </div>
+          <h3 class="zone__name">Squadroom</h3>
+          <p class="zone__tag">Командная комната · 5 ПК</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-cpu"/></svg><span class="specs__k">Процессор</span><span class="specs__v">AMD Ryzen 7 7800X3D</span></li>
+            <li><svg class="ic"><use href="#ic-gpu"/></svg><span class="specs__k">Видеокарта</span><span class="specs__v">GeForce RTX 4070 Ti</span></li>
+            <li><svg class="ic"><use href="#ic-monitor"/></svg><span class="specs__k">Монитор</span><span class="specs__v">MSI M27QX · 320 Гц IPS</span></li>
+            <li><svg class="ic"><use href="#ic-keyboard"/></svg><span class="specs__k">Клавиатура</span><span class="specs__v">Wobkey Crush 80</span></li>
+            <li><svg class="ic"><use href="#ic-headset"/></svg><span class="specs__k">Наушники</span><span class="specs__v">HyperX Cloud Alpha S</span></li>
+            <li><svg class="ic"><use href="#ic-mouse"/></svg><span class="specs__k">Мышь</span><span class="specs__v">Logitech G Pro Superlight 2</span></li>
+            <li><svg class="ic"><use href="#ic-chair"/></svg><span class="specs__k">Кресло</span><span class="specs__v">METTA Samurai L2‑9D‑TS</span></li>
+          </ul>
+        </article>
+
+        <!-- 03 ARENA -->
+        <article class="zone reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">03</span>
+            <span class="zone__badge">RTX 4070 Ti S</span>
+          </div>
+          <h3 class="zone__name">Arena</h3>
+          <p class="zone__tag">Турнирная зона · от 300 ₽/час</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-cpu"/></svg><span class="specs__k">Процессор</span><span class="specs__v">AMD Ryzen 7 7800X3D</span></li>
+            <li><svg class="ic"><use href="#ic-gpu"/></svg><span class="specs__k">Видеокарта</span><span class="specs__v">Palit RTX 4070 Ti Super</span></li>
+            <li><svg class="ic"><use href="#ic-monitor"/></svg><span class="specs__k">Монитор</span><span class="specs__v">MSI M27QX · 320 Гц IPS</span></li>
+            <li><svg class="ic"><use href="#ic-keyboard"/></svg><span class="specs__k">Клавиатура</span><span class="specs__v">Epomaker × Aula F75</span></li>
+            <li><svg class="ic"><use href="#ic-headset"/></svg><span class="specs__k">Наушники</span><span class="specs__v">HyperX Cloud II</span></li>
+            <li><svg class="ic"><use href="#ic-mouse"/></svg><span class="specs__k">Мышь</span><span class="specs__v">LAMZU Atlantis</span></li>
+            <li><svg class="ic"><use href="#ic-chair"/></svg><span class="specs__k">Кресло</span><span class="specs__v">DXRacer Gladiator</span></li>
+          </ul>
+        </article>
+
+        <!-- 04 BOOTCAMP -->
+        <article class="zone reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">04</span>
+            <span class="zone__badge">RTX 4070 Ti S</span>
+          </div>
+          <h3 class="zone__name">BootCamp</h3>
+          <p class="zone__tag">Тренировочная зона · pro‑setup</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-cpu"/></svg><span class="specs__k">Процессор</span><span class="specs__v">AMD Ryzen 7 7800X3D</span></li>
+            <li><svg class="ic"><use href="#ic-gpu"/></svg><span class="specs__k">Видеокарта</span><span class="specs__v">Palit RTX 4070 Ti Super</span></li>
+            <li><svg class="ic"><use href="#ic-monitor"/></svg><span class="specs__k">Монитор</span><span class="specs__v">MSI M27QX · 320 Гц IPS</span></li>
+            <li><svg class="ic"><use href="#ic-keyboard"/></svg><span class="specs__k">Клавиатура</span><span class="specs__v">Gravastar Mercury K1 Pro Cyberpunk</span></li>
+            <li><svg class="ic"><use href="#ic-headset"/></svg><span class="specs__k">Наушники</span><span class="specs__v">HyperX Cloud III Wireless</span></li>
+            <li><svg class="ic"><use href="#ic-mouse"/></svg><span class="specs__k">Мышь</span><span class="specs__v">LAMZU Atlantis</span></li>
+            <li><svg class="ic"><use href="#ic-chair"/></svg><span class="specs__k">Кресло</span><span class="specs__v">DXRacer Master</span></li>
+          </ul>
+        </article>
+
+        <!-- 05 DUO 51-52 -->
+        <article class="zone reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">05</span>
+            <span class="zone__badge">OLED 240 Гц</span>
+          </div>
+          <h3 class="zone__name">Duo 51–52</h3>
+          <p class="zone__tag">Приватная комната на двоих · от 440 ₽/час</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-cpu"/></svg><span class="specs__k">Процессор</span><span class="specs__v">AMD Ryzen 7 7800X3D</span></li>
+            <li><svg class="ic"><use href="#ic-gpu"/></svg><span class="specs__k">Видеокарта</span><span class="specs__v">Palit RTX 4070 Ti Super JetStream</span></li>
+            <li><svg class="ic"><use href="#ic-monitor"/></svg><span class="specs__k">Монитор</span><span class="specs__v">MSI 27″ · 240 Гц OLED</span></li>
+            <li><svg class="ic"><use href="#ic-keyboard"/></svg><span class="specs__k">Клавиатура</span><span class="specs__v">Wobkey Crush 80</span></li>
+            <li><svg class="ic"><use href="#ic-headset"/></svg><span class="specs__k">Наушники</span><span class="specs__v">HyperX Cloud II Wireless</span></li>
+            <li><svg class="ic"><use href="#ic-mouse"/></svg><span class="specs__k">Мышь</span><span class="specs__v">LAMZU Atlantis</span></li>
+            <li><svg class="ic"><use href="#ic-chair"/></svg><span class="specs__k">Кресло</span><span class="specs__v">METTA Equalizer</span></li>
+          </ul>
+        </article>
+
+        <!-- 06 DUO 53-54 -->
+        <article class="zone reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">06</span>
+            <span class="zone__badge">500 Гц</span>
+          </div>
+          <h3 class="zone__name">Duo 53–54</h3>
+          <p class="zone__tag">Приватная комната на двоих · от 440 ₽/час</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-cpu"/></svg><span class="specs__k">Процессор</span><span class="specs__v">AMD Ryzen 7 7800X3D</span></li>
+            <li><svg class="ic"><use href="#ic-gpu"/></svg><span class="specs__k">Видеокарта</span><span class="specs__v">GeForce RTX 4070 Ti Super</span></li>
+            <li><svg class="ic"><use href="#ic-monitor"/></svg><span class="specs__k">Монитор</span><span class="specs__v">ASUS ROG Swift PG248QP · 24.1″ 500 Гц</span></li>
+            <li><svg class="ic"><use href="#ic-keyboard"/></svg><span class="specs__k">Клавиатура</span><span class="specs__v">Drunkdeer A75 Pro</span></li>
+            <li><svg class="ic"><use href="#ic-headset"/></svg><span class="specs__k">Наушники</span><span class="specs__v">HyperX Cloud II Wireless</span></li>
+            <li><svg class="ic"><use href="#ic-mouse"/></svg><span class="specs__k">Мышь</span><span class="specs__v">Logitech G Pro Superlight 2</span></li>
+            <li><svg class="ic"><use href="#ic-chair"/></svg><span class="specs__k">Кресло</span><span class="specs__v">METTA Equalizer</span></li>
+          </ul>
+        </article>
+
+        <!-- 07 ULTRA DUO -->
+        <article class="zone zone--flagship reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">07</span>
+            <span class="zone__badge zone__badge--hot"><svg class="ic"><use href="#ic-bolt"/></svg> RTX 5080</span>
+          </div>
+          <h3 class="zone__name">Ultra Duo</h3>
+          <p class="zone__tag">Флагман клуба · максимум мощности</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-cpu"/></svg><span class="specs__k">Процессор</span><span class="specs__v">AMD Ryzen 9 9800X3D</span></li>
+            <li><svg class="ic"><use href="#ic-gpu"/></svg><span class="specs__k">Видеокарта</span><span class="specs__v">GeForce RTX 5080</span></li>
+            <li><svg class="ic"><use href="#ic-monitor"/></svg><span class="specs__k">Монитор</span><span class="specs__v">MSI MPG 271QRX · 360 Гц OLED</span></li>
+            <li><svg class="ic"><use href="#ic-keyboard"/></svg><span class="specs__k">Клавиатура</span><span class="specs__v">Meletrix Boog 75</span></li>
+            <li><svg class="ic"><use href="#ic-headset"/></svg><span class="specs__k">Наушники</span><span class="specs__v">Audeze Maxwell</span></li>
+            <li><svg class="ic"><use href="#ic-mouse"/></svg><span class="specs__k">Мышь</span><span class="specs__v">Logitech G Pro Superlight 2</span></li>
+            <li><svg class="ic"><use href="#ic-chair"/></svg><span class="specs__k">Кресло</span><span class="specs__v">DXRacer Master</span></li>
+          </ul>
+        </article>
+
+        <!-- 08 PLAYSTATION -->
+        <article class="zone zone--ps reveal" data-cursor data-tilt>
+          <div class="zone__top">
+            <span class="zone__index">08</span>
+            <span class="zone__badge">PS5</span>
+          </div>
+          <h3 class="zone__name">PlayStation</h3>
+          <p class="zone__tag">Консольная зона на компанию</p>
+          <ul class="specs">
+            <li><svg class="ic"><use href="#ic-gamepad"/></svg><span class="specs__k">Консоль</span><span class="specs__v">PlayStation 5</span></li>
+            <li><svg class="ic"><use href="#ic-gamepad"/></svg><span class="specs__k">Геймпады</span><span class="specs__v">6 беспроводных DualSense</span></li>
+            <li><svg class="ic"><use href="#ic-tv"/></svg><span class="specs__k">Экран</span><span class="specs__v">Телевизор TCL · 65″</span></li>
+            <li><svg class="ic"><use href="#ic-seat"/></svg><span class="specs__k">Места</span><span class="specs__v">6 посадочных мест</span></li>
+          </ul>
+          <div class="zone__games">
+            <span class="zone__games-label">Играй прямо сейчас</span>
+            <ul class="zone__games-list">
+              <li class="zone__game zone__game--fc"><span class="zone__game-num">01</span><span class="zone__game-name">FC 26</span><span class="zone__game-tag">Футбол</span></li>
+              <li class="zone__game zone__game--ufc"><span class="zone__game-num">02</span><span class="zone__game-name">UFC 5 / 6</span><span class="zone__game-tag">Бои</span></li>
+              <li class="zone__game zone__game--mk"><span class="zone__game-num">03</span><span class="zone__game-name">MK 11 / MK1</span><span class="zone__game-tag">Файтинг</span></li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Tech / Железо ===== -->
+  <section class="section section--tech" id="tech">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Железо</span>
+        <h2 class="section__title">Топовое <span class="grad">железо</span> в каждой зоне</h2>
+        <p class="section__sub">Мы не экономим на комплектующих. Только актуальные процессоры, видеокарты и киберспортивная периферия — чтобы между тобой и победой не стояло ничего.</p>
+      </header>
+
+      <div class="tech">
+        <article class="tech__card tech__card--wide reveal" data-cursor data-tilt>
+          <svg class="tech__ic"><use href="#ic-gpu"/></svg>
+          <h3>GeForce RTX 5080</h3>
+          <p>Видеокарта нового поколения во флагманской зоне Ultra Duo. Ray tracing, DLSS и стабильно высокий FPS в любых проектах.</p>
+          <span class="tech__pill">Ultra Duo</span>
+        </article>
+        <article class="tech__card reveal" data-cursor data-tilt>
+          <svg class="tech__ic"><use href="#ic-cpu"/></svg>
+          <h3 class="tech__h--long">AMD Ryzen 9 9800X3D / 7 7800X3D</h3>
+          <p>Процессоры с технологией 3D V‑Cache — лучшее железо для игр на сегодня.</p>
+          <span class="tech__pill">все зоны</span>
+        </article>
+        <article class="tech__card reveal" data-cursor data-tilt>
+          <svg class="tech__ic"><use href="#ic-monitor"/></svg>
+          <h3>До 500 Гц</h3>
+          <p>ASUS ROG Swift PG248QP на 500 Гц и OLED‑матрицы 360 Гц. Каждый кадр — твой.</p>
+          <span class="tech__pill">Duo · Ultra</span>
+        </article>
+        <article class="tech__card reveal" data-cursor data-tilt>
+          <svg class="tech__ic"><use href="#ic-mouse"/></svg>
+          <h3>Pro‑периферия</h3>
+          <p>LAMZU Atlantis, Logitech Superlight 2, Wobkey, Drunkdeer, Audeze Maxwell.</p>
+          <span class="tech__pill">киберспорт</span>
+        </article>
+        <article class="tech__card tech__card--wide reveal" data-cursor data-tilt>
+          <svg class="tech__ic"><use href="#ic-chair"/></svg>
+          <h3>Кресла DXRacer и METTA</h3>
+          <p>Сессия может длиться часами — поэтому в зонах стоят игровые кресла DXRacer Master, Gladiator и METTA Equalizer. Удобно даже на ночном тарифе.</p>
+          <span class="tech__pill">комфорт 24/7</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reviews ===== -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Отзывы</span>
+        <h2 class="section__title">Нас уже <span class="grad">оценили</span></h2>
+        <p class="section__sub">Реальные впечатления игроков — о технике, атмосфере и сервисе.</p>
+      </header>
+      <div class="reviews-stat reveal">
+        <div class="reviews-stat__item">
+          <span class="reviews-stat__num">4.9<em>★</em></span>
+          <span class="reviews-stat__label">средняя оценка</span>
+        </div>
+        <div class="reviews-stat__item">
+          <span class="reviews-stat__num">60</span>
+          <span class="reviews-stat__label">игровых мест</span>
+        </div>
+        <div class="reviews-stat__item">
+          <span class="reviews-stat__num">370<em> м²</em></span>
+          <span class="reviews-stat__label">игровое пространство</span>
+        </div>
+        <div class="reviews-stat__item">
+          <span class="reviews-stat__num">24<em>/7</em></span>
+          <span class="reviews-stat__label">без выходных</span>
+        </div>
+      </div>
+      <div class="reviews">
+        <article class="review reveal">
+          <div class="review__stars">★★★★★</div>
+          <p class="review__text">«Лучший клуб в городе. Взяли Ultra Duo с другом — RTX 5080 и OLED 360 Гц просто нереально. Кресло DXRacer Master держит спину даже после четырёх часов. Бронь в WhatsApp заняла буквально минуту.»</p>
+          <div class="review__author">
+            <div class="review__avatar">А</div>
+            <div>
+              <div class="review__name">Александр К.</div>
+              <div class="review__meta">Постоянный гость · Ultra Duo</div>
+            </div>
+          </div>
+        </article>
+        <article class="review reveal">
+          <div class="review__stars">★★★★★</div>
+          <p class="review__text">«Пришли шестером на PlayStation 5 — это просто огонь! Большой TCL 65″, шесть DualSense, EA FC и UFC. Часы пролетели незаметно. Персонал вежливый, в зале чисто и уютно. Однозначно придём ещё.»</p>
+          <div class="review__author">
+            <div class="review__avatar">Д</div>
+            <div>
+              <div class="review__name">Дарья М.</div>
+              <div class="review__meta">Первый визит · PlayStation 5</div>
+            </div>
+          </div>
+        </article>
+        <article class="review reveal">
+          <div class="review__stars">★★★★★</div>
+          <p class="review__text">«Приходил ночью на Arena — MSI 320 Гц, Palit RTX 4070 Ti Super и LAMZU Atlantis. Такой связки дома не собрать. Ночной тариф 1090 ₽ за пять часов — реально выгодно. Уже стал постоянным.»</p>
+          <div class="review__author">
+            <div class="review__avatar">А</div>
+            <div>
+              <div class="review__name">Артём В.</div>
+              <div class="review__meta">Постоянный клиент · Arena</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Prices ===== -->
+  <section class="section" id="prices">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Тарифы</span>
+        <h2 class="section__title">Понятные <span class="grad">цены</span></h2>
+        <p class="section__sub">Почасовая оплата и выгодные пакеты на 3–5 часов, день и ночь. Ночной тариф действует с 23:00 до 08:00.</p>
+      </header>
+
+      <div class="prices">
+        <article class="price reveal" data-cursor data-tilt>
+          <h3 class="price__name">Standart</h3>
+          <div class="price__big">220 ₽<small>/час</small></div>
+          <ul class="price__list">
+            <li><svg class="ic"><use href="#ic-check"/></svg>3 часа — 530 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>День — 690 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>Ночь — 780 ₽</li>
+          </ul>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--ghost btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+
+        <article class="price price--feat reveal" data-cursor data-tilt>
+          <span class="price__flag">популярное</span>
+          <h3 class="price__name">Arena · BootCamp · Squadroom</h3>
+          <div class="price__big">от 300 ₽<small>/час</small></div>
+          <ul class="price__list">
+            <li><svg class="ic"><use href="#ic-check"/></svg>5 часов — 790 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>День — 990 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>Ночь — 1090 ₽</li>
+          </ul>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+
+        <article class="price reveal" data-cursor data-tilt>
+          <h3 class="price__name">Duo</h3>
+          <div class="price__big">440 ₽<small>/час</small></div>
+          <ul class="price__list">
+            <li><svg class="ic"><use href="#ic-check"/></svg>3 часа — 1090 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>5 часов — 1590 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>День — 1370 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>Ночь — 1370 ₽</li>
+          </ul>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--ghost btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+
+        <article class="price price--ultra reveal" data-cursor data-tilt>
+          <span class="price__flag">флагман</span>
+          <h3 class="price__name">Ultra Duo</h3>
+          <div class="price__big">590 ₽<small>/час</small></div>
+          <ul class="price__list">
+            <li><svg class="ic"><use href="#ic-check"/></svg>3 часа — 1400 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>5 часов — 2000 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>День — 1700 ₽</li>
+            <li><svg class="ic"><use href="#ic-check"/></svg>Ночь — 1700 ₽</li>
+          </ul>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--ghost btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+
+        <article class="price price--ps reveal" data-cursor data-tilt>
+          <h3 class="price__name">PlayStation 5</h3>
+          <div class="price__big">500 ₽<small>/час</small></div>
+          <ul class="price__list">
+            <li><svg class="ic"><use href="#ic-gamepad"/></svg>6 беспроводных DualSense</li>
+            <li><svg class="ic"><use href="#ic-tv"/></svg>Телевизор TCL · 65″</li>
+            <li><svg class="ic"><use href="#ic-seat"/></svg>6 посадочных мест</li>
+          </ul>
+          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--ghost btn--block" data-cursor data-magnetic>Забронировать</a>
+        </article>
+      </div>
+      <p class="prices__note reveal">
+        <svg class="ic"><use href="#ic-check"/></svg>
+        Бронирование бесплатно · Без предоплаты · Отмена в любое время
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== How to book ===== -->
+  <section class="section section--tech" id="how">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Как забронировать</span>
+        <h2 class="section__title">Бронь за <span class="grad">1 минуту</span></h2>
+        <p class="section__sub">Никаких сложных форм и предоплат — всего три простых шага, и место твоё.</p>
+      </header>
+      <div class="steps">
+        <article class="step reveal" data-cursor data-tilt>
+          <div class="step__num">1</div>
+          <h3>Выбери зону и время</h3>
+          <p>Определись с зоной под свой стиль игры и удобным временем — днём, вечером или ночью по выгодному тарифу.</p>
+        </article>
+        <article class="step reveal" data-cursor data-tilt>
+          <div class="step__num">2</div>
+          <h3>Напиши или позвони</h3>
+          <p>Свяжись с нами в WhatsApp или по телефону. Администратор подтвердит бронь за пару минут — без предоплаты.</p>
+        </article>
+        <article class="step reveal" data-cursor data-tilt>
+          <div class="step__num">3</div>
+          <h3>Приходи и играй</h3>
+          <p>Твоё место готово и ждёт. Садись за топовое железо и погружайся в игру — мы работаем круглосуточно.</p>
+        </article>
+      </div>
+      <div class="steps__cta reveal">
+        <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--lg" data-cursor data-magnetic>Забронировать место <svg class="ic"><use href="#ic-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section section--faq" id="faq">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow"><i class="dot"></i>Вопросы и ответы</span>
+        <h2 class="section__title">Часто <span class="grad">спрашивают</span></h2>
+      </header>
+      <div class="faq reveal">
+        <details class="faq__item">
+          <summary>Нужна ли предоплата для бронирования?<svg class="faq__ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div><p>Нет, бронирование полностью бесплатное и без предоплаты. Просто напишите нам в WhatsApp или позвоните — мы зарезервируем место и будем ждать вас в указанное время.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary>Можно ли прийти без бронирования?<svg class="faq__ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div><p>Да, можно — если есть свободные места, мы сразу вас посадим. Но чтобы гарантировать конкретную зону, особенно в вечернее время и на выходных, рекомендуем бронировать заранее.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary>Какой минимальный срок игры?<svg class="faq__ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div><p>Минимальный срок — 1 час. Также доступны выгодные пакеты: 3 часа, 5 часов, дневной и ночной тариф с 23:00 до 08:00. Чем дольше — тем выгоднее за час.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary>Есть ли скидки и акции?<svg class="faq__ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div><p>Актуальные акции и специальные предложения публикуем в нашем Telegram-канале и ВКонтакте. Уточняйте условия у администратора — напишите нам в WhatsApp или Telegram.</p></div>
+        </details>
+        <details class="faq__item">
+          <summary>Как добраться до клуба?<svg class="faq__ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <div><p>Адрес: Ставрополь, ул. Пирогова, 15/1, цокольный этаж. Нажмите на карту в разделе «Контакты» — откроется маршрут в Яндекс.Картах прямо с вашего местоположения.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA band ===== -->
+  <section class="cta reveal">
+    <div class="container cta__inner">
+      <h2 class="cta__title">Готов <span class="grad">сыграть?</span></h2>
+      <p>Забронируй место за минуту — напиши нам в WhatsApp или позвони. Работаем круглосуточно, без выходных.</p>
+      <div class="cta__actions">
+        <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--lg" data-cursor data-magnetic>Написать в WhatsApp <svg class="ic"><use href="#ic-arrow"/></svg></a>
+        <a href="tel:+79187420033" class="btn btn--ghost btn--lg" data-cursor data-magnetic><svg class="ic"><use href="#ic-phone"/></svg> Позвонить</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contacts ===== -->
+  <section class="section" id="contacts">
+    <div class="container">
+      <div class="contacts">
+        <div class="contacts__info reveal">
+          <span class="eyebrow"><i class="dot"></i>Контакты</span>
+          <h2 class="section__title">Ждём тебя <span class="grad">24/7</span></h2>
+          <ul class="contacts__list">
+            <li>
+              <svg class="ic"><use href="#ic-pin"/></svg>
+              <div><span>Адрес</span><a href="https://yandex.ru/maps/?ll=41.914209,45.013604&amp;z=17&amp;pt=41.914209,45.013604" target="_blank" rel="noopener" data-cursor>Ставрополь, ул. Пирогова, 15/1, цокольный этаж</a></div>
+            </li>
+            <li>
+              <svg class="ic"><use href="#ic-phone"/></svg>
+              <div><span>Телефон</span><a href="tel:+79187420033" data-cursor>+7 918 742‑00‑33</a></div>
+            </li>
+            <li>
+              <svg class="ic"><use href="#ic-clock"/></svg>
+              <div><span>Режим работы</span><a data-cursor>Круглосуточно · 7 дней в неделю</a></div>
+            </li>
+          </ul>
+          <div class="contacts__socials">
+            <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="soc" data-cursor data-magnetic>WhatsApp</a>
+            <a href="https://t.me/kk333stv" target="_blank" rel="noopener" class="soc" data-cursor data-magnetic>Telegram</a>
+            <a href="https://vk.com/club228243290" target="_blank" rel="noopener" class="soc" data-cursor data-magnetic>ВКонтакте</a>
+          </div>
+        </div>
+
+        <a class="contacts__map reveal" href="https://yandex.ru/maps/?text=Ставрополь,%20улица%20Пирогова%2015/1" target="_blank" rel="noopener" data-cursor data-tilt aria-label="Открыть на Яндекс.Картах">
+          <div class="map__grid"></div>
+          <div class="map__pin"><svg class="ic"><use href="#ic-pin"/></svg></div>
+          <span class="map__cta">Открыть на Яндекс.Картах <svg class="ic"><use href="#ic-arrow-dr"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#top" class="logo logo--footer" data-cursor>
+      <span class="logo__mark">3<i>/</i>33</span>
+    </a>
+    <p class="footer__copy">© <span id="year">2026</span> Компьютерный клуб 3/33 · Ставрополь. Играй на максималках.</p>
+    <nav class="footer__nav">
+      <a href="#zones" data-cursor>Зоны</a>
+      <a href="#tech" data-cursor>Железо</a>
+      <a href="#prices" data-cursor>Цены</a>
+      <a href="#contacts" data-cursor>Контакты</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ===== Floating WhatsApp (desktop) ===== -->
+<a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="fab" data-cursor data-magnetic aria-label="Написать в WhatsApp">
+  <svg class="ic"><use href="#ic-chat"/></svg>
+</a>
+
+<!-- ===== Sticky mobile action bar ===== -->
+<div class="mobile-bar">
+  <a href="tel:+79187420033" class="btn btn--ghost"><svg class="ic"><use href="#ic-phone"/></svg> Позвонить</a>
+  <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20игровое%20место%20в%203/33" target="_blank" rel="noopener" class="btn"><svg class="ic"><use href="#ic-chat"/></svg> WhatsApp</a>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:kk333.ru)",
+      "Bash(curl -sL \"https://kk333.ru/\" -o page.html)",
+      "Bash(grep -oiE \"Пирогова[^<\\\\\"]{0,40}\" page.html)",
+      "Bash(npx --version)",
+      "Bash(echo \"npx: $\\(npx --version 2>/dev/null || echo no\\)\")",
+      "Bash(py --version)",
+      "Bash(echo \"py: $\\(py --version 2>&1 || echo no\\)\")",
+      "PowerShell(function tv\\($n\\){ $c = Get-Command $n -ErrorAction SilentlyContinue; if\\($c\\){ \"$n -> $\\($c.Source\\)\" } else { \"$n -> NO\" } }; tv node; tv npx; tv python; tv py; tv php; tv dotnet)",
+      "mcp__Claude_Preview__preview_start",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "WebFetch(domain:yandex.ru)",
+      "WebFetch(domain:yandex.eu)",
+      "WebFetch(domain:nominatim.openstreetmap.org)",
+      "WebFetch(domain:langame.ru)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "Bypass",
+              "-File",
+              "C:\\Users\\USER\\Desktop\\333\\.claude\\save-chat-history.ps1"
+            ],
+            "timeout": 30,
+            "statusMessage": "Сохраняю историю чата в проект..."
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "Bypass",
+              "-File",
+              "C:\\Users\\USER\\Desktop\\333\\.claude\\save-chat-history.ps1"
+            ],
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

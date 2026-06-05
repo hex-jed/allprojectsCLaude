@@ -43,6 +43,29 @@ const PAY = {
 
 ---
 
+## Project 3 — Telegram Bot (`bot/`)
+
+Minimal Python bot for `@OracleTarot26_bot`. Responds to `/start`:
+- **New user** → sends inline `web_app` button that opens the Tarot app directly
+- **Returning user** → reminds to use the Menu Button
+
+**Run locally:**
+```bash
+cd bot
+pip install -r requirements.txt
+cp .env.example .env        # fill in BOT_TOKEN and WEB_APP_URL
+export $(cat .env | xargs)
+python bot.py
+```
+
+**Environment variables** (never commit to git):
+- `BOT_TOKEN` — token from BotFather
+- `WEB_APP_URL` — HTTPS URL of the deployed tarot app
+
+`greeted_users.json` is created automatically at runtime to persist first-visit tracking across bot restarts. It is git-ignored.
+
+---
+
 ## Project 2 — Computer Club 3/33 (`333/`)
 
 Landing page for gaming club **3/33** in Stavropol (kk333.ru). Pure static site, no build step.

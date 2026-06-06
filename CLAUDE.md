@@ -19,16 +19,20 @@ Three HTML files coexist; each is fully standalone:
 |------|------------|
 | `kk333.html`    | Original site (base). |
 | `kk333-v1.html` | **Variant 1** — same brand identity (name 3/33, dark + emerald/teal palette, Manrope/Space Grotesk type), content restructured to a classic selling-landing flow. |
-| `kk333-v2.html` | **Variant 2** — full visual rebrand of Variant 1: neon violet/fuchsia palette, Chakra Petch + Outfit type, tighter radii. Identical selling structure & copy. |
+| `kk333-v2.html` | **Variant 2** — a from-scratch, deliberately different design: light **neo-brutalist / arcade** look (warm paper + ink, acid lime / ultramarine / coral, hard borders & offset shadows, poster type Anton + Inter + Space Mono). Shares the club's content/info but its own layout, components and JS — no orb, no custom cursor, no design tokens shared with the base. |
 
-The selling structure both variants follow:
-**Hero (USP + product + CTA) → brand marquee → Problem→Solution → Offers → Benefits →
-Zones (catalogue) → Hardware → Reviews → Guarantees → Prices → How-to-book → FAQ →
-final CTA with a limited offer + countdown → Contacts.**
+The selling structure variants follow:
+**Hero (USP + product + CTA) → brand strip → Problem→Solution → Benefits →
+Zones (catalogue) → Hardware → Prices → Offers → Reviews → Guarantees →
+How-to-book → FAQ → final CTA with a limited offer + countdown → Contacts.**
 
 ## Architecture
 
-Everything lives in one HTML file with inline CSS and JavaScript.
+Everything lives in one HTML file with inline CSS and JavaScript. The notes below
+describe the **base / Variant 1** engine. `kk333-v2.html` is a standalone redesign:
+same single-file approach, but its own neo-brutalist component set (`.card`, `.zone`,
+`.price`, `.pass`, hard `--sh*` offset shadows), a lighter JS (reveal + mobile menu +
+month countdown, no cursor/orb/parallax), and no shared design tokens.
 
 **CSS**
 - Design tokens in `:root` — surfaces, brand accents (`--acc`, `--acc-2`, `--acc-3`, `--acc-deep`),
@@ -52,13 +56,19 @@ Everything lives in one HTML file with inline CSS and JavaScript.
 
 **No persistence, no backend** — it's a static marketing page. All CTAs are `wa.me` / `tel:` links.
 
-### Editing the palette (how Variant 2 was made)
+### Editing the palette (base / Variant 1)
+
+The dark emerald palette of `kk333.html` / `kk333-v1.html` is driven by `:root`
+plus some raw RGB triplets hard-coded in `rgba(...)`. To recolour:
 
 1. Change the `:root` accent hex values (`--acc`, `--acc-2`, `--acc-3`, `--acc-deep`, `--acc-glow`).
 2. Global-replace the matching raw RGB triplets in `rgba(...)` across the file
-   (emerald set was `27,186,152` / `0,212,167` / `30,214,175` / `18,135,120`).
+   (emerald set is `27,186,152` / `0,212,167` / `30,214,175` / `18,135,120`).
 3. Swap the Google Fonts `<link>` + `--font` / `--font-disp`.
 4. Update the favicon data-URI colours and `<meta name="theme-color">`.
+
+`kk333-v2.html` has its own flat token set (`--paper`, `--ink`, `--lime`, `--blue`,
+`--coral`) and is recoloured just by editing those `:root` values.
 
 ## Repository Organisation
 

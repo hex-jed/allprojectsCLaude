@@ -243,6 +243,7 @@ body.cursor-on [data-cursor]{ cursor:none; }
 /* hero orb visual */
 .hero__visual{ display:grid; place-items:center; }
 .orb{ position:relative; width:min(420px,80vw); aspect-ratio:1; display:grid; place-items:center; }
+.orb__ring-wrap{ position:absolute; inset:0; display:grid; place-items:center; }
 .orb__ring{ position:absolute; inset:0; border-radius:50%; border:1px solid var(--line); }
 .orb__ring--1{ inset:0;  border-color:rgba(27,186,152,.28); animation:spin 26s linear infinite; }
 .orb__ring--2{ inset:16%; border-color:rgba(30,214,175,.22); border-style:dashed; animation:spin 18s linear infinite reverse; }

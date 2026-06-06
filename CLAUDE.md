@@ -19,9 +19,9 @@ Three HTML files coexist; each is fully standalone:
 |------|------------|
 | `kk333.html`    | Original site (base). |
 | `kk333-v1.html` | **Variant 1** — same brand identity (name 3/33, dark + emerald/teal palette, Manrope/Space Grotesk type), content restructured to a classic selling-landing flow. |
-| `kk333-v2.html` | **Variant 2** — a from-scratch, deliberately different design: light **neo-brutalist / arcade** look (warm paper + ink, acid lime / ultramarine / coral, hard borders & offset shadows, poster type Anton + Inter + Space Mono). Shares the club's content/info but its own layout, components and JS — no orb, no custom cursor, no design tokens shared with the base. |
+| `kk333-v2.html` | **Variant 2** — a from-scratch, deliberately different design that reuses the base's **dark + emerald/teal** palette but as a **multi-page single-file SPA**: a fixed left sidebar (dashboard style) with hash-routed pages — Главная `#home`, Зоны `#zones`, Цены `#prices`, О клубе `#about`, Контакты `#contacts`. Type Sora + Inter + JetBrains Mono. No orb, no custom cursor, no preloader. Degrades gracefully: without JS every page is shown as one long scroll (a `.js` class gates the routing). |
 
-The selling structure variants follow:
+The selling structure of the base / Variant 1 follows:
 **Hero (USP + product + CTA) → brand strip → Problem→Solution → Benefits →
 Zones (catalogue) → Hardware → Prices → Offers → Reviews → Guarantees →
 How-to-book → FAQ → final CTA with a limited offer + countdown → Contacts.**
@@ -30,9 +30,10 @@ How-to-book → FAQ → final CTA with a limited offer + countdown → Contacts.
 
 Everything lives in one HTML file with inline CSS and JavaScript. The notes below
 describe the **base / Variant 1** engine. `kk333-v2.html` is a standalone redesign:
-same single-file approach, but its own neo-brutalist component set (`.card`, `.zone`,
-`.price`, `.pass`, hard `--sh*` offset shadows), a lighter JS (reveal + mobile menu +
-month countdown, no cursor/orb/parallax), and no shared design tokens.
+same single-file approach and same emerald palette, but a multi-page SPA with a
+sidebar + hash router (`location.hash` toggles `.page.is-active`), its own component
+set (`.zone`, `.price`, `.offer`, `.card`), and a light JS (router + mobile menu +
+year, no cursor/orb/parallax/preloader). Pages render as one scroll when JS is off.
 
 **CSS**
 - Design tokens in `:root` — surfaces, brand accents (`--acc`, `--acc-2`, `--acc-3`, `--acc-deep`),

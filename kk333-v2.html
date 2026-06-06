@@ -4,874 +4,600 @@
 <script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>3/33 — киберспорт-клуб в Ставрополе · 60 ПК, PS5, 24/7</title>
-<meta name="description" content="Компьютерный клуб 3/33 в Ставрополе: 60 ПК с RTX 5080, PlayStation 5, 8 игровых зон и 370 м². Мониторы до 500 Гц, открыто 24/7. Бронь без предоплаты." />
-<meta name="theme-color" content="#f3efe4" />
+<title>3/33 — киберспорт-клуб в Ставрополе</title>
+<meta name="description" content="Компьютерный клуб 3/33 в Ставрополе: 60 ПК с RTX 5080, PlayStation 5, 8 игровых зон, 370 м². Мониторы до 500 Гц, работаем 24/7. Бронь без предоплаты." />
+<meta name="theme-color" content="#0a0b0d" />
 <meta property="og:title" content="3/33 — киберспорт-клуб в Ставрополе" />
 <meta property="og:description" content="60 ПК с RTX 5080, PS5, 8 зон, 370 м². Мониторы до 500 Гц, 24/7." />
 <meta property="og:type" content="website" />
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='8'%20fill='%23ccff00'/%3E%3Crect%20x='3'%20y='3'%20width='58'%20height='58'%20rx='6'%20fill='none'%20stroke='%23141210'%20stroke-width='4'/%3E%3Ctext%20x='32'%20y='34'%20font-family='Arial%20Black,Arial'%20font-size='24'%20font-weight='900'%20text-anchor='middle'%20dominant-baseline='central'%20fill='%23141210'%3E3/33%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='15'%20fill='%230a0b0d'/%3E%3Crect%20x='1.5'%20y='1.5'%20width='61'%20height='61'%20rx='13.5'%20fill='none'%20stroke='%231bba98'%20stroke-opacity='.4'%20stroke-width='1.5'/%3E%3Ctext%20x='32'%20y='34'%20font-family='Arial'%20font-size='25'%20font-weight='700'%20text-anchor='middle'%20dominant-baseline='central'%20fill='%231ed6af'%3E3/33%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
    3/33 — Computer Club · Ставрополь
-   VARIANT 2 — light neo-brutalist / arcade
-   Paper + ink + acid lime / ultramarine / coral.
-   Hard borders, hard offset shadows, poster type. No glow.
+   VARIANT 2 — dark emerald, multi-page SPA (sidebar dashboard)
+   Palette from the base brand: near-black + emerald/teal.
+   Type: Sora (display) + Inter (body) + JetBrains Mono (detail).
    ============================================================ */
-
 :root{
-  --paper:  #f3efe4;
-  --paper-2:#ece6d6;
-  --white:  #ffffff;
-  --ink:    #141210;
-  --ink-2:  #4b463c;
-
-  --lime:   #ccff00;
-  --blue:   #3a2bff;
-  --coral:  #ff5a3c;
-  --sky:    #7cd6ff;
-
-  --bd: 2.5px solid var(--ink);
-  --bd-thick: 4px solid var(--ink);
-  --sh:  6px 6px 0 var(--ink);
-  --sh-sm: 4px 4px 0 var(--ink);
-  --sh-lg: 10px 10px 0 var(--ink);
-
-  --font:  "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --disp:  "Anton", "Inter", sans-serif;
-  --mono:  "Space Mono", ui-monospace, monospace;
-
-  --ease:  cubic-bezier(.2,.7,.3,1);
-  --wrap:  1200px;
+  --bg:#0a0b0d; --bg-2:#0d0f12; --surface:#101216; --surface-2:#14181e; --surface-3:#181d24;
+  --acc:#1bba98; --acc-2:#00d4a7; --acc-3:#1ed6af; --acc-deep:#128778;
+  --text:#f4f7f6; --text-2:#aeb8b5; --text-3:#6d7a76;
+  --line:rgba(27,186,152,.16); --line-2:rgba(255,255,255,.07);
+  --grad:linear-gradient(120deg,var(--acc-2),var(--acc) 50%,var(--acc-3));
+  --glow:0 0 38px -8px rgba(27,186,152,.5);
+  --shadow:0 26px 60px -30px rgba(0,0,0,.9);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --r:16px; --r-lg:22px; --side:264px;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --disp:"Sora",var(--font);
+  --mono:"JetBrains Mono",ui-monospace,monospace;
 }
-
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
-body{
-  font-family:var(--font); background:var(--paper); color:var(--ink);
-  line-height:1.55; overflow-x:hidden; font-weight:450;
-}
+html{ -webkit-text-size-adjust:100%; }
+body{ font-family:var(--font); background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; font-weight:400; }
 img,svg{ display:block; max-width:100%; }
 a{ color:inherit; text-decoration:none; }
 ul{ list-style:none; }
 button{ font:inherit; color:inherit; background:none; border:none; cursor:pointer; }
-::selection{ background:var(--lime); color:var(--ink); }
-.ic{ width:1em; height:1em; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
-
-.wrap{ width:min(100% - 36px, var(--wrap)); margin-inline:auto; }
-.disp{ font-family:var(--disp); font-weight:400; text-transform:uppercase; letter-spacing:.005em; line-height:.95; }
+::selection{ background:var(--acc); color:#04130f; }
+.ic{ width:1em; height:1em; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
 .mono{ font-family:var(--mono); }
-.hl{ background:var(--lime); padding:0 .12em; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
-.hl--blue{ background:var(--blue); color:var(--white); }
-.hl--coral{ background:var(--coral); color:var(--white); }
 
-/* ---------- tag / eyebrow ---------- */
-.tag{
-  display:inline-flex; align-items:center; gap:7px;
-  font-family:var(--mono); font-weight:700; font-size:.72rem;
-  text-transform:uppercase; letter-spacing:.08em;
-  background:var(--ink); color:var(--paper);
-  padding:6px 12px; border-radius:999px;
-}
-.tag--lime{ background:var(--lime); color:var(--ink); }
-.tag--blue{ background:var(--blue); color:var(--white); }
+/* ---------- background decor ---------- */
+.bg{ position:fixed; inset:0; z-index:-2; background:radial-gradient(120% 80% at 80% -10%,#0e1417,var(--bg) 55%); }
+.bg::before{ content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(27,186,152,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(27,186,152,.05) 1px,transparent 1px); background-size:56px 56px; -webkit-mask-image:radial-gradient(110% 90% at 70% 0%,#000 30%,transparent 80%); mask-image:radial-gradient(110% 90% at 70% 0%,#000 30%,transparent 80%); }
+.bg__glow{ position:absolute; width:520px; height:520px; border-radius:50%; filter:blur(100px); opacity:.45; }
+.bg__glow--1{ top:-180px; right:-80px; background:radial-gradient(circle,rgba(0,212,167,.4),transparent 70%); }
+.bg__glow--2{ bottom:-200px; left:160px; background:radial-gradient(circle,rgba(18,135,120,.3),transparent 70%); }
+
+/* ---------- shell / sidebar ---------- */
+.shell{ min-height:100vh; }
+.side{ position:fixed; top:0; left:0; bottom:0; width:var(--side); z-index:40;
+  display:flex; flex-direction:column; gap:18px; padding:24px 20px;
+  background:linear-gradient(180deg,rgba(16,18,22,.9),rgba(10,11,13,.92)); border-right:1px solid var(--line-2); backdrop-filter:blur(14px); }
+.brand{ display:flex; align-items:center; gap:12px; padding:6px 6px 18px; border-bottom:1px solid var(--line-2); }
+.brand__mark{ font-family:var(--disp); font-weight:800; font-size:1.5rem; letter-spacing:-.02em; }
+.brand__mark i{ color:var(--acc); font-style:normal; }
+.brand__sub{ font-family:var(--mono); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--text-3); }
+.side__nav{ display:flex; flex-direction:column; gap:4px; margin-top:6px; }
+.side__nav a{ display:flex; align-items:center; gap:13px; padding:12px 13px; border-radius:12px; color:var(--text-2);
+  border:1px solid transparent; transition:.2s var(--ease); position:relative; }
+.side__nav a .n{ font-family:var(--mono); font-size:.7rem; color:var(--text-3); width:18px; }
+.side__nav a .t{ font-family:var(--disp); font-weight:600; font-size:.98rem; }
+.side__nav a:hover{ color:var(--text); background:var(--surface-2); }
+.side__nav a.is-active{ color:var(--text); background:rgba(27,186,152,.1); border-color:var(--line); }
+.side__nav a.is-active .n{ color:var(--acc-3); }
+.side__nav a.is-active::before{ content:""; position:absolute; left:-20px; top:14px; bottom:14px; width:3px; border-radius:3px; background:var(--grad); }
+.side__foot{ margin-top:auto; display:flex; flex-direction:column; gap:12px; }
+.side__status{ display:flex; align-items:center; gap:9px; font-family:var(--mono); font-size:.74rem; color:var(--text-2); padding:11px 13px; border:1px solid var(--line-2); border-radius:12px; background:var(--surface); }
+.dot{ width:8px; height:8px; border-radius:50%; background:var(--acc); box-shadow:0 0 10px 1px var(--acc); animation:pulse 2.4s var(--ease) infinite; }
+@keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.4; transform:scale(.7);} }
 
 /* ---------- buttons ---------- */
-.btn{
-  display:inline-flex; align-items:center; gap:10px;
-  font-family:var(--mono); font-weight:700; font-size:.92rem;
-  text-transform:uppercase; letter-spacing:.03em;
-  padding:13px 22px; border:var(--bd); border-radius:12px;
-  background:var(--ink); color:var(--paper);
-  box-shadow:var(--sh-sm); transition:transform .12s var(--ease), box-shadow .12s var(--ease);
-  white-space:nowrap;
-}
-.btn:hover{ transform:translate(-2px,-2px); box-shadow:var(--sh); }
-.btn:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
-.btn--lime{ background:var(--lime); color:var(--ink); }
-.btn--ghost{ background:var(--white); color:var(--ink); }
-.btn--lg{ padding:16px 28px; font-size:1rem; border-radius:14px; }
+.btn{ display:inline-flex; align-items:center; gap:9px; font-family:var(--disp); font-weight:600; font-size:.94rem;
+  padding:12px 20px; border-radius:999px; background:var(--grad); color:#04130f; white-space:nowrap;
+  box-shadow:0 10px 28px -12px rgba(27,186,152,.75); transition:transform .22s var(--ease), box-shadow .22s var(--ease), filter .22s; }
+.btn:hover{ transform:translateY(-2px); box-shadow:0 16px 34px -12px rgba(27,186,152,.9); filter:brightness(1.05); }
+.btn .ic{ stroke-width:2.2; }
+.btn--ghost{ background:transparent; color:var(--text); border:1px solid var(--line); box-shadow:none; }
+.btn--ghost:hover{ border-color:var(--acc); background:rgba(27,186,152,.08); box-shadow:var(--glow); }
+.btn--sm{ padding:9px 15px; font-size:.85rem; }
+.btn--lg{ padding:15px 26px; font-size:1rem; }
 .btn--block{ width:100%; justify-content:center; }
 
-/* ---------- top ticker ---------- */
-.ticker{ background:var(--ink); color:var(--lime); border-bottom:var(--bd); overflow:hidden; }
-.ticker__row{ display:inline-flex; gap:34px; white-space:nowrap; padding:7px 0;
-  font-family:var(--mono); font-size:.78rem; font-weight:700; letter-spacing:.04em;
-  text-transform:uppercase; animation:slide 26s linear infinite; }
-.ticker__row span{ display:inline-flex; gap:34px; }
-.ticker__row i{ color:var(--coral); font-style:normal; }
-@keyframes slide{ to{ transform:translateX(-50%); } }
-
-/* ---------- header ---------- */
-.header{ position:sticky; top:0; z-index:60; background:var(--paper); border-bottom:var(--bd); }
-.header__in{ display:flex; align-items:center; gap:20px; height:68px; }
-.logo{ display:inline-flex; align-items:center; gap:10px; font-family:var(--disp); font-size:1.5rem;
-  background:var(--lime); color:var(--ink); border:var(--bd); border-radius:10px; padding:4px 12px; box-shadow:var(--sh-sm); }
-.logo small{ font-family:var(--mono); font-size:.5rem; font-weight:700; letter-spacing:.18em; line-height:1; text-transform:uppercase; }
-.nav{ display:flex; gap:4px; margin-left:auto; }
-.nav a{ font-family:var(--mono); font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em;
-  padding:8px 12px; border-radius:8px; border:2px solid transparent; transition:.15s var(--ease); }
-.nav a:hover{ border-color:var(--ink); background:var(--white); }
-.header__cta{ display:inline-flex; gap:10px; }
-.burger{ display:none; width:46px; height:46px; margin-left:auto; border:var(--bd); border-radius:10px;
-  background:var(--white); box-shadow:var(--sh-sm); flex-direction:column; align-items:center; justify-content:center; gap:5px; }
-.burger span{ width:22px; height:2.6px; background:var(--ink); border-radius:2px; transition:.25s var(--ease); }
-.burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(7.6px) rotate(45deg); }
+/* ---------- main / topbar ---------- */
+.main{ margin-left:var(--side); min-height:100vh; display:flex; flex-direction:column; }
+.topbar{ position:sticky; top:0; z-index:30; display:flex; align-items:center; gap:14px; height:64px; padding:0 clamp(18px,4vw,46px);
+  background:rgba(10,11,13,.72); backdrop-filter:blur(14px); border-bottom:1px solid var(--line-2); }
+.topbar__crumb{ font-family:var(--mono); font-size:.78rem; color:var(--text-3); }
+.topbar__crumb b{ color:var(--text); font-weight:500; }
+.topbar__cta{ margin-left:auto; display:flex; gap:10px; }
+.topbar__logo{ display:none; align-items:center; gap:9px; font-family:var(--disp); font-weight:800; font-size:1.2rem; }
+.topbar__logo i{ color:var(--acc); font-style:normal; }
+.burger{ display:none; margin-left:auto; width:44px; height:44px; border:1px solid var(--line-2); border-radius:11px; background:var(--surface);
+  flex-direction:column; align-items:center; justify-content:center; gap:5px; }
+.burger span{ width:20px; height:2px; background:var(--text); border-radius:2px; transition:.25s var(--ease); }
+.burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
 .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
-.burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7.6px) rotate(-45deg); }
+.burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
-.mobile{ display:none; position:fixed; inset:68px 0 auto 0; z-index:55; background:var(--paper);
-  border-bottom:var(--bd); padding:16px 18px 22px; transform:translateY(-120%); transition:transform .3s var(--ease); }
-.mobile.open{ transform:translateY(0); }
-.mobile a{ display:block; font-family:var(--disp); font-size:1.6rem; padding:9px 0; border-bottom:2px solid var(--ink); }
-.mobile .btn{ margin-top:16px; }
+.wrap{ width:min(100% - clamp(36px,8vw,92px), 1080px); margin-inline:auto; }
+.foot{ margin-top:auto; border-top:1px solid var(--line-2); padding:26px 0; }
+.foot__in{ display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between; }
+.foot__cp{ font-family:var(--mono); font-size:.74rem; color:var(--text-3); }
+.foot__nav{ display:flex; gap:16px; }
+.foot__nav a{ font-family:var(--mono); font-size:.76rem; color:var(--text-2); }
+.foot__nav a:hover{ color:var(--acc-3); }
 
-/* ---------- section frame ---------- */
-.sec{ padding:clamp(56px,8vw,104px) 0; border-bottom:var(--bd); position:relative; }
-.sec--white{ background:var(--white); }
-.sec--ink{ background:var(--ink); color:var(--paper); }
-.sec--lime{ background:var(--lime); }
-.sec__head{ max-width:720px; margin-bottom:42px; }
-.sec__title{ font-family:var(--disp); font-size:clamp(2.2rem,6vw,4.2rem); margin:14px 0 14px; text-transform:uppercase; line-height:.92; }
-.sec__sub{ font-size:1.05rem; color:var(--ink-2); max-width:560px; }
-.sec--ink .sec__sub{ color:#c8c2b4; }
+/* ---------- pages / routing ---------- */
+.page{ padding:clamp(34px,5vw,60px) 0 20px; }
+.js .page{ display:none; }
+.js .page.is-active{ display:block; }
+.js .page.is-active > *{ animation:rise .5s var(--ease) both; }
+.js .page.is-active > *:nth-child(2){ animation-delay:.05s; }
+.js .page.is-active > *:nth-child(3){ animation-delay:.1s; }
+.js .page.is-active > *:nth-child(4){ animation-delay:.15s; }
+.js .page.is-active > *:nth-child(5){ animation-delay:.2s; }
+.js .page.is-active > *:nth-child(n+6){ animation-delay:.25s; }
+@keyframes rise{ from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:none;} }
 
-/* ---------- hero ---------- */
-.hero{ padding:clamp(40px,6vw,76px) 0 clamp(56px,8vw,96px); border-bottom:var(--bd); position:relative; overflow:hidden; }
-.hero__grid{ display:grid; grid-template-columns:1.25fr .75fr; gap:46px; align-items:center; }
-.hero h1{ font-family:var(--disp); font-size:clamp(3rem,9vw,7rem); text-transform:uppercase; line-height:.86; letter-spacing:-.01em; }
-.hero h1 em{ font-style:normal; display:inline-block; }
-.hero__lead{ font-size:clamp(1.05rem,1.6vw,1.25rem); color:var(--ink-2); max-width:520px; margin:24px 0 8px; font-weight:500; }
-.hero__cta{ display:flex; flex-wrap:wrap; gap:14px; margin:28px 0 26px; }
-.hero__rate{ display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-weight:700; font-size:.86rem; }
-.hero__rate .stars{ letter-spacing:2px; }
-.hero__rate b{ background:var(--ink); color:var(--lime); padding:2px 8px; border-radius:6px; }
+/* ---------- page header ---------- */
+.phead{ margin-bottom:34px; }
+.eyebrow{ display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-2); margin-bottom:16px; }
+.eyebrow .dot{ width:7px; height:7px; }
+.phead h1{ font-family:var(--disp); font-weight:800; font-size:clamp(2.1rem,5vw,3.7rem); line-height:1.02; letter-spacing:-.025em; }
+.phead p{ color:var(--text-2); max-width:580px; margin-top:14px; font-size:1.04rem; }
+.secttl{ font-family:var(--disp); font-weight:700; font-size:clamp(1.5rem,3vw,2.1rem); letter-spacing:-.02em; margin:46px 0 20px; display:flex; align-items:baseline; gap:12px; }
+.secttl .n{ font-family:var(--mono); font-size:.8rem; color:var(--acc-3); font-weight:500; }
 
-/* hero stat card (the “pass”) */
-.pass{ background:var(--ink); color:var(--paper); border:var(--bd-thick); border-radius:20px; box-shadow:var(--sh-lg);
-  padding:24px; transform:rotate(2deg); }
-.pass__top{ display:flex; align-items:center; justify-content:space-between; font-family:var(--mono); font-size:.72rem;
-  font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--lime); padding-bottom:14px; border-bottom:2px dashed #4b463c; }
-.pass__big{ font-family:var(--disp); font-size:clamp(3.4rem,7vw,4.6rem); text-transform:uppercase; line-height:.9; margin:16px 0 4px; }
-.pass__big span{ color:var(--lime); }
-.pass__sub{ font-family:var(--mono); font-size:.78rem; color:#c8c2b4; }
-.pass__stats{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:20px; }
-.pass__stats li{ background:#211e19; border:2px solid #3a352c; border-radius:12px; padding:12px; }
-.pass__stats b{ font-family:var(--disp); font-size:1.9rem; display:block; line-height:1; }
-.pass__stats span{ font-family:var(--mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; color:#9a937f; }
-.hero__sticker{ position:absolute; top:18px; right:18px; font-family:var(--disp); font-size:.9rem; text-transform:uppercase;
-  background:var(--coral); color:var(--white); border:var(--bd); border-radius:999px; padding:14px; transform:rotate(-12deg);
-  box-shadow:var(--sh-sm); width:96px; height:96px; display:grid; place-content:center; text-align:center; line-height:1; }
+/* ---------- hero (home) ---------- */
+.hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; padding:10px 0 16px; }
+.hero h1{ font-family:var(--disp); font-weight:800; font-size:clamp(2.4rem,5.2vw,4.4rem); line-height:1; letter-spacing:-.03em; }
+.hero p{ color:var(--text-2); max-width:480px; margin:20px 0 26px; font-size:1.08rem; }
+.hero__cta{ display:flex; flex-wrap:wrap; gap:13px; margin-bottom:24px; }
+.hero__rate{ display:flex; align-items:center; gap:10px; font-size:.9rem; color:var(--text-2); }
+.hero__rate .s{ color:var(--acc-3); letter-spacing:2px; }
+.hero__rate b{ color:var(--text); }
+.hero__panel{ background:linear-gradient(180deg,var(--surface),var(--bg-2)); border:1px solid var(--line); border-radius:var(--r-lg); padding:26px; box-shadow:var(--shadow); position:relative; overflow:hidden; }
+.hero__panel::after{ content:""; position:absolute; width:240px; height:240px; border-radius:50%; top:-120px; right:-100px; background:radial-gradient(circle,rgba(27,186,152,.25),transparent 70%); }
+.hero__panel h3{ font-family:var(--mono); font-size:.74rem; text-transform:uppercase; letter-spacing:.1em; color:var(--text-3); margin-bottom:16px; position:relative; }
+.hero__stats{ display:grid; grid-template-columns:1fr 1fr; gap:12px; position:relative; }
+.hero__stats li{ background:var(--surface-2); border:1px solid var(--line-2); border-radius:14px; padding:16px; }
+.hero__stats b{ font-family:var(--disp); font-weight:800; font-size:1.9rem; display:block; line-height:1; }
+.hero__stats span{ font-family:var(--mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-3); }
 
-/* ---------- brands strip ---------- */
-.brands{ background:var(--blue); color:var(--white); border-bottom:var(--bd); overflow:hidden; }
-.brands__row{ display:inline-flex; gap:30px; white-space:nowrap; padding:14px 0; font-family:var(--disp); font-size:1.3rem;
-  text-transform:uppercase; animation:slide 30s linear infinite; }
-.brands__row span{ display:inline-flex; gap:30px; }
-.brands__row i{ color:var(--lime); font-style:normal; }
+/* ---------- generic grids + cards ---------- */
+.grid{ display:grid; gap:16px; }
+.g2{ grid-template-columns:repeat(2,1fr); }
+.g3{ grid-template-columns:repeat(3,1fr); }
+.g4{ grid-template-columns:repeat(4,1fr); }
+.card{ background:var(--surface); border:1px solid var(--line-2); border-radius:var(--r); padding:24px; transition:transform .3s var(--ease), border-color .3s, box-shadow .3s; }
+.card:hover{ transform:translateY(-5px); border-color:var(--line); box-shadow:var(--shadow); }
+.card__ic{ width:46px; height:46px; border-radius:13px; background:rgba(27,186,152,.1); border:1px solid var(--line); display:grid; place-items:center; margin-bottom:14px; }
+.card__ic .ic{ width:22px; height:22px; color:var(--acc-3); }
+.card h3{ font-family:var(--disp); font-weight:600; font-size:1.12rem; margin-bottom:6px; }
+.card p{ color:var(--text-2); font-size:.92rem; }
 
-/* ---------- generic card grids ---------- */
-.grid{ display:grid; gap:18px; }
-.g-3{ grid-template-columns:repeat(3,1fr); }
-.g-4{ grid-template-columns:repeat(4,1fr); }
-.g-2{ grid-template-columns:repeat(2,1fr); }
-.card{ background:var(--white); border:var(--bd); border-radius:16px; box-shadow:var(--sh); padding:24px;
-  transition:transform .14s var(--ease), box-shadow .14s var(--ease); }
-.card:hover{ transform:translate(-3px,-3px); box-shadow:var(--sh-lg); }
-.card__ic{ width:46px; height:46px; border:var(--bd); border-radius:12px; display:grid; place-items:center;
-  background:var(--lime); margin-bottom:14px; }
-.card__ic .ic{ width:24px; height:24px; }
-.card h3{ font-family:var(--disp); font-size:1.35rem; text-transform:uppercase; line-height:1; margin-bottom:8px; }
-.card p{ color:var(--ink-2); font-size:.94rem; }
-
-/* ---------- problem / solution ---------- */
-.ps{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-.ps__col{ border:var(--bd); border-radius:16px; padding:26px; box-shadow:var(--sh); }
-.ps__col--bad{ background:var(--white); }
-.ps__col--good{ background:var(--lime); }
-.ps__col h3{ font-family:var(--disp); font-size:1.7rem; text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
-.ps__col ul{ display:grid; gap:12px; }
-.ps__col li{ display:flex; gap:12px; align-items:flex-start; font-size:.98rem; font-weight:500; }
-.ps__col li b{ font-family:var(--mono); font-weight:700; flex-shrink:0; }
-.ps__col--bad li b{ color:var(--coral); }
-.ps__col--good li b{ color:var(--ink); }
-
-/* ---------- zones ---------- */
-.zones{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-.zone{ grid-column:span 2; background:var(--white); border:var(--bd); border-radius:16px; box-shadow:var(--sh); padding:22px;
-  transition:transform .14s var(--ease), box-shadow .14s var(--ease); }
-.zone:hover{ transform:translate(-3px,-3px); box-shadow:var(--sh-lg); }
+/* ---------- zone cards ---------- */
+.zone{ background:linear-gradient(180deg,var(--surface),var(--bg-2)); border:1px solid var(--line-2); border-radius:var(--r-lg); padding:24px; position:relative; overflow:hidden; transition:transform .3s var(--ease), border-color .3s, box-shadow .3s; }
+.zone:hover{ transform:translateY(-5px); border-color:var(--line); box-shadow:var(--shadow); }
 .zone__top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
-.zone__num{ font-family:var(--mono); font-weight:700; font-size:.86rem; background:var(--ink); color:var(--paper);
-  padding:3px 9px; border-radius:6px; }
-.zone__gpu{ font-family:var(--mono); font-weight:700; font-size:.72rem; text-transform:uppercase; letter-spacing:.04em;
-  border:var(--bd); border-radius:999px; padding:4px 10px; }
-.zone__gpu--hot{ background:var(--coral); color:var(--white); }
-.zone h3{ font-family:var(--disp); font-size:1.9rem; text-transform:uppercase; line-height:1; }
-.zone__tag{ font-family:var(--mono); font-size:.78rem; color:var(--ink-2); margin-bottom:14px; }
-.zone__specs{ display:grid; gap:6px; padding-top:14px; border-top:2px dashed #cbc4b2; }
-.zone__specs li{ display:flex; justify-content:space-between; gap:12px; font-size:.86rem; }
-.zone__specs span{ color:var(--ink-2); font-family:var(--mono); font-size:.72rem; text-transform:uppercase; }
-.zone__specs b{ font-weight:700; text-align:right; }
-.zone--flag{ background:var(--lime); }
-.zone--ps{ background:var(--sky); }
-.zone__games{ display:grid; gap:8px; padding-top:14px; border-top:2px dashed rgba(20,18,16,.3); }
-.zone__game{ display:flex; align-items:center; gap:11px; background:var(--white); border:var(--bd); border-radius:10px; padding:8px 12px; }
-.zone__game b{ font-family:var(--mono); }
-.zone__game strong{ font-family:var(--disp); font-size:1.05rem; text-transform:uppercase; flex:1; }
-.zone__game em{ font-style:normal; font-family:var(--mono); font-size:.7rem; text-transform:uppercase; background:var(--ink); color:var(--paper); padding:3px 8px; border-radius:6px; }
-
-/* ---------- hardware (ink section) ---------- */
-.hw{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-.hw__card{ grid-column:span 2; border:2.5px solid var(--paper); border-radius:16px; padding:24px; background:#1c1a16; }
-.hw__card:nth-child(2),.hw__card:nth-child(3){ grid-column:span 1; }
-.hw__card h3{ font-family:var(--disp); font-size:1.5rem; text-transform:uppercase; color:var(--lime); margin-bottom:8px; line-height:1; }
-.hw__card p{ color:#c8c2b4; font-size:.92rem; }
-.hw__card .pill{ display:inline-block; margin-top:14px; font-family:var(--mono); font-size:.68rem; font-weight:700;
-  text-transform:uppercase; background:var(--lime); color:var(--ink); padding:4px 10px; border-radius:999px; }
+.zone__num{ font-family:var(--mono); font-size:.78rem; color:var(--text-3); }
+.zone__gpu{ font-family:var(--mono); font-size:.7rem; font-weight:500; color:var(--acc-3); background:rgba(27,186,152,.1); border:1px solid var(--line); padding:4px 10px; border-radius:999px; }
+.zone__gpu--hot{ color:#04130f; background:var(--grad); border-color:transparent; font-weight:700; }
+.zone h3{ font-family:var(--disp); font-weight:700; font-size:1.55rem; letter-spacing:-.02em; }
+.zone__tag{ font-family:var(--mono); font-size:.74rem; color:var(--text-3); margin-bottom:16px; }
+.zone__specs{ display:grid; gap:8px; padding-top:14px; border-top:1px solid var(--line-2); }
+.zone__specs li{ display:flex; justify-content:space-between; gap:14px; font-size:.88rem; }
+.zone__specs span{ font-family:var(--mono); font-size:.68rem; text-transform:uppercase; color:var(--text-3); white-space:nowrap; }
+.zone__specs b{ font-weight:600; text-align:right; }
+.zone--flag{ background:linear-gradient(180deg,#0f1a18,var(--bg-2)); border-color:var(--line); }
+.zone--ps{ background:linear-gradient(180deg,#0d1620,var(--bg-2)); border-color:var(--line); }
+.zone__games{ display:grid; gap:8px; padding-top:14px; border-top:1px solid var(--line-2); }
+.zone__game{ display:flex; align-items:center; gap:11px; background:var(--surface-2); border:1px solid var(--line-2); border-radius:11px; padding:9px 12px; }
+.zone__game .gn{ font-family:var(--mono); font-size:.74rem; color:var(--acc-3); }
+.zone__game .gt{ font-family:var(--disp); font-weight:600; flex:1; }
+.zone__game .gg{ font-family:var(--mono); font-size:.66rem; text-transform:uppercase; color:var(--text-3); }
 
 /* ---------- prices ---------- */
-.prices{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
-.price{ background:var(--white); border:var(--bd); border-radius:16px; box-shadow:var(--sh); padding:22px; display:flex; flex-direction:column;
-  transition:transform .14s var(--ease), box-shadow .14s var(--ease); }
-.price:hover{ transform:translate(-3px,-3px); box-shadow:var(--sh-lg); }
-.price--feat{ background:var(--lime); }
-.price__name{ font-family:var(--mono); font-weight:700; font-size:.82rem; text-transform:uppercase; min-height:2.4em; }
-.price__big{ font-family:var(--disp); font-size:2.6rem; line-height:.9; margin:8px 0 16px; }
-.price__big small{ font-family:var(--mono); font-size:.8rem; font-weight:400; }
-.price ul{ display:grid; gap:8px; margin-bottom:18px; font-size:.86rem; font-family:var(--mono); }
-.price li{ display:flex; gap:8px; }
+.price{ display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line-2); border-radius:var(--r-lg); padding:24px; position:relative; transition:transform .3s var(--ease), border-color .3s, box-shadow .3s; }
+.price:hover{ transform:translateY(-5px); border-color:var(--line); box-shadow:var(--shadow); }
+.price--feat{ background:linear-gradient(180deg,#0f1a18,var(--surface)); border-color:var(--line); }
+.price__flag{ position:absolute; top:-10px; right:18px; font-family:var(--mono); font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#04130f; background:var(--grad); padding:5px 11px; border-radius:999px; }
+.price__name{ font-family:var(--mono); font-size:.8rem; text-transform:uppercase; color:var(--text-2); min-height:2.4em; }
+.price__big{ font-family:var(--disp); font-weight:800; font-size:2.5rem; line-height:1; margin:8px 0 18px; }
+.price__big small{ font-family:var(--mono); font-size:.78rem; font-weight:400; color:var(--text-3); }
+.price ul{ display:grid; gap:10px; margin-bottom:20px; }
+.price li{ display:flex; align-items:center; gap:10px; font-size:.92rem; color:var(--text-2); }
+.price li .ic{ color:var(--acc); stroke-width:2.4; flex-shrink:0; }
 .price .btn{ margin-top:auto; }
 
 /* ---------- offers ---------- */
-.offers{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-.offer{ border:var(--bd); border-radius:16px; box-shadow:var(--sh); padding:26px; background:var(--white); }
-.offer--a{ background:var(--coral); color:var(--white); }
-.offer--b{ background:var(--blue); color:var(--white); }
-.offer--c{ background:var(--ink); color:var(--paper); }
-.offer__big{ font-family:var(--disp); font-size:2.6rem; text-transform:uppercase; line-height:.9; margin-bottom:8px; }
-.offer h3{ font-family:var(--mono); font-weight:700; text-transform:uppercase; font-size:.9rem; margin-bottom:8px; }
-.offer p{ font-size:.92rem; opacity:.92; }
+.offer{ position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--line-2); border-radius:var(--r-lg); padding:26px; transition:transform .3s var(--ease), border-color .3s, box-shadow .3s; }
+.offer:hover{ transform:translateY(-5px); border-color:var(--line); box-shadow:var(--shadow); }
+.offer__big{ font-family:var(--disp); font-weight:800; font-size:2.1rem; line-height:1; margin-bottom:8px; }
+.offer__big span{ font-family:var(--mono); font-size:.9rem; font-weight:400; color:var(--text-3); }
+.offer h3{ font-family:var(--disp); font-weight:600; font-size:1.1rem; margin-bottom:6px; }
+.offer p{ color:var(--text-2); font-size:.9rem; }
+.offer__badge{ display:inline-block; font-family:var(--mono); font-size:.64rem; text-transform:uppercase; letter-spacing:.06em; color:var(--acc-3); background:rgba(27,186,152,.1); border:1px solid var(--line); padding:4px 10px; border-radius:999px; margin-bottom:14px; }
 
 /* ---------- reviews ---------- */
-.reviews{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-.review{ background:var(--white); border:var(--bd); border-radius:16px; box-shadow:var(--sh); padding:24px; display:flex; flex-direction:column; gap:12px; }
-.review .stars{ font-family:var(--mono); letter-spacing:2px; }
-.review p{ font-size:.95rem; flex:1; }
-.review__who{ display:flex; align-items:center; gap:12px; padding-top:14px; border-top:2px dashed #cbc4b2; }
-.review__av{ width:42px; height:42px; border:var(--bd); border-radius:10px; background:var(--lime); display:grid; place-items:center; font-family:var(--disp); font-size:1.2rem; }
-.review__who b{ font-weight:700; display:block; font-size:.92rem; }
-.review__who span{ font-family:var(--mono); font-size:.7rem; color:var(--ink-2); }
+.review{ display:flex; flex-direction:column; gap:12px; background:var(--surface); border:1px solid var(--line-2); border-radius:var(--r); padding:24px; }
+.review .s{ color:var(--acc-3); letter-spacing:2px; }
+.review p{ color:var(--text-2); font-size:.94rem; flex:1; }
+.review__who{ display:flex; align-items:center; gap:12px; padding-top:14px; border-top:1px solid var(--line-2); }
+.review__av{ width:40px; height:40px; border-radius:50%; background:var(--grad); display:grid; place-items:center; font-family:var(--disp); font-weight:700; color:#04130f; }
+.review__who b{ display:block; font-size:.92rem; }
+.review__who span{ font-family:var(--mono); font-size:.68rem; color:var(--text-3); }
+
+/* ---------- info / contacts ---------- */
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
+.clist{ display:grid; gap:12px; }
+.clist a,.clist div{ display:flex; align-items:center; gap:15px; background:var(--surface); border:1px solid var(--line-2); border-radius:14px; padding:16px 18px; transition:.25s var(--ease); }
+.clist a:hover{ border-color:var(--acc); transform:translateY(-2px); }
+.clist .ic{ width:24px; height:24px; color:var(--acc-3); flex-shrink:0; }
+.clist span{ display:block; font-family:var(--mono); font-size:.66rem; text-transform:uppercase; color:var(--text-3); }
+.clist b{ font-weight:600; }
+.csoc{ display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+.cmap{ position:relative; min-height:320px; border-radius:var(--r-lg); border:1px solid var(--line); overflow:hidden; display:grid; place-content:center; gap:12px; text-align:center; padding:30px;
+  background:radial-gradient(120% 120% at 70% 20%,#0f1a18,var(--bg-2)); }
+.cmap::before{ content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(27,186,152,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(27,186,152,.1) 1px,transparent 1px); background-size:30px 30px; }
+.cmap .ic{ width:50px; height:50px; color:var(--acc-3); margin-inline:auto; position:relative; }
+.cmap b{ font-family:var(--disp); font-weight:600; position:relative; }
 
 /* ---------- steps ---------- */
-.steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-.step{ background:var(--white); border:var(--bd); border-radius:16px; box-shadow:var(--sh); padding:26px; }
-.step__n{ font-family:var(--disp); font-size:3.4rem; line-height:.8; -webkit-text-stroke:2px var(--ink); color:transparent; margin-bottom:8px; }
-.step h3{ font-family:var(--disp); font-size:1.5rem; text-transform:uppercase; margin-bottom:6px; }
-.step p{ color:var(--ink-2); font-size:.94rem; }
+.steps{ counter-reset:s; display:grid; gap:14px; }
+.step{ display:flex; gap:18px; align-items:flex-start; background:var(--surface); border:1px solid var(--line-2); border-radius:var(--r); padding:20px 22px; }
+.step__n{ font-family:var(--disp); font-weight:800; font-size:1.4rem; color:var(--acc-3); background:rgba(27,186,152,.1); border:1px solid var(--line); width:46px; height:46px; border-radius:12px; display:grid; place-items:center; flex-shrink:0; }
+.step h3{ font-family:var(--disp); font-weight:600; font-size:1.1rem; margin-bottom:3px; }
+.step p{ color:var(--text-2); font-size:.92rem; }
 
-/* ---------- faq ---------- */
-.faq{ max-width:820px; margin-inline:auto; display:grid; gap:12px; }
-.faq__i{ background:var(--white); border:var(--bd); border-radius:12px; box-shadow:var(--sh-sm); overflow:hidden; }
-.faq__i summary{ list-style:none; cursor:pointer; padding:18px 20px; font-family:var(--mono); font-weight:700; font-size:.98rem;
-  display:flex; justify-content:space-between; gap:14px; }
-.faq__i summary::-webkit-details-marker{ display:none; }
-.faq__i summary::after{ content:"+"; font-family:var(--disp); font-size:1.6rem; line-height:1; transition:transform .2s var(--ease); }
-.faq__i[open] summary::after{ transform:rotate(45deg); }
-.faq__i > div{ padding:0 20px 18px; color:var(--ink-2); font-size:.95rem; }
+/* ---------- callout band ---------- */
+.band{ position:relative; overflow:hidden; background:linear-gradient(135deg,rgba(0,212,167,.14),rgba(13,15,18,.6)),var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:clamp(28px,4vw,46px); text-align:center; box-shadow:var(--glow); margin-top:18px; }
+.band h2{ font-family:var(--disp); font-weight:800; font-size:clamp(1.7rem,4vw,2.6rem); letter-spacing:-.02em; margin-bottom:10px; }
+.band p{ color:var(--text-2); max-width:500px; margin:0 auto 22px; }
+.band__cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
 
-/* ---------- CTA ---------- */
-.cta{ background:var(--lime); border:var(--bd-thick); border-radius:22px; box-shadow:var(--sh-lg); padding:clamp(30px,5vw,56px); text-align:center; }
-.cta h2{ font-family:var(--disp); font-size:clamp(2.4rem,6vw,4.4rem); text-transform:uppercase; line-height:.9; margin-bottom:14px; }
-.cta p{ max-width:520px; margin:0 auto 22px; font-weight:500; }
-.cta__count{ display:flex; justify-content:center; gap:12px; margin:0 auto 26px; flex-wrap:wrap; }
-.cta__cell{ background:var(--ink); color:var(--lime); border:var(--bd); border-radius:12px; padding:12px 14px; min-width:76px; }
-.cta__cell b{ font-family:var(--disp); font-size:2rem; display:block; line-height:1; }
-.cta__cell span{ font-family:var(--mono); font-size:.62rem; text-transform:uppercase; letter-spacing:.06em; color:#c8c2b4; }
-.cta__actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-.cta .btn--lime{ background:var(--ink); color:var(--lime); }
+.note{ display:flex; align-items:center; gap:10px; justify-content:center; margin-top:20px; font-family:var(--mono); font-size:.8rem; color:var(--text-3); }
+.note .ic{ color:var(--acc); }
 
-/* ---------- contacts ---------- */
-.contacts{ display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:start; }
-.cinfo{ display:grid; gap:12px; }
-.cinfo a{ display:flex; gap:14px; align-items:center; background:var(--white); border:var(--bd); border-radius:14px; box-shadow:var(--sh-sm); padding:16px 18px;
-  transition:transform .14s var(--ease), box-shadow .14s var(--ease); }
-.cinfo a:hover{ transform:translate(-3px,-3px); box-shadow:var(--sh); }
-.cinfo .ic{ width:26px; height:26px; }
-.cinfo span{ font-family:var(--mono); font-size:.7rem; text-transform:uppercase; color:var(--ink-2); display:block; }
-.cinfo b{ font-size:1.02rem; }
-.csoc{ display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
-.cmap{ border:var(--bd); border-radius:16px; box-shadow:var(--sh); overflow:hidden; background:var(--ink); color:var(--paper);
-  min-height:340px; display:grid; place-content:center; gap:14px; text-align:center; padding:30px;
-  background-image:linear-gradient(rgba(204,255,0,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(204,255,0,.08) 1px,transparent 1px);
-  background-size:26px 26px; }
-.cmap .ic{ width:54px; height:54px; margin-inline:auto; color:var(--lime); }
-.cmap b{ font-family:var(--disp); font-size:1.6rem; text-transform:uppercase; }
-
-/* ---------- footer ---------- */
-.footer{ background:var(--ink); color:var(--paper); padding:40px 0; }
-.footer__in{ display:flex; flex-wrap:wrap; gap:18px; align-items:center; justify-content:space-between; }
-.footer .logo{ box-shadow:none; }
-.footer__cp{ font-family:var(--mono); font-size:.78rem; color:#9a937f; }
-.footer__nav{ display:flex; gap:16px; }
-.footer__nav a{ font-family:var(--mono); font-size:.8rem; text-transform:uppercase; }
-.footer__nav a:hover{ color:var(--lime); }
-
-/* ---------- reveal ---------- */
-.js .rev{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
-.rev.in{ opacity:1; transform:none; }
+/* ---------- mobile menu overlay ---------- */
+.scrim{ position:fixed; inset:0; z-index:45; background:rgba(5,6,7,.6); backdrop-filter:blur(4px); opacity:0; visibility:hidden; transition:.3s var(--ease); }
+.scrim.open{ opacity:1; visibility:visible; }
 
 /* ---------- responsive ---------- */
-@media (max-width:980px){
-  .nav,.header__cta{ display:none; }
+@media (max-width:1100px){ .hero{ grid-template-columns:1fr; gap:28px; } .g4{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:960px){
+  :root{ --side:280px; }
+  .side{ transform:translateX(-100%); transition:transform .32s var(--ease); box-shadow:var(--shadow); }
+  .side.open{ transform:translateX(0); }
+  .main{ margin-left:0; }
   .burger{ display:flex; }
-  .mobile{ display:block; }
-  .hero__grid{ grid-template-columns:1fr; gap:34px; }
-  .pass{ transform:none; }
-  .g-4{ grid-template-columns:repeat(2,1fr); }
-  .zones{ grid-template-columns:repeat(2,1fr); }
-  .zone{ grid-column:span 1; }
-  .hw{ grid-template-columns:repeat(2,1fr); }
-  .hw__card,.hw__card:nth-child(n){ grid-column:span 1; }
-  .prices{ grid-template-columns:repeat(2,1fr); }
-  .contacts{ grid-template-columns:1fr; }
+  .topbar__logo{ display:flex; }
+  .topbar__crumb,.topbar__cta{ display:none; }
+  .g3,.split{ grid-template-columns:1fr 1fr; }
 }
 @media (max-width:640px){
-  .g-3,.g-2,.offers,.reviews,.steps{ grid-template-columns:1fr; }
-  .zones,.hw,.prices{ grid-template-columns:1fr; }
-  .ps{ grid-template-columns:1fr; }
-  .hero__sticker{ display:none; }
-  .pass__stats{ grid-template-columns:1fr 1fr; }
+  .g2,.g3,.g4,.split{ grid-template-columns:1fr; }
+  .hero__stats{ grid-template-columns:1fr 1fr; }
 }
-/* ---- Phones: iPhone Pro Max (~430px) down to 320px ---- */
 @media (max-width:480px){
-  :root{ --sh:4px 4px 0 var(--ink); --sh-lg:6px 6px 0 var(--ink); --sh-sm:3px 3px 0 var(--ink); }
-  .wrap{ width:min(100% - 24px, var(--wrap)); }
-  .sec{ padding:clamp(44px,12vw,64px) 0; }
-  .card,.zone,.price,.offer,.review,.step,.ps__col{ padding:18px; }
-  .hero h1{ font-size:clamp(2.3rem,11.5vw,3.2rem); }
-  .hero h1, .sec__title, .disp{ overflow-wrap:break-word; }
-  .hero__lead{ font-size:1.02rem; }
-  .hero__cta{ gap:10px; }
-  .hero__cta .btn, .cta__actions .btn{ flex:1 1 100%; justify-content:center; }
-  .sec__title{ font-size:clamp(1.9rem,8.5vw,2.6rem); }
-  .sec__sub{ font-size:.98rem; }
-  .pass__stats{ grid-template-columns:1fr 1fr; }
-  .price__big, .offer__big{ font-size:2.2rem; }
-  .csoc .btn{ flex:1 1 100%; justify-content:center; }
-  .cta__count{ gap:7px; }
-  .cta__cell{ flex:1 1 0; min-width:0; padding:10px 4px; }
-  .cta__cell b{ font-size:clamp(1.3rem,6vw,1.9rem); }
-  .cta__cell span{ font-size:.54rem; letter-spacing:.03em; }
-  .footer__in{ flex-direction:column; align-items:flex-start; }
+  .wrap{ width:min(100% - 28px,1080px); }
+  .hero__cta .btn,.band__cta .btn{ flex:1 1 100%; justify-content:center; }
+  .card,.zone,.price,.offer,.review{ padding:18px; }
+  .price__big{ font-size:2.2rem; }
+  .foot__in{ flex-direction:column; align-items:flex-start; }
 }
-@media (max-width:360px){
-  .hero h1{ font-size:2.2rem; }
-  .sec__title{ font-size:1.9rem; }
-  .pass{ padding:18px; }
-  .pass__stats b{ font-size:1.6rem; }
-  .btn{ padding:12px 16px; font-size:.86rem; }
-  .btn--lg{ padding:14px 18px; font-size:.92rem; }
-}
-
 @media (prefers-reduced-motion:reduce){
-  .rev{ opacity:1; transform:none; }
-  .ticker__row,.brands__row{ animation:none; }
+  .js .page.is-active > *{ animation:none; }
+  .dot{ animation:none; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== top ticker ===== -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__row">
-    <span>КИБЕРСПОРТ-КЛУБ 3/33 <i>★</i> СТАВРОПОЛЬ <i>★</i> УЛ. ПИРОГОВА 15/1 <i>★</i> 60 ПК + PS5 <i>★</i> РАБОТАЕМ 24/7 <i>★</i> RTX 5080 <i>★</i> ДО 500 ГЦ <i>★</i></span>
-    <span>КИБЕРСПОРТ-КЛУБ 3/33 <i>★</i> СТАВРОПОЛЬ <i>★</i> УЛ. ПИРОГОВА 15/1 <i>★</i> 60 ПК + PS5 <i>★</i> РАБОТАЕМ 24/7 <i>★</i> RTX 5080 <i>★</i> ДО 500 ГЦ <i>★</i></span>
-  </div>
-</div>
+<!-- ===== icon sprite ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v10h5v-6h4v6h5V10"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8-9-9Z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v2M12 3v2M15 3v2M9 19v2M12 19v2M15 19v2M3 9h2M3 12h2M3 15h2M19 9h2M19 12h2M19 15h2"/></symbol>
+<symbol id="i-gpu" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="11" rx="2"/><circle cx="9" cy="11.5" r="2.6"/><circle cx="16" cy="11.5" r="1.8"/></symbol>
+<symbol id="i-mon" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 16.5v4"/></symbol>
+<symbol id="i-mouse" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 6.5v4"/></symbol>
+<symbol id="i-chair" viewBox="0 0 24 24"><path d="M7 4h10M7 4v8M17 4v8M6 12h12M8 12l-1 4M16 12l1 4M9 20v-4M15 20v-4M9 16h6"/></symbol>
+<symbol id="i-head" viewBox="0 0 24 24"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="12.5" width="3.5" height="6" rx="1.4"/><rect x="17.5" y="12.5" width="3.5" height="6" rx="1.4"/></symbol>
+<symbol id="i-pad" viewBox="0 0 24 24"><path d="M8 8h8a5 5 0 0 1 5 5l.5 4a2.2 2.2 0 0 1-4.2 1l-1.3-2.5H8l-1.3 2.5a2.2 2.2 0 0 1-4.2-1L3 13a5 5 0 0 1 5-5Z"/><path d="M7 12.5h2.5M8.25 11.25v2.5M15 12h.01M17.5 13.5h.01"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 5-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5 9 17.5 20 6.5"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.5a3.2 3.2 0 0 1 0 6.2M17.5 14.2A5.5 5.5 0 0 1 20.5 20"/></symbol>
+<symbol id="i-tv" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="12" rx="2"/><path d="M8 20.5h8M9 5 12 2l3 3"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10.5 3.5 8 4.5 9 8 12 8Zm0 0s1.5-4.5 4-3.5S15 8 12 8Z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="M9 12l2 2 4-4"/></symbol>
+</defs></svg>
 
-<!-- ===== header ===== -->
-<header class="header">
-  <div class="wrap header__in">
-    <a href="#top" class="logo" id="top">3/33 <small>computer<br>club</small></a>
-    <nav class="nav">
-      <a href="#zones">Зоны</a>
-      <a href="#hw">Железо</a>
-      <a href="#prices">Цены</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="#contacts">Контакты</a>
+<div class="bg" aria-hidden="true"><div class="bg__glow bg__glow--1"></div><div class="bg__glow bg__glow--2"></div></div>
+
+<div class="shell">
+
+  <!-- ===== sidebar ===== -->
+  <aside class="side" id="side">
+    <a href="#home" class="brand">
+      <span class="brand__mark">3<i>/</i>33</span>
+      <span class="brand__sub">computer<br>club</span>
+    </a>
+    <nav class="side__nav" id="nav">
+      <a href="#home"><span class="n">01</span><svg class="ic"><use href="#i-home"/></svg><span class="t">Главная</span></a>
+      <a href="#zones"><span class="n">02</span><svg class="ic"><use href="#i-grid"/></svg><span class="t">Зоны</span></a>
+      <a href="#prices"><span class="n">03</span><svg class="ic"><use href="#i-tag"/></svg><span class="t">Цены</span></a>
+      <a href="#about"><span class="n">04</span><svg class="ic"><use href="#i-info"/></svg><span class="t">О клубе</span></a>
+      <a href="#contacts"><span class="n">05</span><svg class="ic"><use href="#i-pin"/></svg><span class="t">Контакты</span></a>
     </nav>
-    <div class="header__cta">
-      <a href="tel:+79187420033" class="btn btn--ghost">+7 918 742-00-33</a>
-      <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--lime">Забронировать</a>
+    <div class="side__foot">
+      <div class="side__status"><span class="dot"></span> Открыто сейчас · 24/7</div>
+      <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--block"><svg class="ic"><use href="#i-chat"/></svg> Забронировать</a>
     </div>
-    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div>
-</header>
-<div class="mobile" id="mobile">
-  <a href="#zones">Зоны</a>
-  <a href="#hw">Железо</a>
-  <a href="#prices">Цены</a>
-  <a href="#reviews">Отзывы</a>
-  <a href="#contacts">Контакты</a>
-  <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--lime btn--block">Забронировать место</a>
-</div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
 
-<main>
-
-  <!-- ===== hero ===== -->
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="rev">
-        <span class="tag tag--lime">★ 4.9 · киберспорт-арена Ставрополя</span>
-        <h1>Заходи <em class="hl">играть</em><br>на максималках</h1>
-        <p class="hero__lead">60 игровых ПК с RTX 5080, PlayStation 5 и 370 м² пространства. Топовое железо, мониторы до 500 Гц и кресла, из которых не хочется вставать. Работаем круглосуточно.</p>
-        <div class="hero__cta">
-          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--lime btn--lg">Забронировать место →</a>
-          <a href="#prices" class="btn btn--ghost btn--lg">Зоны и цены</a>
-        </div>
-        <div class="hero__rate"><span class="stars">★★★★★</span> <b>4.9 / 5</b> нас выбирают игроки Ставрополя</div>
+  <!-- ===== main ===== -->
+  <div class="main">
+    <div class="topbar">
+      <a href="#home" class="topbar__logo">3<i>/</i>33</a>
+      <div class="topbar__crumb">3/33 / <b id="crumb">Главная</b></div>
+      <div class="topbar__cta">
+        <a href="tel:+79187420033" class="btn btn--ghost btn--sm"><svg class="ic"><use href="#i-phone"/></svg> +7 918 742-00-33</a>
+        <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--sm">Бронь</a>
       </div>
-
-      <div class="rev" style="position:relative;">
-        <div class="hero__sticker">−50%<br>новым</div>
-        <div class="pass">
-          <div class="pass__top"><span>GAME PASS</span><span>24 / 7</span></div>
-          <div class="pass__big">3<span>/</span>33</div>
-          <div class="pass__sub">computer club · Ставрополь</div>
-          <ul class="pass__stats">
-            <li><b>60</b><span>игровых ПК</span></li>
-            <li><b>8</b><span>игровых зон</span></li>
-            <li><b>370м²</b><span>пространства</span></li>
-            <li><b>500Гц</b><span>мониторы</span></li>
-          </ul>
-        </div>
-      </div>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-  </section>
 
-  <!-- ===== brands ===== -->
-  <div class="brands" aria-hidden="true">
-    <div class="brands__row">
-      <span>AMD RYZEN <i>/</i> GEFORCE RTX <i>/</i> ASUS ROG <i>/</i> MSI <i>/</i> PALIT <i>/</i> HYPERX <i>/</i> LOGITECH <i>/</i> LAMZU <i>/</i> DXRACER <i>/</i> METTA <i>/</i> AUDEZE <i>/</i> PLAYSTATION 5 <i>/</i></span>
-      <span>AMD RYZEN <i>/</i> GEFORCE RTX <i>/</i> ASUS ROG <i>/</i> MSI <i>/</i> PALIT <i>/</i> HYPERX <i>/</i> LOGITECH <i>/</i> LAMZU <i>/</i> DXRACER <i>/</i> METTA <i>/</i> AUDEZE <i>/</i> PLAYSTATION 5 <i>/</i></span>
-    </div>
-  </div>
+    <div class="wrap" style="flex:1;">
 
-  <!-- ===== problem / solution ===== -->
-  <section class="sec sec--white">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag">Знакомо?</span>
-        <h2 class="sec__title">Дома игра бесит.<br>У нас — <span class="hl">драйвит</span></h2>
-      </div>
-      <div class="ps">
-        <div class="ps__col ps__col--bad rev">
-          <h3>✕ Дома</h3>
-          <ul>
-            <li><b>01</b> Слабое железо — новые игры лагают и фризят</li>
-            <li><b>02</b> Монитор 60 Гц — соперник стреляет первым</li>
-            <li><b>03</b> Собраться компанией негде</li>
-            <li><b>04</b> Спина к утру от кухонного стула</li>
-          </ul>
-        </div>
-        <div class="ps__col ps__col--good rev">
-          <h3>✓ В клубе 3/33</h3>
-          <ul>
-            <li><b>01</b> RTX 5080 и Ryzen X3D — всё на ультрах</li>
-            <li><b>02</b> Мониторы до 500 Гц и OLED 360 Гц</li>
-            <li><b>03</b> 8 зон, командная Squadroom и PS5 на 6 человек</li>
-            <li><b>04</b> Кресла DXRacer и METTA — комфорт до утра</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== benefits ===== -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag tag--blue">Почему мы</span>
-        <h2 class="sec__title">Не просто клуб —<br>твоя <span class="hl--blue hl">арена</span></h2>
-      </div>
-      <div class="grid g-3">
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="11" rx="2"/><circle cx="9" cy="11.5" r="2.6"/><circle cx="16" cy="11.5" r="1.8"/></svg></div><h3>Железо нового поколения</h3><p>RTX 5080, Ryzen 9 9800X3D и мониторы до 500 Гц — оборудование уровня профи.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3>8 зон под любой стиль</h3><p>От доступного Standart до флагманской Ultra Duo — зона под уровень и бюджет.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 5-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/></svg></div><h3>Бронь за 1 минуту</h3><p>WhatsApp или звонок — резервируем место мгновенно, без предоплаты и очередей.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Открыты 24/7</h3><p>Дневные, вечерние и ночные тарифы с 23:00 до 08:00 — играй сколько захочешь.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><path d="M7 4h10M7 4v8M17 4v8M6 12h12M8 12l-1 4M16 12l1 4M9 20v-4M15 20v-4M9 16h6"/></svg></div><h3>Про-кресла и периферия</h3><p>DXRacer Master, METTA Equalizer и киберспортивная периферия для долгих сессий.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.5a3.2 3.2 0 0 1 0 6.2M17.5 14.2A5.5 5.5 0 0 1 20.5 20"/></svg></div><h3>370 м² для компании</h3><p>Просторный зал, приватные Duo, командная Squadroom и PlayStation 5 на шесть человек.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== zones ===== -->
-  <section class="sec sec--white" id="zones">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag">Каталог · 8 зон</span>
-        <h2 class="sec__title">Выбери свою <span class="hl">зону</span></h2>
-        <p class="sec__sub">От стартовой Standart до флагманской Ultra Duo с RTX 5080. И отдельная зона PlayStation 5 на компанию.</p>
-      </div>
-      <div class="zones">
-
-        <article class="zone rev">
-          <div class="zone__top"><span class="zone__num">01</span><span class="zone__gpu">RTX 4060 Ti</span></div>
-          <h3>Standart</h3><div class="zone__tag">стартовая · от 220 ₽/час</div>
-          <ul class="zone__specs">
-            <li><span>CPU</span><b>Ryzen 7 5700X3D</b></li>
-            <li><span>Монитор</span><b>ASUS TUF · 280 Гц</b></li>
-            <li><span>Кресло</span><b>METTA Samurai</b></li>
-          </ul>
-        </article>
-
-        <article class="zone rev">
-          <div class="zone__top"><span class="zone__num">02</span><span class="zone__gpu">RTX 4070 Ti</span></div>
-          <h3>Squadroom</h3><div class="zone__tag">командная комната · 5 ПК</div>
-          <ul class="zone__specs">
-            <li><span>CPU</span><b>Ryzen 7 7800X3D</b></li>
-            <li><span>Монитор</span><b>MSI · 320 Гц IPS</b></li>
-            <li><span>Мышь</span><b>Logitech G Pro 2</b></li>
-          </ul>
-        </article>
-
-        <article class="zone rev">
-          <div class="zone__top"><span class="zone__num">03</span><span class="zone__gpu">RTX 4070 Ti S</span></div>
-          <h3>Arena</h3><div class="zone__tag">турнирная · от 300 ₽/час</div>
-          <ul class="zone__specs">
-            <li><span>CPU</span><b>Ryzen 7 7800X3D</b></li>
-            <li><span>Монитор</span><b>MSI · 320 Гц IPS</b></li>
-            <li><span>Кресло</span><b>DXRacer Gladiator</b></li>
-          </ul>
-        </article>
-
-        <article class="zone rev">
-          <div class="zone__top"><span class="zone__num">04</span><span class="zone__gpu">RTX 4070 Ti S</span></div>
-          <h3>BootCamp</h3><div class="zone__tag">тренировочная · pro-setup</div>
-          <ul class="zone__specs">
-            <li><span>CPU</span><b>Ryzen 7 7800X3D</b></li>
-            <li><span>Наушники</span><b>HyperX Cloud III</b></li>
-            <li><span>Кресло</span><b>DXRacer Master</b></li>
-          </ul>
-        </article>
-
-        <article class="zone rev">
-          <div class="zone__top"><span class="zone__num">05</span><span class="zone__gpu">OLED 240 Гц</span></div>
-          <h3>Duo 51–52</h3><div class="zone__tag">приватная на двоих · от 440 ₽/час</div>
-          <ul class="zone__specs">
-            <li><span>GPU</span><b>RTX 4070 Ti Super</b></li>
-            <li><span>Монитор</span><b>MSI 27″ · 240 Гц OLED</b></li>
-            <li><span>Кресло</span><b>METTA Equalizer</b></li>
-          </ul>
-        </article>
-
-        <article class="zone rev">
-          <div class="zone__top"><span class="zone__num">06</span><span class="zone__gpu">500 Гц</span></div>
-          <h3>Duo 53–54</h3><div class="zone__tag">приватная на двоих · от 440 ₽/час</div>
-          <ul class="zone__specs">
-            <li><span>GPU</span><b>RTX 4070 Ti Super</b></li>
-            <li><span>Монитор</span><b>ROG Swift · 500 Гц</b></li>
-            <li><span>Мышь</span><b>Logitech G Pro 2</b></li>
-          </ul>
-        </article>
-
-        <article class="zone zone--flag rev">
-          <div class="zone__top"><span class="zone__num">07</span><span class="zone__gpu zone__gpu--hot">★ RTX 5080</span></div>
-          <h3>Ultra Duo</h3><div class="zone__tag">флагман клуба · максимум мощности</div>
-          <ul class="zone__specs">
-            <li><span>CPU</span><b>Ryzen 9 9800X3D</b></li>
-            <li><span>Монитор</span><b>MSI · 360 Гц OLED</b></li>
-            <li><span>Наушники</span><b>Audeze Maxwell</b></li>
-          </ul>
-        </article>
-
-        <article class="zone zone--ps rev">
-          <div class="zone__top"><span class="zone__num">08</span><span class="zone__gpu">PS5</span></div>
-          <h3>PlayStation</h3><div class="zone__tag">консольная зона на компанию</div>
-          <div class="zone__games">
-            <div class="zone__game"><b>01</b><strong>FC 26</strong><em>футбол</em></div>
-            <div class="zone__game"><b>02</b><strong>UFC 5 / 6</strong><em>бои</em></div>
-            <div class="zone__game"><b>03</b><strong>MK 11 / MK1</strong><em>файтинг</em></div>
+      <!-- ===================== HOME ===================== -->
+      <section class="page" id="page-home">
+        <div class="hero">
+          <div>
+            <span class="eyebrow"><span class="dot"></span> Ставрополь · ул. Пирогова 15/1 · 24/7</span>
+            <h1>Заходи играть <span class="grad">на максималках</span></h1>
+            <p>60 игровых ПК с RTX 5080, PlayStation 5 и 370 м² пространства. Топовое железо, мониторы до 500 Гц и кресла, из которых не хочется вставать.</p>
+            <div class="hero__cta">
+              <a href="https://wa.me/79187420033?text=Здравствуйте!%20Хочу%20забронировать%20место%20в%203/33" target="_blank" rel="noopener" class="btn btn--lg">Забронировать место <svg class="ic"><use href="#i-arrow"/></svg></a>
+              <a href="#zones" class="btn btn--ghost btn--lg">Смотреть зоны</a>
+            </div>
+            <div class="hero__rate"><span class="s">★★★★★</span> <b>4.9 из 5</b> — нас выбирают игроки Ставрополя</div>
           </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== hardware ===== -->
-  <section class="sec sec--ink" id="hw">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag tag--lime">Железо</span>
-        <h2 class="sec__title">Мы не экономим<br>на <span style="color:var(--lime)">комплектующих</span></h2>
-        <p class="sec__sub">Только актуальные процессоры, видеокарты и киберспортивная периферия — чтобы между тобой и победой не стояло ничего.</p>
-      </div>
-      <div class="hw">
-        <article class="hw__card rev"><h3>GeForce RTX 5080</h3><p>Видеокарта нового поколения во флагманской зоне Ultra Duo. Ray tracing, DLSS и высокий FPS в любых проектах.</p><span class="pill">Ultra Duo</span></article>
-        <article class="hw__card rev"><h3>Ryzen X3D</h3><p>9800X3D и 7800X3D с 3D V-Cache — лучшее игровое железо на сегодня.</p><span class="pill">все зоны</span></article>
-        <article class="hw__card rev"><h3>До 500 Гц</h3><p>ASUS ROG Swift 500 Гц и OLED-матрицы 360 Гц. Каждый кадр — твой.</p><span class="pill">Duo · Ultra</span></article>
-        <article class="hw__card rev"><h3>Pro-периферия</h3><p>LAMZU Atlantis, Logitech G Pro Superlight 2, Drunkdeer, Audeze Maxwell — киберспортивный сетап в каждой зоне.</p><span class="pill">киберспорт</span></article>
-        <article class="hw__card rev"><h3>Кресла DXRacer и METTA</h3><p>Сессия может длиться часами — поэтому в зонах стоят игровые кресла DXRacer Master, Gladiator и METTA Equalizer.</p><span class="pill">комфорт 24/7</span></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== prices ===== -->
-  <section class="sec" id="prices">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag">Тарифы</span>
-        <h2 class="sec__title">Понятные <span class="hl">цены</span></h2>
-        <p class="sec__sub">Почасовая оплата и выгодные пакеты на 3–5 часов, день и ночь. Ночной тариф — с 23:00 до 08:00.</p>
-      </div>
-      <div class="prices">
-        <article class="price rev">
-          <div class="price__name">Standart</div>
-          <div class="price__big">220₽<small>/час</small></div>
-          <ul><li>3 часа — 530 ₽</li><li>День — 690 ₽</li><li>Ночь — 780 ₽</li></ul>
-          <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a>
-        </article>
-        <article class="price price--feat rev">
-          <div class="price__name">Arena · BootCamp · Squadroom</div>
-          <div class="price__big">300₽<small>/час</small></div>
-          <ul><li>5 часов — 790 ₽</li><li>День — 990 ₽</li><li>Ночь — 1090 ₽</li></ul>
-          <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--block">Бронь</a>
-        </article>
-        <article class="price rev">
-          <div class="price__name">Duo · приватная</div>
-          <div class="price__big">440₽<small>/час</small></div>
-          <ul><li>3 часа — 1090 ₽</li><li>5 часов — 1590 ₽</li><li>День/ночь — 1370 ₽</li></ul>
-          <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a>
-        </article>
-        <article class="price rev">
-          <div class="price__name">Ultra Duo · флагман</div>
-          <div class="price__big">590₽<small>/час</small></div>
-          <ul><li>3 часа — 1400 ₽</li><li>5 часов — 2000 ₽</li><li>День/ночь — 1700 ₽</li></ul>
-          <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a>
-        </article>
-        <article class="price rev">
-          <div class="price__name">PlayStation 5</div>
-          <div class="price__big">500₽<small>/час</small></div>
-          <ul><li>6 × DualSense</li><li>Телевизор TCL 65″</li><li>6 посадочных мест</li></ul>
-          <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== offers ===== -->
-  <section class="sec sec--white">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag tag--blue">Акции</span>
-        <h2 class="sec__title">Играй <span class="hl">выгоднее</span></h2>
-      </div>
-      <div class="offers">
-        <article class="offer offer--a rev"><div class="offer__big">−50%</div><h3>Первый визит</h3><p>Новым гостям — первый час за полцены в любой зоне. Просто скажи администратору, что ты впервые.</p></article>
-        <article class="offer offer--b rev"><div class="offer__big">150₽/час</div><h3>Счастливые часы</h3><p>Каждый день с 08:00 до 14:00 — фиксированная цена на зону Standart. Идеально для утренних каток.</p></article>
-        <article class="offer offer--c rev"><div class="offer__big">+1 час</div><h3>Приведи друга</h3><p>Приходи с другом, который у нас впервые, — и получи час игры в подарок.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== reviews ===== -->
-  <section class="sec" id="reviews">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag">Отзывы · 4.9 ★</span>
-        <h2 class="sec__title">Нас уже <span class="hl">оценили</span></h2>
-      </div>
-      <div class="reviews">
-        <article class="review rev">
-          <div class="stars">★★★★★</div>
-          <p>«Взяли Ultra Duo с другом — RTX 5080 и OLED 360 Гц просто нереально. Кресло держит спину даже после четырёх часов. Бронь в WhatsApp заняла минуту.»</p>
-          <div class="review__who"><div class="review__av">А</div><div><b>Александр К.</b><span>Ultra Duo</span></div></div>
-        </article>
-        <article class="review rev">
-          <div class="stars">★★★★★</div>
-          <p>«Пришли шестером на PlayStation 5 — это огонь! Большой TCL 65″, шесть геймпадов, FC и UFC. Персонал вежливый, в зале чисто. Придём ещё.»</p>
-          <div class="review__who"><div class="review__av">Д</div><div><b>Дарья М.</b><span>PlayStation 5</span></div></div>
-        </article>
-        <article class="review rev">
-          <div class="stars">★★★★★</div>
-          <p>«Приходил ночью на Arena — MSI 320 Гц и LAMZU Atlantis. Такой связки дома не собрать. Ночной тариф реально выгодный. Стал постоянным.»</p>
-          <div class="review__who"><div class="review__av">А</div><div><b>Артём В.</b><span>Arena</span></div></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== guarantees + steps ===== -->
-  <section class="sec sec--white">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag">Гарантии</span>
-        <h2 class="sec__title">Играй <span class="hl">спокойно</span></h2>
-      </div>
-      <div class="grid g-4" style="margin-bottom:42px;">
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><path d="M4 12.5 9 17.5 20 6.5"/></svg></div><h3>Без предоплаты</h3><p>Бронируем бесплатно. Платишь только за сыгранное время.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><path d="M5 10V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 10h16v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5ZM7 17v3M17 17v3"/></svg></div><h3>Пересадим</h3><p>Не понравилась зона — в первые 15 минут пересадим в другую.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3>Честная оплата</h3><p>Прозрачные тарифы и поминутный расчёт. Без скрытых доплат.</p></article>
-        <article class="card rev"><div class="card__ic"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><h3>Чистота 24/7</h3><p>Регулярная уборка и дезинфекция периферии.</p></article>
-      </div>
-
-      <div class="sec__head rev" style="margin-bottom:24px;">
-        <h2 class="sec__title" style="font-size:clamp(1.8rem,4vw,2.8rem)">Бронь за <span class="hl">1 минуту</span></h2>
-      </div>
-      <div class="steps">
-        <article class="step rev"><div class="step__n">01</div><h3>Выбери зону</h3><p>Определись с зоной под свой стиль и удобным временем — днём, вечером или ночью.</p></article>
-        <article class="step rev"><div class="step__n">02</div><h3>Напиши нам</h3><p>WhatsApp или звонок. Администратор подтвердит бронь за пару минут, без предоплаты.</p></article>
-        <article class="step rev"><div class="step__n">03</div><h3>Приходи и играй</h3><p>Место готово и ждёт. Садись за топовое железо — мы работаем круглосуточно.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== faq ===== -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec__head rev" style="text-align:center; margin-inline:auto;">
-        <h2 class="sec__title">Часто <span class="hl">спрашивают</span></h2>
-      </div>
-      <div class="faq rev">
-        <details class="faq__i"><summary>Нужна ли предоплата для брони?</summary><div>Нет, бронирование бесплатное и без предоплаты. Напишите в WhatsApp или позвоните — зарезервируем место и будем ждать в указанное время.</div></details>
-        <details class="faq__i"><summary>Можно прийти без брони?</summary><div>Да — если есть свободные места, сразу посадим. Но чтобы гарантировать конкретную зону вечером и на выходных, лучше бронировать заранее.</div></details>
-        <details class="faq__i"><summary>Какой минимальный срок игры?</summary><div>Минимум — 1 час. Есть выгодные пакеты: 3 часа, 5 часов, дневной и ночной тариф с 23:00 до 08:00. Чем дольше — тем выгоднее за час.</div></details>
-        <details class="faq__i"><summary>Есть ли скидки и акции?</summary><div>Да: −50% новым гостям на первый час, «счастливые часы» по 150 ₽ и бонус за приведённого друга. Подробности — у администратора в WhatsApp.</div></details>
-        <details class="faq__i"><summary>Как добраться?</summary><div>Ставрополь, ул. Пирогова, 15/1, цокольный этаж. Нажмите на карту в разделе «Контакты» — откроется маршрут в Яндекс.Картах.</div></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section class="sec sec--ink">
-    <div class="wrap">
-      <div class="cta rev">
-        <span class="tag tag--blue">Только до конца месяца</span>
-        <h2>−50% на первый час<br>новым гостям</h2>
-        <p>Забронируй место за минуту и сыграй первый час за полцены в любой зоне. Успей занять место.</p>
-        <div class="cta__count" id="count">
-          <div class="cta__cell"><b data-c="d">00</b><span>дней</span></div>
-          <div class="cta__cell"><b data-c="h">00</b><span>часов</span></div>
-          <div class="cta__cell"><b data-c="m">00</b><span>минут</span></div>
-          <div class="cta__cell"><b data-c="s">00</b><span>секунд</span></div>
-        </div>
-        <div class="cta__actions">
-          <a href="https://wa.me/79187420033?text=Здравствуйте!%20Я%20впервые,%20хочу%20−50%25%20на%20первый%20час%20в%203/33" target="_blank" rel="noopener" class="btn btn--lime btn--lg">Забрать −50% в WhatsApp →</a>
-          <a href="tel:+79187420033" class="btn btn--ghost btn--lg">Позвонить</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== contacts ===== -->
-  <section class="sec sec--white" id="contacts">
-    <div class="wrap">
-      <div class="sec__head rev">
-        <span class="tag">Контакты</span>
-        <h2 class="sec__title">Ждём тебя <span class="hl">24/7</span></h2>
-      </div>
-      <div class="contacts">
-        <div class="cinfo rev">
-          <a href="https://yandex.ru/maps/?text=Ставрополь,%20улица%20Пирогова%2015/1" target="_blank" rel="noopener">
-            <svg class="ic" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-            <div><span>Адрес</span><b>Ставрополь, ул. Пирогова, 15/1, цокольный этаж</b></div>
-          </a>
-          <a href="tel:+79187420033">
-            <svg class="ic" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 5-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/></svg>
-            <div><span>Телефон</span><b>+7 918 742-00-33</b></div>
-          </a>
-          <a href="#">
-            <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-            <div><span>Режим работы</span><b>Круглосуточно · 7 дней в неделю</b></div>
-          </a>
-          <div class="csoc">
-            <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--lime">WhatsApp</a>
-            <a href="https://t.me/kk333stv" target="_blank" rel="noopener" class="btn btn--ghost">Telegram</a>
-            <a href="https://vk.com/club228243290" target="_blank" rel="noopener" class="btn btn--ghost">ВКонтакте</a>
+          <div class="hero__panel">
+            <h3>3/33 в цифрах</h3>
+            <ul class="hero__stats">
+              <li><b>60</b><span>игровых ПК</span></li>
+              <li><b>8</b><span>игровых зон</span></li>
+              <li><b>370м²</b><span>пространства</span></li>
+              <li><b>500Гц</b><span>мониторы</span></li>
+            </ul>
           </div>
         </div>
-        <a class="cmap rev" href="https://yandex.ru/maps/?text=Ставрополь,%20улица%20Пирогова%2015/1" target="_blank" rel="noopener">
-          <svg class="ic" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-          <b>Открыть на Яндекс.Картах →</b>
-        </a>
-      </div>
+
+        <h2 class="secttl"><span class="n">//</span> Почему 3/33</h2>
+        <div class="grid g3">
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-gpu"/></svg></div><h3>Железо нового поколения</h3><p>RTX 5080, Ryzen 9 9800X3D и мониторы до 500 Гц — оборудование уровня профи.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-bolt"/></svg></div><h3>8 зон под любой стиль</h3><p>От доступного Standart до флагманской Ultra Duo — зона под уровень и бюджет.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-clock"/></svg></div><h3>Открыты 24/7</h3><p>Дневные, вечерние и ночные тарифы. Играй столько, сколько захочешь.</p></article>
+        </div>
+
+        <h2 class="secttl"><span class="n">//</span> Популярные зоны</h2>
+        <div class="grid g3">
+          <article class="zone"><div class="zone__top"><span class="zone__num">03</span><span class="zone__gpu">RTX 4070 Ti S</span></div><h3>Arena</h3><div class="zone__tag">турнирная · от 300 ₽/час</div></article>
+          <article class="zone zone--flag"><div class="zone__top"><span class="zone__num">07</span><span class="zone__gpu zone__gpu--hot">★ RTX 5080</span></div><h3>Ultra Duo</h3><div class="zone__tag">флагман клуба · максимум</div></article>
+          <article class="zone zone--ps"><div class="zone__top"><span class="zone__num">08</span><span class="zone__gpu">PS5</span></div><h3>PlayStation</h3><div class="zone__tag">консольная зона на компанию</div></article>
+        </div>
+        <p style="margin-top:18px"><a href="#zones" class="btn btn--ghost">Все 8 зон <svg class="ic"><use href="#i-arrow"/></svg></a></p>
+
+        <div class="band">
+          <h2>Готов <span class="grad">сыграть?</span></h2>
+          <p>Забронируй место за минуту — напиши в WhatsApp или позвони. Работаем круглосуточно, без выходных.</p>
+          <div class="band__cta">
+            <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--lg"><svg class="ic"><use href="#i-chat"/></svg> Написать в WhatsApp</a>
+            <a href="tel:+79187420033" class="btn btn--ghost btn--lg"><svg class="ic"><use href="#i-phone"/></svg> Позвонить</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ZONES ===================== -->
+      <section class="page" id="page-zones">
+        <div class="phead">
+          <span class="eyebrow"><span class="dot"></span> Каталог · 8 зон</span>
+          <h1>Выбери свою зону</h1>
+          <p>От стартовой Standart до флагманской Ultra Duo с RTX 5080. И отдельная зона PlayStation 5 на компанию.</p>
+        </div>
+        <div class="grid g2">
+          <article class="zone"><div class="zone__top"><span class="zone__num">01</span><span class="zone__gpu">RTX 4060 Ti</span></div><h3>Standart</h3><div class="zone__tag">стартовая · от 220 ₽/час</div>
+            <ul class="zone__specs"><li><span>CPU</span><b>Ryzen 7 5700X3D</b></li><li><span>Монитор</span><b>ASUS TUF · 280 Гц</b></li><li><span>Кресло</span><b>METTA Samurai</b></li></ul></article>
+          <article class="zone"><div class="zone__top"><span class="zone__num">02</span><span class="zone__gpu">RTX 4070 Ti</span></div><h3>Squadroom</h3><div class="zone__tag">командная комната · 5 ПК</div>
+            <ul class="zone__specs"><li><span>CPU</span><b>Ryzen 7 7800X3D</b></li><li><span>Монитор</span><b>MSI · 320 Гц IPS</b></li><li><span>Мышь</span><b>Logitech G Pro 2</b></li></ul></article>
+          <article class="zone"><div class="zone__top"><span class="zone__num">03</span><span class="zone__gpu">RTX 4070 Ti S</span></div><h3>Arena</h3><div class="zone__tag">турнирная · от 300 ₽/час</div>
+            <ul class="zone__specs"><li><span>CPU</span><b>Ryzen 7 7800X3D</b></li><li><span>Монитор</span><b>MSI · 320 Гц IPS</b></li><li><span>Кресло</span><b>DXRacer Gladiator</b></li></ul></article>
+          <article class="zone"><div class="zone__top"><span class="zone__num">04</span><span class="zone__gpu">RTX 4070 Ti S</span></div><h3>BootCamp</h3><div class="zone__tag">тренировочная · pro-setup</div>
+            <ul class="zone__specs"><li><span>CPU</span><b>Ryzen 7 7800X3D</b></li><li><span>Наушники</span><b>HyperX Cloud III</b></li><li><span>Кресло</span><b>DXRacer Master</b></li></ul></article>
+          <article class="zone"><div class="zone__top"><span class="zone__num">05</span><span class="zone__gpu">OLED 240 Гц</span></div><h3>Duo 51–52</h3><div class="zone__tag">приватная на двоих · от 440 ₽/час</div>
+            <ul class="zone__specs"><li><span>GPU</span><b>RTX 4070 Ti Super</b></li><li><span>Монитор</span><b>MSI 27″ · 240 Гц OLED</b></li><li><span>Кресло</span><b>METTA Equalizer</b></li></ul></article>
+          <article class="zone"><div class="zone__top"><span class="zone__num">06</span><span class="zone__gpu">500 Гц</span></div><h3>Duo 53–54</h3><div class="zone__tag">приватная на двоих · от 440 ₽/час</div>
+            <ul class="zone__specs"><li><span>GPU</span><b>RTX 4070 Ti Super</b></li><li><span>Монитор</span><b>ROG Swift · 500 Гц</b></li><li><span>Мышь</span><b>Logitech G Pro 2</b></li></ul></article>
+          <article class="zone zone--flag"><div class="zone__top"><span class="zone__num">07</span><span class="zone__gpu zone__gpu--hot">★ RTX 5080</span></div><h3>Ultra Duo</h3><div class="zone__tag">флагман клуба · максимум мощности</div>
+            <ul class="zone__specs"><li><span>CPU</span><b>Ryzen 9 9800X3D</b></li><li><span>Монитор</span><b>MSI · 360 Гц OLED</b></li><li><span>Наушники</span><b>Audeze Maxwell</b></li></ul></article>
+          <article class="zone zone--ps"><div class="zone__top"><span class="zone__num">08</span><span class="zone__gpu">PS5</span></div><h3>PlayStation</h3><div class="zone__tag">консольная зона на компанию</div>
+            <div class="zone__games">
+              <div class="zone__game"><span class="gn">01</span><span class="gt">FC 26</span><span class="gg">футбол</span></div>
+              <div class="zone__game"><span class="gn">02</span><span class="gt">UFC 5 / 6</span><span class="gg">бои</span></div>
+              <div class="zone__game"><span class="gn">03</span><span class="gt">MK 11 / MK1</span><span class="gg">файтинг</span></div>
+            </div></article>
+        </div>
+        <p class="note"><svg class="ic"><use href="#i-check"/></svg> 6 беспроводных DualSense · Телевизор TCL 65″ · 6 посадочных мест в зоне PlayStation</p>
+      </section>
+
+      <!-- ===================== PRICES ===================== -->
+      <section class="page" id="page-prices">
+        <div class="phead">
+          <span class="eyebrow"><span class="dot"></span> Тарифы и акции</span>
+          <h1>Понятные цены</h1>
+          <p>Почасовая оплата и выгодные пакеты на 3–5 часов, день и ночь. Ночной тариф — с 23:00 до 08:00.</p>
+        </div>
+        <div class="grid g3">
+          <article class="price"><div class="price__name">Standart</div><div class="price__big">220₽<small>/час</small></div>
+            <ul><li><svg class="ic"><use href="#i-check"/></svg>3 часа — 530 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>День — 690 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>Ночь — 780 ₽</li></ul>
+            <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a></article>
+          <article class="price price--feat"><span class="price__flag">популярное</span><div class="price__name">Arena · BootCamp · Squadroom</div><div class="price__big">от 300₽<small>/час</small></div>
+            <ul><li><svg class="ic"><use href="#i-check"/></svg>5 часов — 790 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>День — 990 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>Ночь — 1090 ₽</li></ul>
+            <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--block">Бронь</a></article>
+          <article class="price"><div class="price__name">Duo · приватная на двоих</div><div class="price__big">440₽<small>/час</small></div>
+            <ul><li><svg class="ic"><use href="#i-check"/></svg>3 часа — 1090 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>5 часов — 1590 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>День/ночь — 1370 ₽</li></ul>
+            <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a></article>
+          <article class="price price--feat"><span class="price__flag">флагман</span><div class="price__name">Ultra Duo · RTX 5080</div><div class="price__big">590₽<small>/час</small></div>
+            <ul><li><svg class="ic"><use href="#i-check"/></svg>3 часа — 1400 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>5 часов — 2000 ₽</li><li><svg class="ic"><use href="#i-check"/></svg>День/ночь — 1700 ₽</li></ul>
+            <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a></article>
+          <article class="price"><div class="price__name">PlayStation 5</div><div class="price__big">500₽<small>/час</small></div>
+            <ul><li><svg class="ic"><use href="#i-pad"/></svg>6 × DualSense</li><li><svg class="ic"><use href="#i-tv"/></svg>Телевизор TCL 65″</li><li><svg class="ic"><use href="#i-users"/></svg>6 посадочных мест</li></ul>
+            <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn btn--ghost btn--block">Бронь</a></article>
+        </div>
+        <p class="note"><svg class="ic"><use href="#i-check"/></svg> Бронирование бесплатно · Без предоплаты · Отмена в любое время</p>
+
+        <h2 class="secttl"><span class="n">//</span> Акции</h2>
+        <div class="grid g3">
+          <article class="offer"><span class="offer__badge">Новым гостям</span><div class="offer__big">−50%<span> на первый час</span></div><h3>Первый визит</h3><p>Новым гостям — первый час за полцены в любой зоне. Скажи администратору, что ты впервые.</p></article>
+          <article class="offer"><span class="offer__badge">Утром дешевле</span><div class="offer__big">150₽<span>/час</span></div><h3>Счастливые часы</h3><p>Каждый день с 08:00 до 14:00 — фиксированная цена на зону Standart.</p></article>
+          <article class="offer"><span class="offer__badge">С друзьями</span><div class="offer__big">+1 час<span> в подарок</span></div><h3>Приведи друга</h3><p>Приходи с другом, который у нас впервые, — и получи час игры в подарок.</p></article>
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT ===================== -->
+      <section class="page" id="page-about">
+        <div class="phead">
+          <span class="eyebrow"><span class="dot"></span> О клубе</span>
+          <h1>Не просто клуб — твоя арена</h1>
+          <p>370 м² игрового пространства в центре Ставрополя. 60 ПК, PlayStation 5, киберспортивная периферия и кресла, в которых комфортно даже ночью.</p>
+        </div>
+
+        <h2 class="secttl"><span class="n">//</span> Железо</h2>
+        <div class="grid g4">
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-gpu"/></svg></div><h3>RTX 5080</h3><p>Видеокарта нового поколения во флагманской Ultra Duo.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-cpu"/></svg></div><h3>Ryzen X3D</h3><p>9800X3D и 7800X3D с 3D V-Cache — лучшее игровое железо.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-mon"/></svg></div><h3>До 500 Гц</h3><p>ROG Swift 500 Гц и OLED-матрицы 360 Гц. Каждый кадр — твой.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-mouse"/></svg></div><h3>Pro-периферия</h3><p>LAMZU, Logitech G Pro Superlight 2, Audeze Maxwell.</p></article>
+        </div>
+
+        <h2 class="secttl"><span class="n">//</span> Гарантии</h2>
+        <div class="grid g4">
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-check"/></svg></div><h3>Без предоплаты</h3><p>Бронируем бесплатно. Платишь только за сыгранное время.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-chair"/></svg></div><h3>Пересадим</h3><p>Не понравилась зона — в первые 15 минут пересадим в другую.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-bolt"/></svg></div><h3>Честная оплата</h3><p>Прозрачные тарифы и поминутный расчёт. Без скрытых доплат.</p></article>
+          <article class="card"><div class="card__ic"><svg class="ic"><use href="#i-shield"/></svg></div><h3>Чистота 24/7</h3><p>Регулярная уборка и дезинфекция периферии.</p></article>
+        </div>
+
+        <h2 class="secttl"><span class="n">//</span> Отзывы · 4.9 ★</h2>
+        <div class="grid g3">
+          <article class="review"><div class="s">★★★★★</div><p>«Взяли Ultra Duo с другом — RTX 5080 и OLED 360 Гц просто нереально. Кресло держит спину даже после четырёх часов.»</p><div class="review__who"><div class="review__av">А</div><div><b>Александр К.</b><span>Ultra Duo</span></div></div></article>
+          <article class="review"><div class="s">★★★★★</div><p>«Пришли шестером на PlayStation 5 — это огонь! Большой TCL 65″, шесть геймпадов, FC и UFC. Персонал вежливый, в зале чисто.»</p><div class="review__who"><div class="review__av">Д</div><div><b>Дарья М.</b><span>PlayStation 5</span></div></div></article>
+          <article class="review"><div class="s">★★★★★</div><p>«Приходил ночью на Arena — MSI 320 Гц и LAMZU Atlantis. Такой связки дома не собрать. Ночной тариф реально выгодный.»</p><div class="review__who"><div class="review__av">А</div><div><b>Артём В.</b><span>Arena</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- ===================== CONTACTS ===================== -->
+      <section class="page" id="page-contacts">
+        <div class="phead">
+          <span class="eyebrow"><span class="dot"></span> Контакты</span>
+          <h1>Ждём тебя 24/7</h1>
+          <p>Приходи один или с компанией. Бронь занимает минуту — напиши в WhatsApp или позвони.</p>
+        </div>
+        <div class="split">
+          <div>
+            <div class="clist">
+              <a href="https://yandex.ru/maps/?text=Ставрополь,%20улица%20Пирогова%2015/1" target="_blank" rel="noopener"><svg class="ic"><use href="#i-pin"/></svg><div><span>Адрес</span><b>Ставрополь, ул. Пирогова, 15/1, цокольный этаж</b></div></a>
+              <a href="tel:+79187420033"><svg class="ic"><use href="#i-phone"/></svg><div><span>Телефон</span><b>+7 918 742-00-33</b></div></a>
+              <div><svg class="ic"><use href="#i-clock"/></svg><div><span>Режим работы</span><b>Круглосуточно · 7 дней в неделю</b></div></div>
+            </div>
+            <div class="csoc">
+              <a href="https://wa.me/79187420033" target="_blank" rel="noopener" class="btn"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp</a>
+              <a href="https://t.me/kk333stv" target="_blank" rel="noopener" class="btn btn--ghost">Telegram</a>
+              <a href="https://vk.com/club228243290" target="_blank" rel="noopener" class="btn btn--ghost">ВКонтакте</a>
+            </div>
+          </div>
+          <a class="cmap" href="https://yandex.ru/maps/?text=Ставрополь,%20улица%20Пирогова%2015/1" target="_blank" rel="noopener">
+            <svg class="ic"><use href="#i-pin"/></svg><b>Открыть на Яндекс.Картах →</b>
+          </a>
+        </div>
+
+        <h2 class="secttl"><span class="n">//</span> Как забронировать</h2>
+        <div class="steps">
+          <div class="step"><div class="step__n">1</div><div><h3>Выбери зону и время</h3><p>Определись с зоной под свой стиль и удобным временем — днём, вечером или ночью.</p></div></div>
+          <div class="step"><div class="step__n">2</div><div><h3>Напиши или позвони</h3><p>WhatsApp или звонок. Администратор подтвердит бронь за пару минут, без предоплаты.</p></div></div>
+          <div class="step"><div class="step__n">3</div><div><h3>Приходи и играй</h3><p>Место готово и ждёт. Садись за топовое железо — мы работаем круглосуточно.</p></div></div>
+        </div>
+
+        <div class="band">
+          <h2><span class="grad">−50%</span> на первый час новым гостям</h2>
+          <p>Забронируй место за минуту и сыграй первый час за полцены в любой зоне.</p>
+          <div class="band__cta">
+            <a href="https://wa.me/79187420033?text=Здравствуйте!%20Я%20впервые,%20хочу%20−50%25%20на%20первый%20час%20в%203/33" target="_blank" rel="noopener" class="btn btn--lg">Забрать −50% в WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a href="tel:+79187420033" class="btn btn--ghost btn--lg"><svg class="ic"><use href="#i-phone"/></svg> Позвонить</a>
+          </div>
+        </div>
+      </section>
+
     </div>
-  </section>
 
-</main>
-
-<!-- ===== footer ===== -->
-<footer class="footer">
-  <div class="wrap footer__in">
-    <a href="#top" class="logo">3/33</a>
-    <p class="footer__cp">© <span id="year">2026</span> Компьютерный клуб 3/33 · Ставрополь. Играй на максималках.</p>
-    <nav class="footer__nav">
-      <a href="#zones">Зоны</a>
-      <a href="#prices">Цены</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
+    <footer class="foot">
+      <div class="wrap foot__in">
+        <span class="foot__cp">© <span id="year">2026</span> Компьютерный клуб 3/33 · Ставрополь</span>
+        <nav class="foot__nav">
+          <a href="#zones">Зоны</a>
+          <a href="#prices">Цены</a>
+          <a href="#about">О клубе</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+    </footer>
   </div>
-</footer>
+</div>
 
 <script>
 (function(){
   "use strict";
   var doc = document;
+  var TITLES = {
+    home:     ["Главная", "3/33 — киберспорт-клуб в Ставрополе"],
+    zones:    ["Зоны", "Игровые зоны — 3/33"],
+    prices:   ["Цены", "Тарифы и акции — 3/33"],
+    about:    ["О клубе", "О клубе 3/33"],
+    contacts: ["Контакты", "Контакты — 3/33"]
+  };
+  var pages = doc.querySelectorAll(".page");
+  var links = doc.querySelectorAll('#nav a, .foot__nav a, .brand, .topbar__logo');
+  var crumb = doc.getElementById("crumb");
+  var side = doc.getElementById("side");
+  var scrim = doc.getElementById("scrim");
+  var burger = doc.getElementById("burger");
 
-  // year
-  var y = doc.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
+  function closeMenu(){
+    side.classList.remove("open"); scrim.classList.remove("open");
+    burger.setAttribute("aria-expanded","false");
+  }
+  function route(){
+    var id = (location.hash || "#home").slice(1);
+    if (!TITLES[id]) id = "home";
+    pages.forEach(function(p){ p.classList.toggle("is-active", p.id === "page-" + id); });
+    doc.querySelectorAll('#nav a').forEach(function(a){
+      a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
+    });
+    if (crumb) crumb.textContent = TITLES[id][0];
+    doc.title = TITLES[id][1];
+    window.scrollTo(0, 0);
+    closeMenu();
+  }
+  window.addEventListener("hashchange", route);
+  route();
 
   // mobile menu
-  var burger = doc.getElementById("burger"), mobile = doc.getElementById("mobile");
-  if (burger && mobile){
+  if (burger){
     burger.addEventListener("click", function(){
-      var open = burger.getAttribute("aria-expanded") === "true";
-      burger.setAttribute("aria-expanded", String(!open));
-      mobile.classList.toggle("open", !open);
-    });
-    mobile.querySelectorAll("a").forEach(function(a){
-      a.addEventListener("click", function(){ burger.setAttribute("aria-expanded","false"); mobile.classList.remove("open"); });
+      var open = side.classList.toggle("open");
+      scrim.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", String(open));
     });
   }
+  if (scrim) scrim.addEventListener("click", closeMenu);
 
-  // reveal on scroll
-  var items = doc.querySelectorAll(".rev");
-  if ("IntersectionObserver" in window){
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { rootMargin:"0px 0px -8% 0px", threshold:.12 });
-    items.forEach(function(i){ io.observe(i); });
-    // safety for in-app webviews where the observer may not fire
-    setTimeout(function(){ items.forEach(function(i){ i.classList.add("in"); }); }, 2500);
-  } else {
-    items.forEach(function(i){ i.classList.add("in"); });
-  }
-
-  // countdown to end of month (evergreen)
-  var box = doc.getElementById("count");
-  if (box){
-    var c = {
-      d: box.querySelector('[data-c="d"]'), h: box.querySelector('[data-c="h"]'),
-      m: box.querySelector('[data-c="m"]'), s: box.querySelector('[data-c="s"]')
-    };
-    var pad = function(n){ return String(n).padStart(2,"0"); };
-    var tick = function(){
-      var now = new Date();
-      var t = new Date(now.getFullYear(), now.getMonth()+1, 1, 0,0,0,0);
-      var diff = Math.max(0, Math.floor((t - now)/1000));
-      c.d.textContent = pad(Math.floor(diff/86400));
-      c.h.textContent = pad(Math.floor((diff%86400)/3600));
-      c.m.textContent = pad(Math.floor((diff%3600)/60));
-      c.s.textContent = pad(diff%60);
-    };
-    tick(); setInterval(tick, 1000);
-  }
+  // footer year
+  var y = doc.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
 })();
 </script>
 </body>

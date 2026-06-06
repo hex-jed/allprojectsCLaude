@@ -265,11 +265,14 @@ body.cursor-on [data-cursor]{ cursor:none; }
   box-shadow:var(--shadow); white-space:nowrap;
 }
 .orb__chip .ic{ color:var(--acc-3); font-size:1.05em; }
-.orb__chip--a{ top:6%;  left:-6%;  animation:float 5s var(--ease) infinite; }
-.orb__chip--b{ top:44%; right:-12%; animation:float 6s var(--ease) infinite .6s; }
-.orb__chip--c{ bottom:6%; left:8%;  animation:float 5.5s var(--ease) infinite 1.1s; }
-/* chips d/e/f have no coordinates and otherwise pile up over the core — keep the orb to its 3 positioned chips */
-.orb__chip--d,.orb__chip--e,.orb__chip--f{ display:none; }
+.orb__chip--a{ top:14%;    left:-7%;   animation:float 5s   var(--ease) infinite; }
+.orb__chip--d{ top:20%;    right:2%;   animation:float 6.4s var(--ease) infinite .3s; }
+.orb__chip--b{ top:44%;    right:-11%; animation:float 6s   var(--ease) infinite .6s; }
+.orb__chip--e{ bottom:20%; right:0%;   animation:float 5.8s var(--ease) infinite .9s; }
+.orb__chip--f{ top:56%;    left:-11%;  animation:float 6.2s var(--ease) infinite 1.4s; }
+.orb__chip--c{ bottom:8%;  left:3%;    animation:float 5.5s var(--ease) infinite 1.1s; }
+/* full 6-chip orbit only on wide desktops; below ~1200px the orb shrinks and the long chips would collide */
+@media (max-width:1200px){ .orb__chip--d,.orb__chip--e,.orb__chip--f{ display:none; } }
 @keyframes float{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-12px);} }
 
 .hero__scroll{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); width:26px; height:42px; border:2px solid var(--line); border-radius:14px; display:grid; justify-items:center; padding-top:7px; }
@@ -333,6 +336,14 @@ body.cursor-on [data-cursor]{ cursor:none; }
 .games{ display:flex; flex-wrap:wrap; gap:8px; }
 .games__chip{ display:inline-flex; align-items:center; padding:6px 12px; border-radius:9px; font-size:.8rem; font-weight:600; color:var(--text-2); background:var(--surface-3); border:1px solid var(--line-2); transition:color .25s, border-color .25s, transform .25s; }
 .games__chip:hover{ color:var(--text); border-color:var(--acc); transform:translateY(-1px); }
+/* PlayStation zone — "play now" games as cards */
+.zone__games-label{ display:block; font-size:.74rem; text-transform:uppercase; letter-spacing:.1em; color:var(--text-3); margin-bottom:12px; }
+.zone__games-list{ display:grid; gap:9px; }
+.zone__game{ display:flex; align-items:center; gap:13px; padding:11px 14px; border-radius:13px; background:var(--surface-3); border:1px solid var(--line-2); transition:transform .25s var(--ease), border-color .25s, box-shadow .25s; }
+.zone__game:hover{ transform:translateX(4px); border-color:var(--acc); box-shadow:var(--glow); }
+.zone__game-num{ font-family:var(--font-disp); font-weight:700; font-size:1.05rem; color:var(--acc-3); min-width:22px; }
+.zone__game-name{ font-family:var(--font-disp); font-weight:700; font-size:1rem; letter-spacing:-.01em; flex:1; }
+.zone__game-tag{ font-size:.72rem; font-weight:700; color:var(--acc-3); padding:4px 11px; border-radius:999px; background:var(--grad-soft); border:1px solid var(--line); white-space:nowrap; }
 
 .zone--flagship{ background:linear-gradient(180deg, #0f1a18, var(--bg-2)); border-color:var(--line); }
 .zone--flagship::after{ opacity:.6; }

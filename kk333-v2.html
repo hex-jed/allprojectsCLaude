@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>3/33 — киберспорт-клуб в Ставрополе · 60 ПК, PS5, 24/7</title>
@@ -321,7 +322,7 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
 .footer__nav a:hover{ color:var(--lime); }
 
 /* ---------- reveal ---------- */
-.rev{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+.js .rev{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
 .rev.in{ opacity:1; transform:none; }
 
 /* ---------- responsive ---------- */
@@ -348,8 +349,10 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
 }
 /* ---- Phones: iPhone Pro Max (~430px) down to 320px ---- */
 @media (max-width:480px){
+  :root{ --sh:4px 4px 0 var(--ink); --sh-lg:6px 6px 0 var(--ink); --sh-sm:3px 3px 0 var(--ink); }
   .wrap{ width:min(100% - 24px, var(--wrap)); }
   .sec{ padding:clamp(44px,12vw,64px) 0; }
+  .card,.zone,.price,.offer,.review,.step,.ps__col{ padding:18px; }
   .hero h1{ font-size:clamp(2.3rem,11.5vw,3.2rem); }
   .hero h1, .sec__title, .disp{ overflow-wrap:break-word; }
   .hero__lead{ font-size:1.02rem; }
@@ -844,6 +847,8 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
       es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
     }, { rootMargin:"0px 0px -8% 0px", threshold:.12 });
     items.forEach(function(i){ io.observe(i); });
+    // safety for in-app webviews where the observer may not fire
+    setTimeout(function(){ items.forEach(function(i){ i.classList.add("in"); }); }, 2500);
   } else {
     items.forEach(function(i){ i.classList.add("in"); });
   }

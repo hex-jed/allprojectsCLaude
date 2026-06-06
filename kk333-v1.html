@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Компьютерный клуб 3/33 — Ставрополь · 60 ПК, PS5 и игра 24/7</title>
@@ -153,8 +154,12 @@ body.cursor-on [data-cursor]{ cursor:none; }
 .loader{
   position:fixed; inset:0; z-index:10000; display:grid; place-content:center; gap:22px; justify-items:center;
   background:var(--bg); transition:opacity .6s var(--ease), visibility .6s;
+  /* CSS-driven auto-hide so the preloader never traps the page, even if JS
+     or the window "load" event never fires (e.g. in-app mobile webviews). */
+  animation:loaderHide .5s var(--ease) 1.8s forwards;
 }
-.loader.is-done{ opacity:0; visibility:hidden; }
+.loader.is-done{ opacity:0; visibility:hidden; pointer-events:none; }
+@keyframes loaderHide{ to{ opacity:0; visibility:hidden; pointer-events:none; } }
 .loader__logo{ font-family:var(--font-disp); font-weight:700; font-size:3rem; letter-spacing:-.02em; }
 .loader__logo span{ color:var(--acc); }
 .loader__bar{ width:180px; height:3px; border-radius:3px; background:var(--surface-2); overflow:hidden; }
@@ -462,7 +467,7 @@ body.cursor-on [data-cursor]{ cursor:none; }
 /* ============================================================
    Reveal animation
    ============================================================ */
-.reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+.js .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
 .reveal.is-in{ opacity:1; transform:none; }
 
 /* ============================================================
@@ -842,7 +847,11 @@ body.cursor-on [data-cursor]{ cursor:none; }
   .cta__title{ font-size:clamp(1.9rem,7.5vw,2.6rem); }
   .cta__actions .btn{ flex:1 1 100%; justify-content:center; }
   .price__big{ font-size:2.4rem; }
-  .specs li{ grid-template-columns:auto 84px 1fr; gap:8px; }
+  .specs li{ grid-template-columns:auto 1fr; grid-template-rows:auto auto; gap:0 10px; }
+  .specs li .ic{ grid-row:1 / span 2; }
+  .specs__k{ grid-column:2; grid-row:1; }
+  .specs__v{ grid-column:2; grid-row:2; }
+  .zone{ padding:20px; }
   .offer__big{ font-size:1.85rem; }
 }
 @media (max-width:380px){
@@ -1890,6 +1899,8 @@ body.cursor-on [data-cursor]{ cursor:none; }
       { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
     );
     items.forEach((i) => io.observe(i));
+    // safety for in-app webviews where the observer may not fire
+    setTimeout(() => items.forEach((i) => i.classList.add("is-in")), 2500);
   }
 
   /* ----------------------------------------------------------
@@ -2029,11 +2040,10 @@ body.cursor-on [data-cursor]{ cursor:none; }
 
     const loader = doc.getElementById("loader");
     if (loader) {
-      window.addEventListener("load", () => {
-        setTimeout(() => loader.classList.add("is-done"), 600);
-      });
-      // safety: never let the loader trap the page
-      setTimeout(() => loader.classList.add("is-done"), 2600);
+      const hide = () => loader.classList.add("is-done");
+      window.addEventListener("load", hide);
+      // safety: never let the loader trap the page (in-app webviews may not fire "load")
+      setTimeout(hide, 1200);
     }
   }
 

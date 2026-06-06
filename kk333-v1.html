@@ -825,8 +825,32 @@ body.cursor-on [data-cursor]{ cursor:none; }
 @media (max-width:560px){
   .guarantees{ grid-template-columns:1fr; }
   .countdown{ gap:8px; }
-  .countdown__cell{ min-width:66px; padding:12px 8px; }
-  .countdown__cell b{ font-size:1.55rem; }
+  .countdown__cell{ flex:1 1 0; min-width:0; padding:12px 4px; }
+  .countdown__cell b{ font-size:clamp(1.3rem,5.4vw,1.7rem); }
+  .countdown__cell span{ font-size:.58rem; letter-spacing:.04em; }
+}
+
+/* ---- Phones: iPhone Pro Max (~430px) down to 320px ---- */
+@media (max-width:480px){
+  .container{ width:min(100% - 28px, var(--container)); }
+  .hero{ padding-top:96px; }
+  .hero__actions{ gap:10px; }
+  .hero__actions .btn{ flex:1 1 100%; justify-content:center; }
+  .hero__rating{ font-size:.85rem; }
+  .section__title{ font-size:clamp(1.8rem,7vw,2.4rem); }
+  .section__sub{ font-size:.98rem; }
+  .cta__title{ font-size:clamp(1.9rem,7.5vw,2.6rem); }
+  .cta__actions .btn{ flex:1 1 100%; justify-content:center; }
+  .price__big{ font-size:2.4rem; }
+  .specs li{ grid-template-columns:auto 84px 1fr; gap:8px; }
+  .offer__big{ font-size:1.85rem; }
+}
+@media (max-width:380px){
+  .hero__title{ font-size:2.3rem; }
+  .hero__stats{ grid-template-columns:1fr 1fr; gap:14px 10px; }
+  .hero__stats b{ font-size:1.5rem; }
+  .countdown__cell span{ letter-spacing:.02em; }
+  .btn--lg{ padding:14px 18px; font-size:.96rem; }
 }
 
 </style>

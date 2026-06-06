@@ -346,6 +346,35 @@ button{ font:inherit; color:inherit; background:none; border:none; cursor:pointe
   .hero__sticker{ display:none; }
   .pass__stats{ grid-template-columns:1fr 1fr; }
 }
+/* ---- Phones: iPhone Pro Max (~430px) down to 320px ---- */
+@media (max-width:480px){
+  .wrap{ width:min(100% - 24px, var(--wrap)); }
+  .sec{ padding:clamp(44px,12vw,64px) 0; }
+  .hero h1{ font-size:clamp(2.3rem,11.5vw,3.2rem); }
+  .hero h1, .sec__title, .disp{ overflow-wrap:break-word; }
+  .hero__lead{ font-size:1.02rem; }
+  .hero__cta{ gap:10px; }
+  .hero__cta .btn, .cta__actions .btn{ flex:1 1 100%; justify-content:center; }
+  .sec__title{ font-size:clamp(1.9rem,8.5vw,2.6rem); }
+  .sec__sub{ font-size:.98rem; }
+  .pass__stats{ grid-template-columns:1fr 1fr; }
+  .price__big, .offer__big{ font-size:2.2rem; }
+  .csoc .btn{ flex:1 1 100%; justify-content:center; }
+  .cta__count{ gap:7px; }
+  .cta__cell{ flex:1 1 0; min-width:0; padding:10px 4px; }
+  .cta__cell b{ font-size:clamp(1.3rem,6vw,1.9rem); }
+  .cta__cell span{ font-size:.54rem; letter-spacing:.03em; }
+  .footer__in{ flex-direction:column; align-items:flex-start; }
+}
+@media (max-width:360px){
+  .hero h1{ font-size:2.2rem; }
+  .sec__title{ font-size:1.9rem; }
+  .pass{ padding:18px; }
+  .pass__stats b{ font-size:1.6rem; }
+  .btn{ padding:12px 16px; font-size:.86rem; }
+  .btn--lg{ padding:14px 18px; font-size:.92rem; }
+}
+
 @media (prefers-reduced-motion:reduce){
   .rev{ opacity:1; transform:none; }
   .ticker__row,.brands__row{ animation:none; }

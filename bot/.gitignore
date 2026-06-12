@@ -1,0 +1,4 @@
+.env
+greeted_users.json
+__pycache__/
+*.pyc

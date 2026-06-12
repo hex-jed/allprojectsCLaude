@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bloom — фитнес-студия для тела и души</title>
+<meta name="description" content="Фитнес-студия Bloom: йога, пилатес, стретчинг, барре и силовые тренировки в уютной атмосфере. Малые группы до 8 человек, заботливые тренеры, первое занятие — бесплатно." />
+<meta name="theme-color" content="#faf6f2" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f6e8e4'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23c98a7d'%3E✿%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#faf6f2;          /* тёплый кремовый */
+  --bg-soft:#f5ece6;     /* пудровый */
+  --card:#ffffff;
+  --rose:#e9c2bb;        /* нежная роза */
+  --rose-deep:#c98a7d;   /* приглушённый терракот */
+  --sage:#b9cdbd;        /* шалфей */
+  --sage-deep:#7fa089;
+  --ink:#4a4341;         /* мягкий графит */
+  --ink-soft:#857a76;
+  --ink-faint:#b3a8a3;
+  --line:#eaddd6;
+  --shadow:0 24px 50px -28px rgba(151,116,105,.35);
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Manrope",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:1.15}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* фоновые пятна */
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.5;z-index:-1;pointer-events:none}
+.blob--1{width:520px;height:520px;background:#f3dcd4;top:-160px;right:-120px}
+.blob--2{width:460px;height:460px;background:#dce8de;bottom:-140px;left:-140px}
+
+/* ===== header ===== */
+.header{position:sticky;top:0;z-index:50;background:rgba(250,246,242,.86);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+.header.is-stuck{border-color:var(--line)}
+.header__inner{display:flex;align-items:center;gap:28px;padding:18px 0}
+.logo{font-family:"Cormorant Garamond",serif;font-size:30px;letter-spacing:.04em;color:var(--rose-deep)}
+.logo i{font-style:normal;color:var(--sage-deep)}
+.nav{display:flex;gap:6px;margin-left:auto}
+.nav a{font-size:14.5px;font-weight:500;color:var(--ink-soft);padding:9px 15px;border-radius:30px;transition:.25s}
+.nav a:hover,.nav a.is-active{color:var(--rose-deep);background:var(--bg-soft)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+  background:var(--rose-deep);color:#fff;padding:14px 28px;border-radius:40px;border:none;cursor:pointer;
+  transition:.3s;box-shadow:0 12px 26px -12px rgba(201,138,125,.55)}
+.btn:hover{background:#b87768;transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:var(--rose-deep);border:1.5px solid var(--rose);box-shadow:none}
+.btn--ghost:hover{background:var(--bg-soft);color:#b87768}
+.btn--lg{padding:17px 36px;font-size:16px}
+.header .btn{padding:11px 22px;font-size:14px}
+.burger{display:none;width:42px;height:42px;border:1.5px solid var(--line);background:#fff;border-radius:12px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{width:18px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+
+/* мобильное меню */
+.mobile-menu{position:fixed;inset:0;z-index:90;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:.35s}
+.mobile-menu.is-open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--ink);padding:8px 20px}
+.mobile-menu .btn{margin-top:18px;font-size:16px}
+
+/* ===== hero ===== */
+.hero{padding:72px 0 60px}
+.hero__inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:20px}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--sage)}
+.hero h1{font-size:clamp(42px,6.2vw,68px);color:var(--ink);margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--rose-deep)}
+.hero__lead{font-size:19px;color:var(--ink-soft);max-width:46ch;margin-bottom:32px}
+.hero__actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}
+.hero__stats{display:flex;gap:40px;flex-wrap:wrap}
+.hero__stats b{display:block;font-family:"Cormorant Garamond",serif;font-size:38px;font-weight:600;color:var(--rose-deep);line-height:1}
+.hero__stats span{font-size:13.5px;color:var(--ink-faint)}
+.hero__visual{position:relative}
+.hero__frame{aspect-ratio:4/5;border-radius:200px 200px var(--r) var(--r);overflow:hidden;
+  background:linear-gradient(160deg,#f6e3dc,#e9d3ca 45%,#dde8df);box-shadow:var(--shadow);
+  display:flex;align-items:center;justify-content:center;position:relative}
+.hero__frame::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.65);border-radius:186px 186px 12px 12px}
+.hero__pose{font-size:120px;filter:drop-shadow(0 18px 30px rgba(151,116,105,.3))}
+.hero__chip{position:absolute;background:#fff;border-radius:18px;padding:13px 18px;box-shadow:var(--shadow);font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:10px}
+.hero__chip .e{font-size:22px}
+.hero__chip--1{top:9%;left:-7%}
+.hero__chip--2{bottom:14%;right:-6%}
+.hero__chip small{display:block;font-weight:500;color:var(--ink-faint);font-size:12px}
+
+/* ===== marquee ===== */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;background:#fff}
+.marquee__track{display:flex;gap:34px;white-space:nowrap;animation:mq 28s linear infinite;width:max-content}
+.marquee__track span{font-family:"Cormorant Garamond",serif;font-size:19px;font-style:italic;color:var(--ink-faint)}
+.marquee__track i{color:var(--rose);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ===== sections ===== */
+.section{padding:88px 0}
+.section--soft{background:var(--bg-soft)}
+.section__head{max-width:620px;margin-bottom:52px}
+.section__head--center{margin-inline:auto;text-align:center}
+.section__head--center .eyebrow{justify-content:center}
+.section__head--center .eyebrow::before{display:none}
+.section__title{font-size:clamp(32px,4.6vw,48px);margin-bottom:14px}
+.section__title em{font-style:italic;color:var(--rose-deep)}
+.section__sub{color:var(--ink-soft)}
+
+/* программы */
+.programs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.program{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:34px 28px;transition:.35s;position:relative;overflow:hidden}
+.program:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--rose)}
+.program__e{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:27px;margin-bottom:20px;background:var(--bg-soft)}
+.program:nth-child(3n+2) .program__e{background:#e8efe9}
+.program h3{font-size:25px;margin-bottom:9px}
+.program p{font-size:15px;color:var(--ink-soft);margin-bottom:18px}
+.program__meta{display:flex;gap:14px;font-size:13px;color:var(--ink-faint);font-weight:600}
+.program__meta i{font-style:normal;color:var(--sage-deep)}
+
+/* почему мы */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:38px 30px}
+.benefit{display:flex;gap:18px;align-items:flex-start}
+.benefit__n{font-family:"Cormorant Garamond",serif;font-size:42px;font-style:italic;color:var(--rose);line-height:1;flex:0 0 auto}
+.benefit h3{font-size:21px;margin-bottom:6px}
+.benefit p{font-size:14.5px;color:var(--ink-soft)}
+
+/* тренеры */
+.trainers{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.trainer{text-align:center}
+.trainer__ph{aspect-ratio:3/4;border-radius:130px 130px 18px 18px;margin-bottom:18px;display:flex;align-items:flex-end;justify-content:center;font-size:74px;overflow:hidden;
+  background:linear-gradient(165deg,#f4e2db,#ecd9d0);transition:.35s;padding-bottom:14px}
+.trainer:nth-child(even) .trainer__ph{background:linear-gradient(165deg,#e4ede6,#d8e5dc)}
+.trainer:hover .trainer__ph{transform:translateY(-6px);box-shadow:var(--shadow)}
+.trainer h3{font-size:23px}
+.trainer .role{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:6px}
+.trainer p{font-size:14px;color:var(--ink-soft)}
+
+/* расписание */
+.schedule{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.schedule table{width:100%;border-collapse:collapse;font-size:14.5px}
+.schedule th{font-family:"Cormorant Garamond",serif;font-size:19px;font-weight:600;padding:18px 14px;background:var(--bg-soft);color:var(--ink)}
+.schedule td{padding:15px 14px;text-align:center;border-top:1px solid var(--line);color:var(--ink-soft)}
+.schedule td b{display:block;color:var(--ink);font-weight:600;font-size:14px}
+.schedule td.time{font-weight:700;color:var(--rose-deep);white-space:nowrap}
+.schedule .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:#f1e4de;color:var(--rose-deep);margin-top:5px}
+.schedule .tag--sage{background:#e4ede6;color:var(--sage-deep)}
+
+/* цены */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.price{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:38px 32px;display:flex;flex-direction:column;transition:.35s}
+.price:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.price--feat{background:linear-gradient(170deg,#fdf3ef,#f8e7e0);border-color:var(--rose);position:relative}
+.price__flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--rose-deep);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 18px;border-radius:30px}
+.price h3{font-size:24px;margin-bottom:4px}
+.price .for{font-size:13.5px;color:var(--ink-faint);margin-bottom:20px}
+.price__big{font-family:"Cormorant Garamond",serif;font-size:46px;font-weight:600;color:var(--rose-deep);line-height:1;margin-bottom:24px}
+.price__big small{font-size:19px;color:var(--ink-faint);font-weight:400}
+.price ul{list-style:none;margin-bottom:28px;flex:1}
+.price li{font-size:14.5px;color:var(--ink-soft);padding:7px 0 7px 28px;position:relative}
+.price li::before{content:"✓";position:absolute;left:2px;color:var(--sage-deep);font-weight:700}
+.price .btn{width:100%;justify-content:center}
+
+/* отзывы */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.review{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px 28px}
+.review__stars{color:#e3b23c;letter-spacing:3px;margin-bottom:14px;font-size:15px}
+.review p{font-size:15px;color:var(--ink-soft);font-style:italic;margin-bottom:22px}
+.review__author{display:flex;align-items:center;gap:13px}
+.review__ava{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;background:var(--rose);font-size:17px}
+.review:nth-child(2) .review__ava{background:var(--sage)}
+.review__name{font-weight:700;font-size:14.5px}
+.review__meta{font-size:12.5px;color:var(--ink-faint)}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+.faq__item{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:12px;overflow:hidden}
+.faq__item summary{list-style:none;cursor:pointer;padding:20px 26px;font-weight:600;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__item summary::after{content:"+";font-family:"Cormorant Garamond",serif;font-size:28px;color:var(--rose-deep);transition:.3s;line-height:1}
+.faq__item[open] summary::after{transform:rotate(45deg)}
+.faq__item div{padding:0 26px 22px;font-size:15px;color:var(--ink-soft)}
+
+/* cta */
+.cta{background:linear-gradient(150deg,#f3ddd5,#e7d8ce 55%,#dbe7de);border-radius:var(--r);padding:72px 40px;text-align:center;position:relative;overflow:hidden}
+.cta::before,.cta::after{content:"✿";position:absolute;font-size:120px;color:rgba(255,255,255,.4)}
+.cta::before{top:-26px;left:4%}
+.cta::after{bottom:-30px;right:4%}
+.cta h2{font-size:clamp(30px,4.4vw,46px);margin-bottom:14px}
+.cta p{color:var(--ink-soft);max-width:48ch;margin:0 auto 30px}
+
+/* контакты */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.contacts__list{list-style:none;margin:26px 0}
+.contacts__list li{display:flex;gap:15px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.contacts__list .e{font-size:20px;flex:0 0 auto}
+.contacts__list span{display:block;font-size:12.5px;color:var(--ink-faint);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.contacts__socials{display:flex;gap:12px;margin-top:26px}
+.soc{font-size:14px;font-weight:600;border:1.5px solid var(--line);padding:11px 22px;border-radius:30px;transition:.25s;background:#fff}
+.soc:hover{border-color:var(--rose);color:var(--rose-deep)}
+.map{aspect-ratio:1/.85;border-radius:var(--r);background:linear-gradient(160deg,#efe6df,#e6dfd6);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;box-shadow:var(--shadow);transition:.3s}
+.map:hover{transform:translateY(-4px)}
+.map .pin{font-size:44px}
+.map span{font-weight:600;color:var(--rose-deep);font-size:15px}
+
+/* footer */
+.footer{border-top:1px solid var(--line);padding:34px 0;margin-top:50px}
+.footer__inner{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.footer__copy{font-size:13.5px;color:var(--ink-faint);margin-left:auto}
+
+/* reveal — скрытие только когда JS загружен (прогрессивное улучшение) */
+.js-ready .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.js-ready .reveal.is-in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .hero__inner{grid-template-columns:1fr;gap:44px}
+  .hero__visual{max-width:420px;margin:0 auto}
+  .programs,.reviews,.prices{grid-template-columns:1fr 1fr}
+  .benefits{grid-template-columns:1fr 1fr}
+  .trainers{grid-template-columns:1fr 1fr;gap:28px}
+  .contacts{grid-template-columns:1fr}
+  .nav{display:none}
+  .header .btn{display:none}
+  .burger{display:flex}
+}
+@media(max-width:600px){
+  .programs,.reviews,.prices,.benefits{grid-template-columns:1fr}
+  .section{padding:64px 0}
+  .hero{padding:48px 0 40px}
+  .hero__stats{gap:26px}
+  .hero__chip--1{left:-2%}
+  .hero__chip--2{right:-2%}
+  .schedule{overflow-x:auto}
+  .schedule table{min-width:640px}
+  .cta{padding:56px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="blob blob--1" aria-hidden="true"></div>
+<div class="blob blob--2" aria-hidden="true"></div>
+
+<!-- ===== Header ===== -->
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="#top" class="logo">Bloom <i>✿</i></a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#programs">Программы</a>
+      <a href="#why">Почему мы</a>
+      <a href="#trainers">Тренеры</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#prices">Цены</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#cta" class="btn">Записаться</a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Mobile menu ===== -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#programs">Программы</a>
+  <a href="#why">Почему мы</a>
+  <a href="#trainers">Тренеры</a>
+  <a href="#schedule">Расписание</a>
+  <a href="#prices">Цены</a>
+  <a href="#contacts">Контакты</a>
+  <a href="#cta" class="btn">Записаться</a>
+</div>
+
+<main>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy reveal">
+      <span class="eyebrow">Фитнес-студия для женщин</span>
+      <h1>Движение, в котором ты <em>расцветаешь</em></h1>
+      <p class="hero__lead">Йога, пилатес, стретчинг и мягкие силовые — в уютной студии с группами до 8 человек. Без оценок и спешки: только ты, твоё тело и заботливый тренер рядом.</p>
+      <div class="hero__actions">
+        <a href="#cta" class="btn btn--lg">Первое занятие — бесплатно</a>
+        <a href="#programs" class="btn btn--ghost btn--lg">Выбрать программу</a>
+      </div>
+      <ul class="hero__stats" style="list-style:none">
+        <li><b data-count="6">6</b><span>направлений</span></li>
+        <li><b data-count="8">8</b><span>человек в группе</span></li>
+        <li><b data-count="12">12</b><span>тренеров-экспертов</span></li>
+        <li><b data-count="97" data-suffix="%">97%</b><span>остаются с нами</span></li>
+      </ul>
+    </div>
+    <div class="hero__visual reveal">
+      <div class="hero__frame"><span class="hero__pose">🧘‍♀️</span></div>
+      <div class="hero__chip hero__chip--1"><span class="e">🌿</span><div>Малые группы<small>максимум внимания</small></div></div>
+      <div class="hero__chip hero__chip--2"><span class="e">💗</span><div>4.9 из 5<small>оценка учениц</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Marquee ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i>
+    <span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i>
+  </div>
+</div>
+
+<!-- ===== Programs ===== -->
+<section class="section" id="programs">
+  <div class="container">
+    <header class="section__head reveal">
+      <span class="eyebrow">Направления</span>
+      <h2 class="section__title">Найди <em>свой ритм</em></h2>
+      <p class="section__sub">Шесть направлений — от спокойной йоги до бодрящего барре. Все уровни, включая «никогда не занималась».</p>
+    </header>
+    <div class="programs">
+      <article class="program reveal">
+        <div class="program__e">🧘‍♀️</div>
+        <h3>Хатха-йога</h3>
+        <p>Классические асаны в спокойном темпе, дыхательные практики и глубокое расслабление в конце.</p>
+        <div class="program__meta"><span><i>⏱</i> 60 мин</span><span><i>✦</i> для всех</span></div>
+      </article>
+      <article class="program reveal">
+        <div class="program__e">🩰</div>
+        <h3>Пилатес</h3>
+        <p>Сильный центр, ровная спина и красивая осанка. Точные, осознанные движения без ударной нагрузки.</p>
+        <div class="program__meta"><span><i>⏱</i> 55 мин</span><span><i>✦</i> для всех</span></div>
+      </article>
+      <article class="program reveal">
+        <div class="program__e">🌙</div>
+        <h3>Стретчинг</h3>
+        <p>Мягкое растяжение всего тела: уходит зажатость в шее и пояснице, появляется лёгкость.</p>
+        <div class="program__meta"><span><i>⏱</i> 50 мин</span><span><i>✦</i> для всех</span></div>
+      </article>
+      <article class="program reveal">
+        <div class="program__e">🌷</div>
+        <h3>Барре</h3>
+        <p>Балетная пластика и фитнес у станка: тонус мышц, грация и выносливость в одной тренировке.</p>
+        <div class="program__meta"><span><i>⏱</i> 55 мин</span><span><i>✦</i> средний</span></div>
+      </article>
+      <article class="program reveal">
+        <div class="program__e">🤍</div>
+        <h3>Мягкая сила</h3>
+        <p>Силовая работа с малым весом и резинками — укрепляем тело бережно, без изнурения.</p>
+        <div class="program__meta"><span><i>⏱</i> 60 мин</span><span><i>✦</i> для всех</span></div>
+      </article>
+      <article class="program reveal">
+        <div class="program__e">🕊</div>
+        <h3>Йога-нидра</h3>
+        <p>Практика глубокого расслабления лёжа: час нидры восстанавливает, как несколько часов сна.</p>
+        <div class="program__meta"><span><i>⏱</i> 45 мин</span><span><i>✦</i> для всех</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Why ===== -->
+<section class="section section--soft" id="why">
+  <div class="container">
+    <header class="section__head reveal">
+      <span class="eyebrow">Почему Bloom</span>
+      <h2 class="section__title">Студия, в которую <em>хочется возвращаться</em></h2>
+    </header>
+    <div class="benefits">
+      <article class="benefit reveal">
+        <span class="benefit__n">01</span>
+        <div><h3>Группы до 8 человек</h3><p>Тренер видит каждую: поправит технику, подберёт вариант под твой уровень и самочувствие.</p></div>
+      </article>
+      <article class="benefit reveal">
+        <span class="benefit__n">02</span>
+        <div><h3>Без духа соревнования</h3><p>Никто не сравнивает и не оценивает. Приходи в любой форме — здесь безопасно и спокойно.</p></div>
+      </article>
+      <article class="benefit reveal">
+        <span class="benefit__n">03</span>
+        <div><h3>Заботливые тренеры</h3><p>Сертифицированные преподаватели с опытом от 5 лет, которые умеют объяснять простыми словами.</p></div>
+      </article>
+      <article class="benefit reveal">
+        <span class="benefit__n">04</span>
+        <div><h3>Уютное пространство</h3><p>Тёплый свет, аромат эфирных масел, чай после практики и душевые с косметикой.</p></div>
+      </article>
+      <article class="benefit reveal">
+        <span class="benefit__n">05</span>
+        <div><h3>Удобное расписание</h3><p>Занятия с 8 утра до 9 вечера — легко найти время до работы, в обед или после.</p></div>
+      </article>
+      <article class="benefit reveal">
+        <span class="benefit__n">06</span>
+        <div><h3>Заморозка абонемента</h3><p>Отпуск или болезнь — не проблема: абонемент можно поставить на паузу в один клик.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Trainers ===== -->
+<section class="section" id="trainers">
+  <div class="container">
+    <header class="section__head section__head--center reveal">
+      <span class="eyebrow">Команда</span>
+      <h2 class="section__title">Тренеры, которым <em>доверяешь</em></h2>
+    </header>
+    <div class="trainers">
+      <article class="trainer reveal">
+        <div class="trainer__ph">🧘‍♀️</div>
+        <div class="role">Хатха-йога · нидра</div>
+        <h3>Алина</h3>
+        <p>9 лет практики, обучалась в Индии. Ведёт мягко и глубоко.</p>
+      </article>
+      <article class="trainer reveal">
+        <div class="trainer__ph">🩰</div>
+        <div class="role">Пилатес · барре</div>
+        <h3>Мария</h3>
+        <p>Хореограф в прошлом, влюбит в осанку и точность движения.</p>
+      </article>
+      <article class="trainer reveal">
+        <div class="trainer__ph">🌿</div>
+        <div class="role">Стретчинг</div>
+        <h3>Дарья</h3>
+        <p>Растяжка без боли — её принцип. Шпагат подождёт, комфорт важнее.</p>
+      </article>
+      <article class="trainer reveal">
+        <div class="trainer__ph">🤍</div>
+        <div class="role">Мягкая сила</div>
+        <h3>Ольга</h3>
+        <p>Реабилитолог: укрепит спину и колени бережно и грамотно.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Schedule ===== -->
+<section class="section section--soft" id="schedule">
+  <div class="container">
+    <header class="section__head reveal">
+      <span class="eyebrow">Расписание</span>
+      <h2 class="section__title">Неделя в <em>Bloom</em></h2>
+      <p class="section__sub">Утренние, дневные и вечерние классы. Бронируй место в приложении или по телефону.</p>
+    </header>
+    <div class="schedule reveal">
+      <table>
+        <thead>
+          <tr><th>Время</th><th>Пн</th><th>Ср</th><th>Пт</th><th>Сб</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time">08:30</td>
+            <td><b>Хатха-йога</b><span class="tag">Алина</span></td>
+            <td><b>Пилатес</b><span class="tag tag--sage">Мария</span></td>
+            <td><b>Хатха-йога</b><span class="tag">Алина</span></td>
+            <td><b>Стретчинг</b><span class="tag tag--sage">Дарья</span></td>
+          </tr>
+          <tr>
+            <td class="time">12:00</td>
+            <td><b>Мягкая сила</b><span class="tag tag--sage">Ольга</span></td>
+            <td><b>Стретчинг</b><span class="tag">Дарья</span></td>
+            <td><b>Барре</b><span class="tag tag--sage">Мария</span></td>
+            <td><b>Пилатес</b><span class="tag">Мария</span></td>
+          </tr>
+          <tr>
+            <td class="time">18:30</td>
+            <td><b>Барре</b><span class="tag">Мария</span></td>
+            <td><b>Мягкая сила</b><span class="tag tag--sage">Ольга</span></td>
+            <td><b>Стретчинг</b><span class="tag">Дарья</span></td>
+            <td><b>Хатха-йога</b><span class="tag tag--sage">Алина</span></td>
+          </tr>
+          <tr>
+            <td class="time">20:00</td>
+            <td><b>Стретчинг</b><span class="tag tag--sage">Дарья</span></td>
+            <td><b>Хатха-йога</b><span class="tag">Алина</span></td>
+            <td><b>Йога-нидра</b><span class="tag tag--sage">Алина</span></td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Prices ===== -->
+<section class="section" id="prices">
+  <div class="container">
+    <header class="section__head section__head--center reveal">
+      <span class="eyebrow">Абонементы</span>
+      <h2 class="section__title">Честные <em>цены</em></h2>
+    </header>
+    <div class="prices">
+      <article class="price reveal">
+        <h3>Разовое</h3>
+        <div class="for">попробовать и влюбиться</div>
+        <div class="price__big">700 ₽<small>/занятие</small></div>
+        <ul>
+          <li>Любое направление</li>
+          <li>Коврик и всё оборудование</li>
+          <li>Чай после практики</li>
+        </ul>
+        <a href="#cta" class="btn btn--ghost">Записаться</a>
+      </article>
+      <article class="price price--feat reveal">
+        <span class="price__flag">любимый</span>
+        <h3>8 занятий</h3>
+        <div class="for">оптимально: 2 раза в неделю</div>
+        <div class="price__big">4 400 ₽<small>/месяц</small></div>
+        <ul>
+          <li>550 ₽ за занятие</li>
+          <li>Любые направления и тренеры</li>
+          <li>Заморозка до 14 дней</li>
+          <li>Гостевой визит для подруги</li>
+        </ul>
+        <a href="#cta" class="btn">Выбрать</a>
+      </article>
+      <article class="price reveal">
+        <h3>Безлимит</h3>
+        <div class="for">для тех, кто в потоке</div>
+        <div class="price__big">6 900 ₽<small>/месяц</small></div>
+        <ul>
+          <li>Все занятия без ограничений</li>
+          <li>Приоритетная запись</li>
+          <li>Заморозка до 30 дней</li>
+          <li>Скидка 15% на массаж</li>
+        </ul>
+        <a href="#cta" class="btn btn--ghost">Выбрать</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reviews ===== -->
+<section class="section section--soft" id="reviews">
+  <div class="container">
+    <header class="section__head section__head--center reveal">
+      <span class="eyebrow">Отзывы</span>
+      <h2 class="section__title">Истории наших <em>учениц</em></h2>
+    </header>
+    <div class="reviews">
+      <article class="review reveal">
+        <div class="review__stars">★★★★★</div>
+        <p>«Пришла с вечно зажатой шеей после офиса. Через месяц стретчинга забыла, где у меня была боль. Дарья — волшебница, объясняет так, что тело само понимает.»</p>
+        <div class="review__author">
+          <div class="review__ava">К</div>
+          <div><div class="review__name">Ксения</div><div class="review__meta">стретчинг · 4 месяца</div></div>
+        </div>
+      </article>
+      <article class="review reveal">
+        <div class="review__stars">★★★★★</div>
+        <p>«Боялась, что фитнес — это про «терпи и страдай». А тут тёплый свет, маленькая группа и тренер, который слышит. Впервые занимаюсь с удовольствием.»</p>
+        <div class="review__author">
+          <div class="review__ava">А</div>
+          <div><div class="review__name">Анна</div><div class="review__meta">пилатес · 7 месяцев</div></div>
+        </div>
+      </article>
+      <article class="review reveal">
+        <div class="review__stars">★★★★★</div>
+        <p>«Йога-нидра по пятницам — мой ритуал. Час практики, и будто неделя стресса стёрлась. Плюс чай и разговоры после — это уже не студия, это место силы.»</p>
+        <div class="review__author">
+          <div class="review__ava">Е</div>
+          <div><div class="review__name">Елена</div><div class="review__meta">йога · 1 год</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="container">
+    <header class="section__head section__head--center reveal">
+      <span class="eyebrow">Вопросы</span>
+      <h2 class="section__title">Часто <em>спрашивают</em></h2>
+    </header>
+    <div class="faq reveal">
+      <details class="faq__item">
+        <summary>Я никогда не занималась — мне подойдёт?</summary>
+        <div>Да! Большинство учениц пришли к нам без опыта. Тренер подберёт мягкие варианты упражнений, а малая группа позволит следить за твоей техникой на каждом занятии.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Что взять с собой на первое занятие?</summary>
+        <div>Только удобную одежду и воду. Коврики, резинки, пледы и всё оборудование уже ждут в студии. После занятия — душ с косметикой и травяной чай.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Как записаться на занятие?</summary>
+        <div>Напиши нам в WhatsApp или Telegram, позвони или просто оставь заявку на сайте — администратор подберёт удобное время и направление.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Можно ли заморозить абонемент?</summary>
+        <div>Конечно. На абонементе «8 занятий» — до 14 дней заморозки, на безлимите — до 30. Командировки и отпуска не сгорают.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Есть ли ограничения по здоровью?</summary>
+        <div>Перед первым занятием тренер расспросит о самочувствии и особенностях. При необходимости предложим индивидуальную программу — у нас работает реабилитолог.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section" id="cta" style="padding-top:0">
+  <div class="container">
+    <div class="cta reveal">
+      <h2>Первое занятие — <em>в подарок</em></h2>
+      <p>Приходи познакомиться со студией: выбери любое направление, позанимайся в группе и реши, откликается ли тебе. Без обязательств.</p>
+      <a href="https://wa.me/79990000000?text=Здравствуйте!%20Хочу%20записаться%20на%20бесплатное%20первое%20занятие%20в%20Bloom" target="_blank" rel="noopener" class="btn btn--lg">Записаться бесплатно</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contacts ===== -->
+<section class="section section--soft" id="contacts" style="margin-bottom:-50px">
+  <div class="container contacts">
+    <div class="reveal">
+      <span class="eyebrow">Контакты</span>
+      <h2 class="section__title">Мы <em>рядом</em></h2>
+      <ul class="contacts__list">
+        <li><span class="e">📍</span><div><span>Адрес</span>ул. Цветочная, 12 — 2 этаж</div></li>
+        <li><span class="e">📞</span><div><span>Телефон</span><a href="tel:+79990000000">+7 999 000-00-00</a></div></li>
+        <li><span class="e">🕊</span><div><span>Режим работы</span>Ежедневно · 8:00 – 21:30</div></li>
+      </ul>
+      <div class="contacts__socials">
+        <a class="soc" href="https://wa.me/79990000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="soc" href="#" target="_blank" rel="noopener">Telegram</a>
+        <a class="soc" href="#" target="_blank" rel="noopener">ВКонтакте</a>
+      </div>
+    </div>
+    <a class="map reveal" href="#" aria-label="Открыть карту">
+      <span class="pin">📍</span>
+      <span>Открыть на карте</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#top" class="logo">Bloom <i>✿</i></a>
+    <p class="footer__copy">© <span id="year">2026</span> Студия Bloom · Расцветай в своём темпе</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  const doc = document;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* reveal on scroll — прогрессивное улучшение */
+  const items = doc.querySelectorAll(".reveal");
+  if (!reduced && "IntersectionObserver" in window) {
+    // включаем CSS-скрытие только если JS работает
+    doc.documentElement.classList.add("js-ready");
+
+    const revealNow = el => el.classList.add("is-in");
+
+    // сразу открываем всё что в viewport
+    items.forEach(item => {
+      if (item.getBoundingClientRect().top < window.innerHeight) revealNow(item);
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { revealNow(en.target); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -5% 0px", threshold: 0.08 });
+
+    items.forEach(i => { if (!i.classList.contains("is-in")) io.observe(i); });
+  }
+
+  /* sticky header */
+  const header = doc.querySelector(".header");
+  const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 20);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* scroll-spy */
+  const navLinks = Array.from(doc.querySelectorAll(".nav a"));
+  const sections = navLinks.map(a => doc.querySelector(a.getAttribute("href"))).filter(Boolean);
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          const id = "#" + en.target.id;
+          navLinks.forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === id));
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(s => spy.observe(s));
+  }
+
+  /* counters */
+  const nums = doc.querySelectorAll("[data-count]");
+  const runCounter = el => {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || "";
+    const start = performance.now();
+    const step = now => {
+      const p = Math.min((now - start) / 1300, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  if (reduced || !("IntersectionObserver" in window)) {
+    nums.forEach(n => n.textContent = n.dataset.count + (n.dataset.suffix || ""));
+  } else {
+    const cio = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { runCounter(en.target); cio.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(n => cio.observe(n));
+  }
+
+  /* mobile menu */
+  const burger = doc.getElementById("burger");
+  const menu = doc.getElementById("mobileMenu");
+  const closeMenu = () => {
+    burger.setAttribute("aria-expanded", "false");
+    menu.classList.remove("is-open");
+    menu.setAttribute("aria-hidden", "true");
+    doc.body.style.overflow = "";
+  };
+  burger.addEventListener("click", () => {
+    const open = burger.getAttribute("aria-expanded") === "true";
+    if (open) return closeMenu();
+    burger.setAttribute("aria-expanded", "true");
+    menu.classList.add("is-open");
+    menu.setAttribute("aria-hidden", "false");
+    doc.body.style.overflow = "hidden";
+  });
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+
+  /* year */
+  const year = doc.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

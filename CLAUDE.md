@@ -9,7 +9,9 @@ Monorepo for multiple independent web projects. Each project lives in its own su
 ```
 allprojectsClaude/
 ├── tarot-oracle-sbp.html  ← Tarot oracle (single-file, standalone)
+├── bot/                   ← Telegram bot for the Tarot oracle
 ├── 333/                   ← Computer club kk333.ru website
+├── fitness/               ← Fitness studio "Bloom" landing page
 └── CLAUDE.md
 ```
 
@@ -107,3 +109,17 @@ Landing page for gaming club **3/33** in Stavropol (kk333.ru). Pure static site,
 **Local dev:** run `serve.ps1` in PowerShell → opens `http://localhost:5733`
 
 **Note:** `chat-history/` is git-ignored (large JSONL session logs, local only).
+
+---
+
+## Project 4 — Fitness Studio "Bloom" (`fitness/`)
+
+Landing page for a women's fitness studio in light, gentle pastel tones (cream / soft rose / sage). Single self-contained file `fitness/index.html` (inline CSS + JS), Russian language, no build step — open directly in a browser.
+
+**Design system** (CSS variables in `:root`): `--bg` cream #faf6f2, `--rose-deep` #c98a7d (primary accent / buttons), `--sage-deep` #7fa089 (secondary), fonts Cormorant Garamond (headings) + Manrope (body).
+
+**Page sections** (in order): Hero → Marquee → Программы (#programs, 6 cards) → Почему мы (#why) → Тренеры (#trainers) → Расписание (#schedule, table) → Цены (#prices, 3 plans) → Отзывы (#reviews) → FAQ (#faq, `<details>`) → CTA (#cta) → Контакты (#contacts)
+
+**JS interactions** (inline script): scroll reveal (`.reveal` → `.is-in`), sticky header, scroll-spy nav, animated counters (`[data-count]`), mobile burger menu. All honour `prefers-reduced-motion`.
+
+**Placeholders to replace with real data:** phone `+7 999 000-00-00` / `wa.me/79990000000`, address «ул. Цветочная, 12», Telegram/VK/map links (`href="#"`), trainer names, schedule, prices.

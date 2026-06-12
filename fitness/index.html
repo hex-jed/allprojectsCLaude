@@ -656,6 +656,16 @@ a{color:inherit;text-decoration:none}
   if (reduced || !("IntersectionObserver" in window)) {
     items.forEach(i => i.classList.add("is-in"));
   } else {
+    // Immediately reveal anything already in the viewport on load
+    const revealIfVisible = () => {
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.98) item.classList.add("is-in");
+      });
+    };
+    revealIfVisible();
+    setTimeout(revealIfVisible, 120); // second pass after fonts/layout settle
+
     const io = new IntersectionObserver(entries => {
       entries.forEach((en, i) => {
         if (en.isIntersecting) {
@@ -663,8 +673,8 @@ a{color:inherit;text-decoration:none}
           io.unobserve(en.target);
         }
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
-    items.forEach(i => io.observe(i));
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.08 });
+    items.forEach(i => { if (!i.classList.contains("is-in")) io.observe(i); });
   }
 
   /* sticky header */

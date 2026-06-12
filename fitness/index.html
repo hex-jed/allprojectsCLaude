@@ -27,6 +27,7 @@
   --r:22px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+::selection{background:var(--rose);color:var(--ink)}
 html{scroll-behavior:smooth}
 body{
   font-family:"Nunito",system-ui,sans-serif;
@@ -99,10 +100,11 @@ a{color:inherit;text-decoration:none}
 
 /* ===== marquee ===== */
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;background:#fff}
-.marquee__track{display:flex;gap:34px;white-space:nowrap;animation:mq 36s linear infinite;width:max-content}
-.marquee__track span{font-family:"Cormorant Garamond",serif;font-size:19px;font-style:italic;color:var(--ink-faint)}
-.marquee__track i{color:var(--rose);font-style:normal}
-@keyframes mq{to{transform:translateX(-25%)}}
+.marquee__inner{display:flex;width:max-content}
+.marquee__group{display:flex;gap:34px;padding-right:34px;flex-shrink:0;animation:mq 36s linear infinite}
+.marquee__group span{font-family:"Cormorant Garamond",serif;font-size:19px;font-style:italic;color:var(--ink-faint);white-space:nowrap}
+.marquee__group i{color:var(--rose);font-style:normal}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-100%)}}
 
 /* ===== sections ===== */
 .section{padding:88px 0}
@@ -242,6 +244,14 @@ a{color:inherit;text-decoration:none}
   .schedule table{min-width:640px}
   .cta{padding:56px 24px}
 }
+@media print{
+  .blob,.marquee,.mobile-menu,.burger,.header .btn{display:none!important}
+  .header{background:#fff!important;border:none!important;backdrop-filter:none!important;box-shadow:none!important;position:static}
+  .hero__frame{background:#f5ece6!important;box-shadow:none!important;border:none!important}
+  .hero__chip{box-shadow:none!important;border:1px solid var(--line)!important}
+  .cta{background:#f5ece6!important}
+  *{box-shadow:none!important}
+}
 </style>
 </head>
 <body>
@@ -309,7 +319,9 @@ a{color:inherit;text-decoration:none}
 
 <!-- ===== Marquee ===== -->
 <div class="marquee" aria-hidden="true">
-  <div class="marquee__track"><span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i><span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i><span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i><span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i>
+  <div class="marquee__inner">
+    <div class="marquee__group"><span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i></div>
+    <div class="marquee__group" aria-hidden="true"><span>йога</span><i>✿</i><span>пилатес</span><i>✿</i><span>стретчинг</span><i>✿</i><span>барре</span><i>✿</i><span>мягкая сила</span><i>✿</i><span>дыхание</span><i>✿</i><span>баланс</span><i>✿</i><span>забота о себе</span><i>✿</i></div>
   </div>
 </div>
 

@@ -150,7 +150,7 @@ a{color:inherit;text-decoration:none}
 /* тренеры */
 .trainers{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .trainer{text-align:center}
-.trainer__ph{aspect-ratio:3/4;border-radius:130px 130px 18px 18px;margin-bottom:18px;display:flex;align-items:flex-end;justify-content:center;font-size:74px;overflow:hidden;
+.trainer__ph{user-select:none;-webkit-user-select:none;aspect-ratio:3/4;border-radius:130px 130px 18px 18px;margin-bottom:18px;display:flex;align-items:flex-end;justify-content:center;font-size:74px;overflow:hidden;
   background:linear-gradient(165deg,#f4e2db,#ecd9d0);transition:.35s;padding-bottom:14px}
 .trainer:nth-child(even) .trainer__ph{background:linear-gradient(165deg,#e4ede6,#d8e5dc)}
 .trainer:hover .trainer__ph{transform:translateY(-6px);box-shadow:var(--shadow)}
@@ -184,7 +184,7 @@ a{color:inherit;text-decoration:none}
 .price .btn{width:100%;justify-content:center}
 
 /* отзывы */
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.reviews{user-select:none;-webkit-user-select:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .review{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px 28px}
 .review__stars{color:#e3b23c;letter-spacing:3px;margin-bottom:14px;font-size:15px}
 .review p{font-size:15px;color:var(--ink-soft);font-style:italic;margin-bottom:22px}
@@ -433,25 +433,25 @@ a{color:inherit;text-decoration:none}
       <article class="trainer reveal">
         <div class="trainer__ph">🧘‍♀️</div>
         <div class="role">Hatha Yoga · Nidra</div>
-        <h3>Алина</h3>
+        <h3>Alina</h3>
         <p>9 years of practice, trained in India. Her classes are gentle and deeply felt.</p>
       </article>
       <article class="trainer reveal">
         <div class="trainer__ph">🩰</div>
         <div class="role">Pilates · Barre</div>
-        <h3>Мария</h3>
+        <h3>Mariya</h3>
         <p>Former choreographer who will make you fall in love with posture and precise movement.</p>
       </article>
       <article class="trainer reveal">
         <div class="trainer__ph">🌿</div>
         <div class="role">Stretching</div>
-        <h3>Дарья</h3>
+        <h3>Darya</h3>
         <p>Stretching without pain is her principle. The splits can wait — comfort comes first.</p>
       </article>
       <article class="trainer reveal">
         <div class="trainer__ph">🤍</div>
         <div class="role">Gentle Strength</div>
-        <h3>Ольга</h3>
+        <h3>Olga</h3>
         <p>Rehabilitation specialist: strengthens the back and knees gently and expertly.</p>
       </article>
     </div>
@@ -474,30 +474,30 @@ a{color:inherit;text-decoration:none}
         <tbody>
           <tr>
             <td class="time">08:30</td>
-            <td><b>Hatha Yoga</b><span class="tag">Алина</span></td>
-            <td><b>Pilates</b><span class="tag tag--sage">Мария</span></td>
-            <td><b>Hatha Yoga</b><span class="tag">Алина</span></td>
-            <td><b>Stretching</b><span class="tag tag--sage">Дарья</span></td>
+            <td><b>Hatha Yoga</b><span class="tag">Alina</span></td>
+            <td><b>Pilates</b><span class="tag tag--sage">Mariya</span></td>
+            <td><b>Hatha Yoga</b><span class="tag">Alina</span></td>
+            <td><b>Stretching</b><span class="tag tag--sage">Darya</span></td>
           </tr>
           <tr>
             <td class="time">12:00</td>
-            <td><b>Gentle Strength</b><span class="tag tag--sage">Ольга</span></td>
-            <td><b>Stretching</b><span class="tag">Дарья</span></td>
-            <td><b>Barre</b><span class="tag tag--sage">Мария</span></td>
-            <td><b>Pilates</b><span class="tag">Мария</span></td>
+            <td><b>Gentle Strength</b><span class="tag tag--sage">Olga</span></td>
+            <td><b>Stretching</b><span class="tag">Darya</span></td>
+            <td><b>Barre</b><span class="tag tag--sage">Mariya</span></td>
+            <td><b>Pilates</b><span class="tag">Mariya</span></td>
           </tr>
           <tr>
             <td class="time">18:30</td>
-            <td><b>Barre</b><span class="tag">Мария</span></td>
-            <td><b>Gentle Strength</b><span class="tag tag--sage">Ольга</span></td>
-            <td><b>Stretching</b><span class="tag">Дарья</span></td>
-            <td><b>Hatha Yoga</b><span class="tag tag--sage">Алина</span></td>
+            <td><b>Barre</b><span class="tag">Mariya</span></td>
+            <td><b>Gentle Strength</b><span class="tag tag--sage">Olga</span></td>
+            <td><b>Stretching</b><span class="tag">Darya</span></td>
+            <td><b>Hatha Yoga</b><span class="tag tag--sage">Alina</span></td>
           </tr>
           <tr>
             <td class="time">20:00</td>
-            <td><b>Stretching</b><span class="tag tag--sage">Дарья</span></td>
-            <td><b>Hatha Yoga</b><span class="tag">Алина</span></td>
-            <td><b>Yoga Nidra</b><span class="tag tag--sage">Алина</span></td>
+            <td><b>Stretching</b><span class="tag tag--sage">Darya</span></td>
+            <td><b>Hatha Yoga</b><span class="tag">Alina</span></td>
+            <td><b>Yoga Nidra</b><span class="tag tag--sage">Alina</span></td>
             <td>—</td>
           </tr>
         </tbody>

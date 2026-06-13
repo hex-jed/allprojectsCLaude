@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tasks</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{color-scheme:dark}
+body{background:#07090e;font-family:system-ui,-apple-system,sans-serif}
+
+/* ── animations ─────────────────────────────────────────── */
+@keyframes slideIn{
+  from{opacity:0;transform:translateY(-18px) scale(.94)}
+  to  {opacity:1;transform:translateY(0)     scale(1)}
+}
+@keyframes slideOut{
+  from{opacity:1;transform:translateX(0)    scale(1)}
+  to  {opacity:0;transform:translateX(72px) scale(.9)}
+}
+@keyframes popCheck{
+  0%  {transform:scale(0)   rotate(-15deg)}
+  65% {transform:scale(1.3) rotate(6deg)}
+  100%{transform:scale(1)   rotate(0)}
+}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.45)}
+  50%    {box-shadow:0 0 0 14px rgba(74,222,128,0)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(14px)}
+  to  {opacity:1;transform:translateY(0)}
+}
+@keyframes blobPulse{
+  0%,100%{transform:scale(1)}
+  50%    {transform:scale(1.08)}
+}
+
+.enter {animation:slideIn  .4s cubic-bezier(.34,1.56,.64,1) both}
+.exit  {animation:slideOut .25s ease-in both;pointer-events:none}
+.pop   {animation:popCheck .35s cubic-bezier(.34,1.56,.64,1)}
+.fab   {animation:glow 2.4s ease-in-out infinite}
+.fade  {animation:fadeUp .55s ease both}
+
+.glass{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(12px);
+}
+.done-text{text-decoration:line-through;opacity:.35}
+
+/* scrollbar */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(74,222,128,.25);border-radius:2px}
+
+/* filter pill active */
+.pill-active{background:rgba(74,222,128,1) !important;color:#000 !important}
+</style>
+</head>
+<body class="min-h-screen flex flex-col items-center overflow-x-hidden">
+
+<!-- ambient blobs -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+  <div class="absolute -top-48 -right-48 w-[480px] h-[480px] rounded-full"
+       style="background:radial-gradient(circle,rgba(74,222,128,.18) 0%,transparent 70%);animation:blobPulse 7s ease-in-out infinite"></div>
+  <div class="absolute -bottom-48 -left-48 w-[420px] h-[420px] rounded-full"
+       style="background:radial-gradient(circle,rgba(16,185,129,.14) 0%,transparent 70%);animation:blobPulse 9s ease-in-out infinite reverse"></div>
+</div>
+
+<!-- main card -->
+<div class="relative w-full max-w-md flex flex-col min-h-screen px-4 pt-10 pb-36">
+
+  <!-- header -->
+  <div class="fade text-center mb-8">
+    <div class="inline-flex items-center gap-3 mb-2">
+      <span class="text-green-400 text-3xl leading-none">✦</span>
+      <h1 class="text-3xl font-bold text-white tracking-tight">My Tasks</h1>
+      <span class="text-green-400 text-3xl leading-none">✦</span>
+    </div>
+    <p id="stats" class="text-xs text-gray-500 tracking-wide uppercase">No tasks yet</p>
+  </div>
+
+  <!-- filter tabs -->
+  <div class="fade glass rounded-2xl p-1 flex gap-1 mb-5">
+    <button data-f="all"    onclick="setFilter(this)" class="pill pill-active flex-1 py-2 rounded-xl text-sm font-semibold transition-all duration-200">All</button>
+    <button data-f="active" onclick="setFilter(this)" class="pill flex-1 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-gray-500 hover:text-gray-300">Active</button>
+    <button data-f="done"   onclick="setFilter(this)" class="pill flex-1 py-2 rounded-xl text-sm font-semibold transition-all duration-200 text-gray-500 hover:text-gray-300">Done</button>
+  </div>
+
+  <!-- list -->
+  <div id="list" class="flex flex-col gap-3">
+    <div id="empty" class="text-center py-20 text-gray-600 select-none">
+      <div class="text-5xl mb-4 opacity-60">🌱</div>
+      <p class="text-sm leading-relaxed">Nothing here yet.<br/>Tap <strong class="text-green-500">+</strong> to add your first task.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- bottom: input + FAB -->
+<div class="fixed bottom-0 inset-x-0 flex flex-col items-center gap-3 px-4 pb-8 pt-6"
+     style="background:linear-gradient(to top,#07090e 55%,transparent)">
+
+  <!-- input row (hidden by default) -->
+  <div id="input-wrap"
+       class="w-full max-w-md glass rounded-2xl px-4 py-3 flex items-center gap-3
+              opacity-0 translate-y-3 pointer-events-none transition-all duration-300 ease-out">
+    <span class="text-green-400 text-lg select-none">✦</span>
+    <input id="inp" type="text" maxlength="120" placeholder="What needs to be done?"
+           class="flex-1 bg-transparent text-white placeholder-gray-600 outline-none text-sm caret-green-400"/>
+    <button onclick="submit()" title="Add (Enter)"
+            class="w-8 h-8 rounded-xl bg-green-500 hover:bg-green-400 active:scale-95
+                   text-black flex items-center justify-center text-base font-bold transition-all duration-150 select-none">
+      ↵
+    </button>
+  </div>
+
+  <!-- FAB -->
+  <button id="fab" onclick="toggleInput()"
+    class="fab w-14 h-14 rounded-full flex items-center justify-center
+           bg-green-500 hover:bg-green-400 active:scale-95
+           text-black text-2xl font-bold transition-all duration-200
+           shadow-lg shadow-green-500/30 select-none">
+    <span id="fab-icon" class="transition-transform duration-300 leading-none">+</span>
+  </button>
+</div>
+
+<script>
+"use strict";
+let todos = JSON.parse(localStorage.getItem("tasks_v1") || "[]");
+let filter = "all";
+let open = false;
+
+const $ = id => document.getElementById(id);
+
+/* ── persistence ─────────────────────────────── */
+function save() { localStorage.setItem("tasks_v1", JSON.stringify(todos)); }
+
+/* ── render ──────────────────────────────────── */
+function render() {
+  const list = $("list");
+  list.querySelectorAll(".item").forEach(el => el.remove());
+
+  const visible = todos.filter(t =>
+    filter === "all" ? true : filter === "active" ? !t.done : t.done
+  );
+
+  $("empty").style.display = visible.length ? "none" : "";
+
+  visible.forEach(t => list.appendChild(makeItem(t)));
+  updateStats();
+}
+
+function makeItem(t) {
+  const el = document.createElement("div");
+  el.className = "item enter glass rounded-2xl px-4 py-4 flex items-center gap-4";
+  el.dataset.id = t.id;
+
+  el.innerHTML = `
+    <button onclick="toggle('${t.id}')" title="${t.done ? 'Mark active' : 'Mark done'}"
+      class="w-7 h-7 rounded-full border-2 flex-shrink-0 flex items-center justify-center
+             transition-all duration-200 select-none
+             ${t.done
+               ? "bg-green-500 border-green-500 text-black"
+               : "border-gray-600 hover:border-green-400 hover:bg-green-400/10"}">
+      ${t.done ? `<span class="pop text-xs font-black">✓</span>` : ""}
+    </button>
+
+    <span class="flex-1 text-sm leading-snug text-white break-words min-w-0 ${t.done ? "done-text" : ""}"
+          style="word-break:break-word">${esc(t.text)}</span>
+
+    <button onclick="remove('${t.id}')" title="Delete"
+      class="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center
+             text-gray-600 hover:text-red-400 hover:bg-red-400/10
+             transition-all duration-150 text-sm font-bold select-none">
+      ✕
+    </button>
+  `;
+  return el;
+}
+
+function esc(s) {
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+/* ── actions ──────────────────────────────────── */
+function submit() {
+  const inp = $("inp");
+  const text = inp.value.trim();
+  if (!text) { inp.focus(); return; }
+  todos.unshift({ id: Date.now().toString(36) + Math.random().toString(36).slice(2,6), text, done: false });
+  save();
+  inp.value = "";
+  render();
+  inp.focus();
+}
+
+function toggle(id) {
+  const t = todos.find(t => t.id === id);
+  if (t) { t.done = !t.done; save(); render(); }
+}
+
+function remove(id) {
+  const el = document.querySelector(`[data-id="${id}"]`);
+  if (!el) return;
+  el.classList.remove("enter");
+  el.classList.add("exit");
+  el.addEventListener("animationend", () => {
+    todos = todos.filter(t => t.id !== id);
+    save();
+    render();
+  }, { once: true });
+}
+
+function toggleInput() {
+  open = !open;
+  const wrap = $("input-wrap");
+  const icon = $("fab-icon");
+  if (open) {
+    wrap.classList.remove("opacity-0","translate-y-3","pointer-events-none");
+    icon.style.transform = "rotate(45deg)";
+    setTimeout(() => $("inp").focus(), 280);
+  } else {
+    wrap.classList.add("opacity-0","translate-y-3","pointer-events-none");
+    icon.style.transform = "";
+  }
+}
+
+function setFilter(btn) {
+  filter = btn.dataset.f;
+  document.querySelectorAll(".pill").forEach(p => {
+    p.classList.remove("pill-active");
+    p.classList.add("text-gray-500");
+    p.classList.remove("text-gray-300");
+  });
+  btn.classList.add("pill-active");
+  btn.classList.remove("text-gray-500");
+  render();
+}
+
+function updateStats() {
+  const done  = todos.filter(t => t.done).length;
+  const total = todos.length;
+  $("stats").textContent = total === 0
+    ? "No tasks yet"
+    : `${total - done} remaining · ${done} completed`;
+}
+
+/* ── keyboard ─────────────────────────────────── */
+$("inp").addEventListener("keydown", e => {
+  if (e.key === "Enter")  submit();
+  if (e.key === "Escape") toggleInput();
+});
+
+render();
+</script>
+</body>
+</html>

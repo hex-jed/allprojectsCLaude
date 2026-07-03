@@ -3,741 +3,559 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BruCup Coffee — кофейня будущего в Ставрополе</title>
-<meta name="description" content="BruCup Coffee — самая модная кофейня Ставрополя. Specialty-кофе, авторские рафы, матча, моти и чизкейки. Две точки на ул. Тухачевского. Ежедневно 07:00–23:00.">
+<title>BruCup Coffee — кофейня в Ставрополе · ценим каждый глоток</title>
+<meta name="description" content="BruCup Coffee — модная specialty-кофейня в Ставрополе. Авторские рафы, матча, моти и чизкейки. Две точки на ул. Тухачевского. Ежедневно 07:00–23:00, рейтинг 4.9.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☕%3C/text%3E%3C/svg%3E">
 <style>
 /* ============================================================
-   BruCup Coffee · Ставрополь — futuristic 3D landing
+   BruCup Coffee · Ставрополь
+   Editorial-cinematic landing (dark hero → cream body → dark footer)
+   Motion cues studied from Etlon (slow expo reveals, Ken-Burns,
+   ribbon marquee) + Baggins (product zoom-in, floating pill nav).
    ============================================================ */
 :root{
-  --bg:#0a0706;
-  --bg-2:#120c09;
-  --panel:rgba(255,255,255,.04);
-  --panel-2:rgba(255,255,255,.07);
-  --line:rgba(255,224,190,.12);
-  --text:#f3ece4;
-  --muted:#b3a595;
-  --amber:#f0a35c;
-  --amber-soft:#ffd9a0;
-  --copper:#c96f3b;
-  --mint:#7de8c3;
-  --grad:linear-gradient(120deg,#ffd9a0,#f0a35c 45%,#c96f3b);
-  --radius:20px;
-  --font-display:"Unbounded",system-ui,sans-serif;
-  --font-body:"Manrope",system-ui,sans-serif;
+  --ink:#140f0b;
+  --ink-2:#1d1610;
+  --cream:#f5eee2;
+  --cream-2:#ece1d0;
+  --card:#fffdf8;
+  --on-dark:#f3ebdd;
+  --on-dark-mut:#a99a86;
+  --text:#211a13;
+  --muted:#7d6d5b;
+  --amber:#d5813b;
+  --amber-deep:#b3652a;
+  --amber-soft:#eaa45c;
+  --line:rgba(20,15,11,.12);
+  --line-d:rgba(245,238,226,.14);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --f-display:"Oswald",system-ui,sans-serif;
+  --f-body:"Manrope",system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
-  font-family:var(--font-body);
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.65;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
+  font-family:var(--f-body);background:var(--cream);color:var(--text);
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-::selection{background:rgba(240,163,92,.35);color:#fff}
-img,svg{max-width:100%;display:block}
+::selection{background:rgba(213,129,59,.28);color:var(--ink)}
+img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
-.container{max-width:1180px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.15;letter-spacing:-.01em}
-.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.dsp{font-family:var(--f-display);font-weight:600;line-height:.95;letter-spacing:-.005em}
+.amber{color:var(--amber)}
 
-/* ---------- background glows + grain ---------- */
-.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
-.bg__glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5;will-change:transform}
-.bg__glow--1{width:640px;height:640px;top:-180px;right:-140px;background:radial-gradient(circle,rgba(201,111,59,.5),transparent 70%)}
-.bg__glow--2{width:560px;height:560px;top:48%;left:-220px;background:radial-gradient(circle,rgba(240,163,92,.28),transparent 70%)}
-.bg__glow--3{width:520px;height:520px;bottom:-200px;right:8%;background:radial-gradient(circle,rgba(125,232,195,.14),transparent 70%)}
-.bg::after{
-  content:"";position:absolute;inset:0;opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* ---------- custom cursor (blend, adaptive to bg) ---------- */
+.cursor{position:fixed;left:0;top:0;width:22px;height:22px;border:1.6px solid #fff;border-radius:50%;
+  transform:translate(-50%,-50%);pointer-events:none;z-index:9999;mix-blend-mode:difference;
+  transition:width .28s var(--ease),height .28s var(--ease),background-color .28s;will-change:transform}
+.cursor.hot{width:48px;height:48px;background:#fff}
+.cursor.hide{opacity:0}
+body.cursor-on{cursor:none}
+body.cursor-on a,body.cursor-on button,body.cursor-on summary{cursor:none}
 
-/* ---------- custom cursor ---------- */
-.cursor{position:fixed;inset:0;z-index:9999;pointer-events:none;display:none}
-.cursor-on .cursor{display:block}
-.cursor-on,.cursor-on a,.cursor-on button,.cursor-on summary{cursor:none}
-.cursor__dot,.cursor__ring{position:fixed;top:0;left:0;border-radius:50%;will-change:transform}
-.cursor__dot{width:8px;height:8px;background:var(--amber-soft);box-shadow:0 0 14px rgba(240,163,92,.9)}
-.cursor__ring{width:38px;height:38px;border:1px solid rgba(240,163,92,.55);transition:width .25s,height .25s,border-color .25s}
-.cursor.is-hover .cursor__ring{width:58px;height:58px;border-color:var(--mint)}
-.cursor.is-down .cursor__ring{width:26px;height:26px}
-.cursor.is-hidden{opacity:0}
+/* ---------- floating pill nav (Baggins) ---------- */
+.nav{position:fixed;top:18px;left:0;right:0;z-index:100;display:flex;justify-content:center;pointer-events:none}
+.nav__pill{
+  pointer-events:auto;display:flex;align-items:center;gap:8px;
+  padding:9px 9px 9px 22px;border-radius:999px;
+  background:rgba(20,15,11,.42);border:1px solid rgba(245,238,226,.16);
+  backdrop-filter:blur(16px) saturate(1.2);
+  box-shadow:0 10px 40px rgba(0,0,0,.28);
+  transition:background .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.nav.is-light .nav__pill{background:rgba(255,253,248,.9);border-color:var(--line);box-shadow:0 12px 40px rgba(90,60,30,.14)}
+.nav__logo{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;font-size:1.02rem;letter-spacing:.01em;color:var(--on-dark);transition:color .4s}
+.nav.is-light .nav__logo{color:var(--text)}
+.nav__logo .cup{width:26px;height:26px;flex:none}
+.nav__logo b{color:var(--amber);font-weight:700}
+.nav__links{display:flex;gap:4px;margin:0 6px}
+.nav__links a{font-size:.82rem;font-weight:600;color:var(--on-dark-mut);padding:8px 13px;border-radius:999px;transition:color .25s,background .25s}
+.nav.is-light .nav__links a{color:var(--muted)}
+.nav__links a:hover{color:var(--on-dark);background:rgba(245,238,226,.1)}
+.nav.is-light .nav__links a:hover{color:var(--text);background:rgba(20,15,11,.05)}
+.nav__cta{font-family:var(--f-body);font-weight:700;font-size:.82rem;padding:11px 20px;border-radius:999px;background:var(--amber);color:#20140a;transition:transform .2s var(--ease),box-shadow .25s;box-shadow:0 6px 20px rgba(213,129,59,.35);white-space:nowrap}
+.nav__cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(213,129,59,.5)}
+.nav__burger{display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(245,238,226,.2);background:transparent;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.nav.is-light .nav__burger{border-color:var(--line)}
+.nav__burger span{width:17px;height:2px;background:var(--on-dark);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.nav.is-light .nav__burger span{background:var(--text)}
+.nav__burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav__burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav__burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* ---------- header ---------- */
-.header{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:background .3s,border-color .3s,backdrop-filter .3s;
-  border-bottom:1px solid transparent;
-}
-.header.is-stuck{background:rgba(10,7,6,.8);backdrop-filter:blur(14px);border-color:var(--line)}
-.header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.05rem;letter-spacing:.02em}
-.logo__mark{
-  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
-  background:var(--grad);color:#160d07;font-size:1.05rem;
-  box-shadow:0 0 24px rgba(240,163,92,.45);
-}
-.logo b{color:var(--amber)}
-.nav{display:flex;gap:26px;font-size:.92rem;font-weight:600;color:var(--muted)}
-.nav a{transition:color .2s;position:relative;padding:6px 0}
-.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--grad);border-radius:2px;transition:width .25s}
-.nav a:hover,.nav a.is-active{color:var(--text)}
-.nav a.is-active::after{width:100%}
-.header__cta{display:flex;align-items:center;gap:14px}
+.mmenu{position:fixed;inset:0;z-index:95;background:rgba(20,15,11,.97);backdrop-filter:blur(10px);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s}
+.mmenu.open{opacity:1;visibility:visible}
+.mmenu ul{display:grid;gap:8px;text-align:center}
+.mmenu a{font-family:var(--f-display);font-weight:500;font-size:2rem;color:var(--on-dark);text-transform:uppercase;letter-spacing:.02em;padding:6px}
+.mmenu a:hover{color:var(--amber)}
 
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:var(--font-display);font-weight:600;font-size:.85rem;
-  padding:14px 26px;border-radius:999px;border:1px solid transparent;
-  transition:transform .2s,box-shadow .25s,background .25s,border-color .25s;
-  will-change:transform;white-space:nowrap;
-}
-.btn--primary{background:var(--grad);color:#1a0f07;box-shadow:0 8px 30px rgba(240,163,92,.35)}
-.btn--primary:hover{box-shadow:0 12px 44px rgba(240,163,92,.55)}
-.btn--ghost{border-color:var(--line);color:var(--text);background:var(--panel)}
-.btn--ghost:hover{border-color:rgba(240,163,92,.5);background:var(--panel-2)}
-.btn--sm{padding:10px 20px;font-size:.78rem}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-body);font-weight:700;font-size:.9rem;padding:16px 30px;border-radius:999px;border:1.5px solid transparent;transition:transform .22s var(--ease),box-shadow .28s,background .25s,border-color .25s,color .25s;white-space:nowrap}
+.btn--primary{background:var(--amber);color:#20140a;box-shadow:0 10px 30px rgba(213,129,59,.35)}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(213,129,59,.5)}
+.btn--ghost-d{border-color:rgba(245,238,226,.28);color:var(--on-dark)}
+.btn--ghost-d:hover{border-color:var(--amber-soft);background:rgba(245,238,226,.06);transform:translateY(-3px)}
+.btn--ghost{border-color:var(--line);color:var(--text);background:var(--card)}
+.btn--ghost:hover{border-color:var(--amber);transform:translateY(-3px)}
 
-/* burger */
-.burger{display:none;width:44px;height:44px;border:1px solid var(--line);background:var(--panel);border-radius:12px;flex-direction:column;align-items:center;justify-content:center;gap:5px}
-.burger span{width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
-.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{
-  position:fixed;inset:0;z-index:90;background:rgba(10,7,6,.96);backdrop-filter:blur(18px);
-  display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
-}
-.mobile-menu.is-open{opacity:1;visibility:visible}
-.mobile-menu ul{display:grid;gap:22px;text-align:center}
-.mobile-menu a{font-family:var(--font-display);font-size:1.35rem;font-weight:600}
-.mobile-menu a:hover{color:var(--amber)}
+/* ============================================================
+   HERO — cinematic, type-forward (Etlon)
+   ============================================================ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--on-dark);overflow:hidden;isolation:isolate;text-align:center}
+.hero__scene{position:absolute;inset:0;z-index:0;overflow:hidden}
+/* warm out-of-focus coffee backdrop w/ Ken-Burns */
+.hero__photo{position:absolute;inset:-8%;
+  background:
+    radial-gradient(38% 46% at 22% 30%,rgba(196,110,52,.5),transparent 60%),
+    radial-gradient(40% 42% at 82% 24%,rgba(120,66,32,.55),transparent 62%),
+    radial-gradient(50% 55% at 68% 82%,rgba(213,129,59,.28),transparent 60%),
+    radial-gradient(45% 50% at 12% 84%,rgba(90,50,26,.55),transparent 60%),
+    linear-gradient(160deg,#241610,#140f0b 60%,#0d0906);
+  animation:kenburns 22s ease-in-out infinite alternate;will-change:transform}
+@keyframes kenburns{from{transform:scale(1.06) translate(0,0)}to{transform:scale(1.24) translate(-2.5%,-3%)}}
+.hero__grain{position:absolute;inset:0;opacity:.07;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero__vig{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%,transparent 40%,rgba(10,7,5,.5) 78%,rgba(10,7,5,.85))}
+.floaty{position:absolute;will-change:transform}
+.bean{opacity:.9;filter:drop-shadow(0 12px 22px rgba(0,0,0,.55))}
+.bean--1{top:20%;left:12%;width:44px;animation:bob 7s ease-in-out infinite}
+.bean--2{top:26%;right:14%;width:30px;animation:bob 6s ease-in-out infinite .6s}
+.bean--3{bottom:22%;left:18%;width:36px;animation:bob 8s ease-in-out infinite 1.2s}
+.bean--4{bottom:26%;right:16%;width:52px;animation:bob 6.6s ease-in-out infinite .3s}
+@keyframes bob{50%{translate:0 -18px}}
+.hero__cup{position:absolute;right:9%;bottom:8%;width:200px;opacity:.85;filter:drop-shadow(0 30px 50px rgba(0,0,0,.6));animation:bob 6s ease-in-out infinite}
+@media (max-width:900px){.hero__cup{display:none}}
 
-/* ---------- hero ---------- */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;overflow:hidden}
-.hero::after{ /* perspective grid floor */
-  content:"";position:absolute;left:50%;bottom:-6%;width:200%;height:44%;z-index:-1;
-  transform:translateX(-50%) perspective(520px) rotateX(62deg);transform-origin:top center;
-  background-image:
-    linear-gradient(rgba(240,163,92,.16) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(240,163,92,.16) 1px,transparent 1px);
-  background-size:56px 56px;
-  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%,transparent 95%);
-  mask-image:linear-gradient(to bottom,transparent,#000 30%,transparent 95%);
-}
-.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
-  border:1px solid rgba(240,163,92,.35);border-radius:999px;padding:8px 18px;background:rgba(240,163,92,.07);
-}
-.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.35}}
-.hero h1{font-size:clamp(2.2rem,5.2vw,3.9rem);margin:26px 0 20px;font-weight:800}
-.hero__lead{font-size:1.08rem;color:var(--muted);max-width:520px}
-.hero__lead b{color:var(--text)}
-.hero__actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px}
-.hero__stats{display:flex;flex-wrap:wrap;gap:0;margin-top:48px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);backdrop-filter:blur(8px);overflow:hidden}
-.hero__stat{flex:1 1 120px;padding:18px 20px;border-left:1px solid var(--line)}
-.hero__stat:first-child{border-left:0}
-.hero__stat b{display:block;font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--amber-soft)}
-.hero__stat span{font-size:.8rem;color:var(--muted)}
+.hero__inner{position:relative;z-index:2;padding:120px 20px 90px}
+.hero__eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--amber-soft);margin-bottom:26px}
+.hero__eyebrow::before,.hero__eyebrow::after{content:"";width:26px;height:1px;background:rgba(234,164,92,.5)}
+.hero__title{font-family:var(--f-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(3.4rem,15vw,11rem);line-height:.82;letter-spacing:-.01em;will-change:transform}
+.hero__title .ln{display:block;transform:skewX(-7deg)}
+.hero__title .ln--out{color:transparent;-webkit-text-stroke:1.5px rgba(245,238,226,.85)}
+.hero__tag{margin-top:26px;font-family:var(--f-display);font-weight:300;font-size:clamp(.9rem,2.4vw,1.35rem);letter-spacing:.42em;text-transform:uppercase;color:var(--on-dark)}
+.hero__actions{margin-top:44px;display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.hero__cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark-mut)}
+.hero__cue i{width:1px;height:42px;background:linear-gradient(var(--amber-soft),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1}}
 
-/* ---------- 3D scene ---------- */
-.scene{position:relative;height:520px;perspective:1100px;display:grid;place-items:center}
-.scene__inner{position:relative;width:340px;height:440px;transform-style:preserve-3d;transition:transform .35s ease-out;will-change:transform}
-.orbit{position:absolute;left:50%;top:58%;border-radius:50%;transform-style:preserve-3d;pointer-events:none}
-.orbit--1{width:330px;height:330px;margin:-165px;border:1px dashed rgba(240,163,92,.5);transform:rotateX(74deg);animation:spin 14s linear infinite}
-.orbit--2{width:430px;height:430px;margin:-215px;border:1px solid rgba(125,232,195,.25);transform:rotateX(74deg);animation:spin 22s linear infinite reverse}
-.orbit--3{width:520px;height:520px;margin:-260px;border:1px dashed rgba(255,217,160,.18);transform:rotateX(74deg);animation:spin 30s linear infinite}
-@keyframes spin{to{transform:rotateX(74deg) rotate(360deg)}}
-.orbit i{position:absolute;top:-4px;left:50%;width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 14px rgba(240,163,92,.9)}
-.orbit--2 i{background:var(--mint);box-shadow:0 0 14px rgba(125,232,195,.9)}
-.cup{position:relative;z-index:2;width:230px;margin:0 auto;animation:floaty 5.5s ease-in-out infinite;filter:drop-shadow(0 34px 60px rgba(240,163,92,.35))}
-@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-20px) rotate(1.5deg)}}
-.scene__floor{position:absolute;left:50%;bottom:36px;width:280px;height:46px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(240,163,92,.4),transparent 70%);filter:blur(10px);animation:floorPulse 5.5s ease-in-out infinite}
-@keyframes floorPulse{0%,100%{transform:translateX(-50%) scale(1);opacity:.9}50%{transform:translateX(-50%) scale(.82);opacity:.55}}
-.steam{position:absolute;left:50%;top:26px;z-index:3;pointer-events:none}
-.steam span{
-  position:absolute;left:0;bottom:0;width:12px;height:12px;border-radius:50%;
-  background:radial-gradient(circle,rgba(125,232,195,.85),rgba(125,232,195,0) 70%);
-  filter:blur(2px);opacity:0;animation:steam 3.6s ease-in-out infinite;
-}
-.steam span:nth-child(2){left:-20px;animation-delay:1.2s;animation-duration:4.2s}
-.steam span:nth-child(3){left:18px;animation-delay:2.1s;animation-duration:3.2s}
-@keyframes steam{
-  0%{transform:translateY(0) scale(.6);opacity:0}
-  25%{opacity:.9}
-  100%{transform:translateY(-90px) translateX(10px) scale(1.8);opacity:0}
-}
-.bean{position:absolute;z-index:3;width:30px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.6));animation:beanFloat 6s ease-in-out infinite}
-.bean--1{top:12%;left:2%;animation-delay:.4s;transform:rotate(-24deg)}
-.bean--2{top:6%;right:6%;width:24px;animation-delay:1.6s;transform:rotate(30deg)}
-.bean--3{bottom:22%;right:-2%;width:34px;animation-delay:2.8s;transform:rotate(-60deg)}
-@keyframes beanFloat{0%,100%{translate:0 0}50%{translate:0 -16px}}
-.scene__chip{
-  position:absolute;z-index:4;display:flex;align-items:center;gap:8px;
-  font-size:.75rem;font-weight:700;padding:9px 15px;border-radius:999px;
-  background:rgba(18,12,9,.85);border:1px solid var(--line);backdrop-filter:blur(8px);
-  animation:floaty 6.5s ease-in-out infinite;
-}
-.scene__chip--1{top:20%;left:-4%;animation-delay:.8s}
-.scene__chip--2{bottom:26%;left:-10%;animation-delay:2s}
-.scene__chip--3{top:36%;right:-8%;animation-delay:3s}
-.scene__chip b{color:var(--amber-soft)}
+/* ============================================================
+   RIBBON (Etlon kinetic header — filled + outline)
+   ============================================================ */
+.ribbon{overflow:hidden;padding:26px 0;user-select:none}
+.ribbon--light{background:var(--cream);border-block:1px solid var(--line)}
+.ribbon--warm{background:var(--cream-2)}
+.ribbon__track{display:flex;gap:42px;width:max-content;align-items:center;
+  font-family:var(--f-display);font-weight:600;text-transform:uppercase;
+  font-size:clamp(2.6rem,7vw,5.2rem);line-height:1;white-space:nowrap;
+  animation:slide 34s linear infinite}
+.ribbon--rev .ribbon__track{animation-direction:reverse}
+.ribbon__track span{transform:skewX(-7deg)}
+.ribbon__track .out{color:transparent;-webkit-text-stroke:1.4px var(--text)}
+.ribbon__track .sl{color:var(--amber);-webkit-text-stroke:0}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ribbon__track,.hero__photo,.bean,.hero__cup,.hero__cue i{animation:none}}
 
-/* ---------- marquee ---------- */
-.marquee{border-block:1px solid var(--line);background:rgba(18,12,9,.6);overflow:hidden;padding:16px 0}
-.marquee__track{display:flex;gap:44px;width:max-content;animation:marquee 26s linear infinite;font-family:var(--font-display);font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.marquee__track span b{color:var(--amber);margin-right:44px}
-@keyframes marquee{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){
-  .marquee__track,.cup,.orbit,.steam span,.bean,.scene__chip,.scene__floor{animation:none}
-}
+/* ============================================================
+   SECTIONS (light editorial)
+   ============================================================ */
+.sec{padding:120px 0;position:relative}
+.sec__head{max-width:720px;margin-bottom:60px}
+.sec__kicker{font-family:var(--f-display);font-weight:600;font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;color:var(--amber-deep)}
+.sec__title{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:clamp(2rem,5vw,3.6rem);line-height:.98;letter-spacing:-.01em;margin:16px 0 18px}
+.sec__title .out{color:transparent;-webkit-text-stroke:1.4px var(--text)}
+.sec__lead{color:var(--muted);font-size:1.05rem;max-width:560px}
 
-/* ---------- sections ---------- */
-.section{padding:110px 0;position:relative}
-.section__head{max-width:680px;margin-bottom:56px}
-.section__tag{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mint)}
-.section__head h2{font-size:clamp(1.7rem,3.4vw,2.6rem);margin:14px 0 16px}
-.section__head p{color:var(--muted);font-size:1.02rem}
+/* reveal system — slow, expo, directional (Etlon) */
+.rv{opacity:0;transform:translateY(46px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-r{transform:translateX(64px)}
+.rv-l{transform:translateX(-64px)}
+.rv-z{transform:scale(.88)} /* product zoom-in (Baggins) */
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.is-in{opacity:1;transform:none}
+/* ---------- ABOUT / описание ---------- */
+.about{background:var(--cream)}
+.about__lead{font-family:var(--f-display);font-weight:300;font-size:clamp(1.6rem,4.4vw,3rem);line-height:1.14;letter-spacing:-.01em;max-width:960px}
+.about__lead b{font-weight:600;color:var(--amber-deep)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:72px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:30px 22px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--f-display);font-weight:600;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;color:var(--text)}
+.stat span{font-size:.82rem;color:var(--muted);margin-top:8px;display:block}
+@media (max-width:820px){.stats{grid-template-columns:repeat(2,1fr);border:0}
+  .stat{border:1px solid var(--line);margin:-.5px}}
 
-/* ---------- about ---------- */
-.about__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.about__text p{color:var(--muted);margin-bottom:18px;font-size:1.02rem}
-.about__text p b{color:var(--text)}
-.about__points{display:grid;gap:14px;margin-top:28px}
-.about__points li{display:flex;gap:14px;align-items:flex-start}
-.about__points .dot{flex:none;width:26px;height:26px;margin-top:2px;border-radius:8px;display:grid;place-items:center;background:rgba(240,163,92,.12);border:1px solid rgba(240,163,92,.35);color:var(--amber);font-size:.8rem}
-.about__panel{
-  position:relative;border:1px solid var(--line);border-radius:26px;padding:38px 34px;
-  background:linear-gradient(160deg,rgba(240,163,92,.08),rgba(18,12,9,.9) 55%);
-  backdrop-filter:blur(8px);overflow:hidden;
-}
-.about__panel::before{content:"";position:absolute;top:-70px;right:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(240,163,92,.35),transparent 70%);filter:blur(30px)}
-.about__rating{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
-.about__rating b{font-family:var(--font-display);font-size:3.6rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stars{color:var(--amber);letter-spacing:3px;font-size:1.05rem}
-.about__rating-note{color:var(--muted);font-size:.88rem;margin-bottom:30px}
-.about__stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:16px;overflow:hidden}
-.about__stat{background:rgba(255,255,255,.04);padding:20px 22px}
-.about__stat b{display:block;font-family:var(--font-display);font-size:1.7rem;font-weight:700;color:var(--amber-soft)}
-.about__stat span{font-size:.8rem;color:var(--muted)}
+/* ---------- FEATURES / фичи ---------- */
+.feat{background:var(--cream)}
+.feat__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.fcard{background:var(--card);padding:42px 34px;transition:background .35s var(--ease),transform .35s var(--ease)}
+.fcard:hover{background:#fff}
+.fcard__i{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+.fcard__n{font-family:var(--f-display);font-weight:600;font-size:1.1rem;color:var(--amber)}
+.fcard__ic{width:34px;height:34px;stroke:var(--text);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fcard h3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:1.3rem;letter-spacing:.01em;margin-bottom:12px}
+.fcard p{color:var(--muted);font-size:.94rem}
+.fcard__rule{height:2px;width:0;background:var(--amber);margin-top:24px;transition:width .5s var(--ease)}
+.fcard:hover .fcard__rule{width:54px}
+@media (max-width:960px){.feat__grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.feat__grid{grid-template-columns:1fr}}
 
-/* ---------- features ---------- */
-.features__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.fcard{
-  position:relative;border:1px solid var(--line);border-radius:var(--radius);
-  padding:32px 28px;background:var(--panel);backdrop-filter:blur(8px);
-  transition:transform .25s ease,border-color .25s,box-shadow .25s;will-change:transform;overflow:hidden;
-}
-.fcard::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(240,163,92,.09),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
-.fcard:hover{border-color:rgba(240,163,92,.45);box-shadow:0 18px 50px rgba(0,0,0,.45)}
-.fcard:hover::after{opacity:1}
-.fcard__icon{
-  width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:22px;
-  background:rgba(240,163,92,.1);border:1px solid rgba(240,163,92,.3);
-  box-shadow:0 0 26px rgba(240,163,92,.18) inset;
-}
-.fcard__icon svg{width:26px;height:26px;stroke:var(--amber);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.fcard h3{font-size:1.05rem;margin-bottom:10px;font-weight:600}
-.fcard p{color:var(--muted);font-size:.93rem}
+/* ---------- MENU / примеры (product-forward, Baggins) ---------- */
+.menu{background:var(--cream-2)}
+.menu__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.drink{position:relative;border-radius:26px;overflow:hidden;background:var(--card);border:1px solid var(--line);transition:transform .4s var(--ease),box-shadow .4s var(--ease);will-change:transform}
+.drink:hover{box-shadow:0 30px 60px rgba(90,50,20,.18)}
+.drink__art{position:relative;height:230px;display:grid;place-items:center;overflow:hidden}
+.drink__art::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 78%,var(--tone,rgba(213,129,59,.4)),transparent 68%)}
+.drink__art svg{position:relative;width:112px;transition:transform .45s var(--ease);filter:drop-shadow(0 18px 26px rgba(80,40,15,.35))}
+.drink:hover .drink__art svg{transform:translateY(-10px) scale(1.07) rotate(-2deg)}
+.drink__tag{position:absolute;top:16px;left:16px;z-index:2;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--amber);color:#20140a}
+.drink__tag--m{background:#7fbf9a}
+.drink__b{padding:24px 24px 28px;border-top:1px solid var(--line)}
+.drink__b h3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:1.2rem;margin-bottom:8px}
+.drink__b p{color:var(--muted);font-size:.86rem;min-height:60px}
+.drink__price{font-family:var(--f-display);font-weight:600;font-size:1.4rem;color:var(--amber-deep);margin-top:12px}
+.drink__price small{font-family:var(--f-body);font-weight:500;font-size:.78rem;color:var(--muted)}
+@media (max-width:960px){.menu__grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.menu__grid{grid-template-columns:1fr}}
 
-/* ---------- showcase (примеры) ---------- */
-.show__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.dcard{
-  position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(18,12,9,.7));
-  transition:transform .25s ease,border-color .25s,box-shadow .25s;will-change:transform;
-}
-.dcard:hover{border-color:rgba(240,163,92,.5);box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.dcard__art{position:relative;height:190px;display:grid;place-items:center;overflow:hidden}
-.dcard__art::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,var(--tone,rgba(240,163,92,.35)),transparent 70%)}
-.dcard__art svg{position:relative;width:96px;transition:transform .35s ease;filter:drop-shadow(0 16px 26px rgba(0,0,0,.55))}
-.dcard:hover .dcard__art svg{transform:translateY(-8px) scale(1.06) rotate(-2deg)}
-.dcard__badge{position:absolute;top:14px;left:14px;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--grad);color:#1a0f07}
-.dcard__badge--mint{background:linear-gradient(120deg,#b9f5de,#7de8c3);}
-.dcard__body{padding:22px 22px 26px;border-top:1px solid var(--line)}
-.dcard__body h3{font-size:1rem;margin-bottom:8px;font-weight:600}
-.dcard__body p{color:var(--muted);font-size:.87rem;min-height:64px}
-.dcard__price{margin-top:14px;font-family:var(--font-display);font-weight:700;color:var(--amber-soft)}
-.dcard__price small{color:var(--muted);font-family:var(--font-body);font-weight:500}
+/* ---------- REVIEWS / отзывы ---------- */
+.rev{background:var(--cream)}
+.rev__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:18px;transition:transform .3s var(--ease),box-shadow .3s}
+.rcard:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(90,50,20,.12)}
+.rcard__stars{color:var(--amber);letter-spacing:3px;font-size:1rem}
+.rcard__q{font-size:1rem;color:var(--text);flex:1;line-height:1.6}
+.rcard__m{display:flex;align-items:center;gap:13px}
+.rcard__av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:600;font-size:1.05rem;background:var(--amber);color:#20140a}
+.rcard__av--m{background:#7fbf9a}
+.rcard__m b{display:block;font-size:.92rem}
+.rcard__m span{font-size:.78rem;color:var(--muted)}
+.rev__note{margin-top:26px;font-size:.8rem;color:var(--muted)}
+.rev__note a{color:var(--amber-deep);border-bottom:1px solid rgba(179,101,42,.4)}
+@media (max-width:900px){.rev__grid{grid-template-columns:1fr}}
 
-/* ---------- reviews ---------- */
-.reviews__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.rcard{
-  border:1px solid var(--line);border-radius:var(--radius);padding:28px;
-  background:var(--panel);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:16px;
-  transition:transform .25s ease,border-color .25s;
-}
-.rcard:hover{border-color:rgba(125,232,195,.4)}
-.rcard__stars{color:var(--amber);letter-spacing:3px}
-.rcard__text{color:var(--text);font-size:.95rem;flex:1}
-.rcard__meta{display:flex;align-items:center;gap:12px}
-.rcard__ava{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-family:var(--font-display);font-size:.9rem;background:var(--grad);color:#1a0f07}
-.rcard__ava--mint{background:linear-gradient(120deg,#b9f5de,#7de8c3)}
-.rcard__meta b{display:block;font-size:.9rem}
-.rcard__meta span{font-size:.78rem;color:var(--muted)}
-.reviews__note{margin-top:26px;font-size:.8rem;color:var(--muted)}
-
-/* ---------- pricing ---------- */
-.prices__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-.pcard{
-  position:relative;border:1px solid var(--line);border-radius:26px;padding:36px 32px;
-  background:var(--panel);backdrop-filter:blur(8px);display:flex;flex-direction:column;
-  transition:transform .25s ease,border-color .25s,box-shadow .25s;
-}
-.pcard--hot{border-color:rgba(240,163,92,.55);background:linear-gradient(170deg,rgba(240,163,92,.1),rgba(18,12,9,.85) 60%);box-shadow:0 24px 70px rgba(240,163,92,.15)}
-.pcard__flag{position:absolute;top:-14px;left:32px;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:var(--grad);color:#1a0f07}
-.pcard h3{font-size:1.15rem;margin-bottom:6px}
-.pcard__sub{color:var(--muted);font-size:.86rem;margin-bottom:24px}
-.pcard ul{display:grid;gap:0;flex:1}
-.pcard li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed rgba(255,224,190,.14);font-size:.93rem}
+/* ---------- PRICES / цены ---------- */
+.prices{background:var(--cream)}
+.prices__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.pcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:40px 34px;display:flex;flex-direction:column}
+.pcard--hot{background:var(--ink);color:var(--on-dark);border-color:var(--ink)}
+.pcard__flag{position:absolute;top:-13px;left:34px;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:var(--amber);color:#20140a}
+.pcard h3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:1.5rem;margin-bottom:6px}
+.pcard__sub{font-size:.86rem;color:var(--muted);margin-bottom:28px}
+.pcard--hot .pcard__sub{color:var(--on-dark-mut)}
+.pcard ul{flex:1;display:grid;gap:0}
+.pcard li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.pcard--hot li{border-color:var(--line-d)}
 .pcard li:last-child{border-bottom:0}
-.pcard li b{font-family:var(--font-display);font-weight:600;color:var(--amber-soft);white-space:nowrap}
-.pcard .btn{margin-top:26px;width:100%}
+.pcard li b{font-family:var(--f-display);font-weight:600;color:var(--amber-deep);white-space:nowrap}
+.pcard--hot li b{color:var(--amber-soft)}
+.pcard .btn{margin-top:30px;width:100%}
 .prices__note{margin-top:26px;font-size:.8rem;color:var(--muted)}
+.prices__note a{color:var(--amber-deep)}
+@media (max-width:900px){.prices__grid{grid-template-columns:1fr}}
 
 /* ---------- FAQ ---------- */
-.faq{max-width:820px;margin:0 auto}
-.faq details{border:1px solid var(--line);border-radius:18px;background:var(--panel);margin-bottom:14px;overflow:hidden;transition:border-color .25s}
-.faq details[open]{border-color:rgba(240,163,92,.45)}
-.faq summary{
-  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;
-  padding:22px 26px;font-weight:700;font-size:1rem;cursor:pointer;
-}
+.faq{background:var(--cream)}
+.faq__list{max-width:860px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px 4px;cursor:pointer;font-family:var(--f-display);font-weight:500;text-transform:uppercase;font-size:1.15rem;letter-spacing:.01em;transition:color .25s}
+.faq summary:hover{color:var(--amber-deep)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{
-  content:"+";flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
-  border:1px solid var(--line);color:var(--amber);font-family:var(--font-display);transition:transform .25s;
-}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq .faq__a{padding:0 26px 24px;color:var(--muted);font-size:.95rem}
-.faq .faq__a a{color:var(--amber);border-bottom:1px dashed rgba(240,163,92,.5)}
+.faq summary::after{content:"";flex:none;width:16px;height:16px;background:
+  linear-gradient(var(--amber),var(--amber)) center/16px 2px no-repeat,
+  linear-gradient(var(--amber),var(--amber)) center/2px 16px no-repeat;transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(135deg)}
+.faq .a{padding:0 4px 28px;color:var(--muted);font-size:.98rem;max-width:680px}
+.faq .a a{color:var(--amber-deep);border-bottom:1px solid rgba(179,101,42,.4)}
 
-/* ---------- CTA banner ---------- */
-.cta{padding:0 0 110px}
-.cta__box{
-  position:relative;border-radius:32px;overflow:hidden;padding:74px 40px;text-align:center;
-  border:1px solid rgba(240,163,92,.4);
-  background:
-    radial-gradient(600px circle at 20% 0%,rgba(240,163,92,.25),transparent 60%),
-    radial-gradient(500px circle at 85% 100%,rgba(125,232,195,.12),transparent 60%),
-    var(--bg-2);
-}
-.cta__box::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(240,163,92,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(240,163,92,.07) 1px,transparent 1px);
-  background-size:44px 44px;
-  -webkit-mask-image:radial-gradient(circle at center,#000,transparent 80%);
-  mask-image:radial-gradient(circle at center,#000,transparent 80%);
-}
-.cta__box h2{font-size:clamp(1.6rem,3.4vw,2.5rem);margin-bottom:16px}
-.cta__box p{color:var(--muted);max-width:520px;margin:0 auto 34px}
-.cta__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;position:relative;z-index:1}
+/* ---------- CTA (dark cinematic band) ---------- */
+.cta{background:var(--ink);color:var(--on-dark);position:relative;overflow:hidden;text-align:center;padding:120px 0}
+.cta::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(40% 60% at 20% 20%,rgba(213,129,59,.3),transparent 60%),
+  radial-gradient(45% 60% at 84% 90%,rgba(120,66,32,.4),transparent 60%);pointer-events:none}
+.cta__t{position:relative;font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:clamp(2.2rem,6vw,4.4rem);line-height:.96;letter-spacing:-.01em}
+.cta__t .out{color:transparent;-webkit-text-stroke:1.5px rgba(245,238,226,.85)}
+.cta p{position:relative;color:var(--on-dark-mut);max-width:520px;margin:22px auto 38px;font-size:1.02rem}
+.cta__actions{position:relative;display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
 
-/* ---------- contacts ---------- */
-.contacts__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:22px}
-.ccard{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:var(--panel);backdrop-filter:blur(8px)}
-.ccard h3{font-size:1.02rem;margin-bottom:6px;display:flex;align-items:center;gap:10px}
-.ccard h3 .pin{color:var(--amber)}
-.ccard .ccard__sub{color:var(--muted);font-size:.86rem;margin-bottom:18px}
-.ccard__links{display:flex;flex-wrap:wrap;gap:12px}
-.contacts__row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.ccard--mini{display:flex;flex-direction:column;gap:6px}
-.ccard--mini span{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.ccard--mini a,.ccard--mini b{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--amber-soft);transition:color .2s}
-.ccard--mini a:hover{color:var(--mint)}
+/* ---------- CONTACTS ---------- */
+.contacts{background:var(--cream)}
+.contacts__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.loc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;transition:transform .3s var(--ease),box-shadow .3s}
+.loc:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(90,50,20,.12)}
+.loc h3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:1.4rem;margin-bottom:4px;display:flex;align-items:center;gap:12px}
+.loc h3 .pin{color:var(--amber);font-size:1rem}
+.loc__sub{color:var(--muted);font-size:.9rem;margin-bottom:22px}
+.loc__links{display:flex;flex-wrap:wrap;gap:12px}
+.contacts__row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 28px}
+.mini span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mini a,.mini b{display:block;margin-top:8px;font-family:var(--f-display);font-weight:600;font-size:1.25rem;color:var(--text);transition:color .2s}
+.mini a:hover{color:var(--amber-deep)}
+@media (max-width:820px){.contacts__grid,.contacts__row{grid-template-columns:1fr}}
 
-/* ---------- footer ---------- */
-.footer{border-top:1px solid var(--line);padding:38px 0 46px;background:rgba(18,12,9,.6)}
-.footer__inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;font-size:.85rem;color:var(--muted)}
-.footer__note{width:100%;font-size:.72rem;color:rgba(179,165,149,.6);margin-top:8px}
+/* ---------- FOOTER (Etlon dark) ---------- */
+.foot{background:var(--ink);color:var(--on-dark);padding:64px 0 40px}
+.foot__top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px;padding-bottom:36px;border-bottom:1px solid var(--line-d)}
+.foot__logo{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:600;font-size:1.6rem;text-transform:uppercase}
+.foot__logo .cup{width:34px;height:34px}
+.foot__logo b{color:var(--amber)}
+.foot__nav{display:flex;flex-wrap:wrap;gap:22px;font-size:.86rem;font-weight:600;color:var(--on-dark-mut)}
+.foot__nav a:hover{color:var(--on-dark)}
+.foot__mid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:32px 0;font-size:.9rem;color:var(--on-dark-mut)}
+.foot__mid a{color:var(--on-dark);font-family:var(--f-display);font-weight:600;font-size:1.05rem}
+.foot__note{font-size:.72rem;color:rgba(169,154,134,.6);line-height:1.6;border-top:1px solid var(--line-d);padding-top:24px}
 
-/* ---------- responsive ---------- */
-@media (max-width:1024px){
-  .hero__grid{grid-template-columns:1fr;gap:12px}
-  .scene{height:440px;order:-1}
-  .scene__inner{width:300px;height:400px}
-  .features__grid{grid-template-columns:repeat(2,1fr)}
-  .show__grid{grid-template-columns:repeat(2,1fr)}
-  .about__grid{grid-template-columns:1fr;gap:40px}
-  .reviews__grid,.prices__grid{grid-template-columns:1fr 1fr}
-}
 @media (max-width:760px){
-  .nav,.header__cta .btn{display:none}
-  .burger{display:flex}
-  .section{padding:80px 0}
-  .hero{padding-top:110px}
-  .hero__stats{flex-direction:column}
-  .hero__stat{border-left:0;border-top:1px solid var(--line)}
-  .hero__stat:first-child{border-top:0}
-  .features__grid,.show__grid,.reviews__grid,.prices__grid,.contacts__grid,.contacts__row{grid-template-columns:1fr}
-  .scene__chip--2{left:0}
-  .scene__chip--3{right:0}
+  .nav__links,.nav__cta{display:none}
+  .nav__burger{display:flex}
+  .sec{padding:84px 0}
+  .wrap{padding:0 20px}
 }
 </style>
 </head>
 <body>
 
-<!-- background -->
-<div class="bg" aria-hidden="true">
-  <div class="bg__glow bg__glow--1"></div>
-  <div class="bg__glow bg__glow--2"></div>
-  <div class="bg__glow bg__glow--3"></div>
-</div>
+<div class="cursor hide" aria-hidden="true"></div>
 
-<!-- custom cursor -->
-<div class="cursor is-hidden" aria-hidden="true">
-  <div class="cursor__ring"></div>
-  <div class="cursor__dot"></div>
-</div>
-
-<!-- ================= HEADER ================= -->
-<header class="header">
-  <div class="container header__inner">
-    <a href="#hero" class="logo"><span class="logo__mark">☕</span>Bru<b>Cup</b>&nbsp;Coffee</a>
-    <nav class="nav" aria-label="Основная навигация">
+<!-- ================= NAV ================= -->
+<div class="nav" id="nav">
+  <nav class="nav__pill" aria-label="Основная навигация">
+    <a href="#hero" class="nav__logo">
+      <svg class="cup" viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h26v7a9 9 0 0 1-9 9H13a9 9 0 0 1-9-9z"/><path d="M30 13h3a4 4 0 0 1 0 8h-3"/><path d="M11 3c-1.4 1.6-1.4 3.4 0 5M19 3c-1.4 1.6-1.4 3.4 0 5"/></svg>
+      Bru<b>Cup</b>
+    </a>
+    <div class="nav__links">
       <a href="#about">О нас</a>
       <a href="#features">Фичи</a>
-      <a href="#showcase">Хиты</a>
+      <a href="#menu">Меню</a>
       <a href="#reviews">Отзывы</a>
       <a href="#prices">Цены</a>
-      <a href="#faq">FAQ</a>
       <a href="#contacts">Контакты</a>
-    </nav>
-    <div class="header__cta">
-      <a class="btn btn--primary btn--sm" href="tel:+79614999080" data-magnetic>Позвонить</a>
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Меню">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </div>
-</header>
+    <a href="tel:+79614999080" class="nav__cta">Позвонить</a>
+    <button class="nav__burger" id="burger" aria-expanded="false" aria-controls="mmenu" aria-label="Меню"><span></span><span></span><span></span></button>
+  </nav>
+</div>
 
-<!-- mobile menu -->
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+<div class="mmenu" id="mmenu" aria-hidden="true">
   <ul>
     <li><a href="#about">О нас</a></li>
     <li><a href="#features">Фичи</a></li>
-    <li><a href="#showcase">Хиты</a></li>
+    <li><a href="#menu">Меню</a></li>
     <li><a href="#reviews">Отзывы</a></li>
     <li><a href="#prices">Цены</a></li>
-    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contacts">Контакты</a></li>
-    <li><a class="btn btn--primary" href="tel:+79614999080">Позвонить</a></li>
   </ul>
 </div>
 
 <!-- ================= HERO ================= -->
-<section class="hero" id="hero">
-  <div class="container hero__grid">
-    <div>
-      <span class="eyebrow">Ставрополь · ул. Тухачевского</span>
-      <h1>Кофе <span class="grad-text">из будущего</span> — уже в твоём районе</h1>
-      <p class="hero__lead">
-        <b>BruCup Coffee</b> — самая модная кофейня Ставрополя. Specialty-зерно,
-        авторские рафы и матча, нежные моти и чизкейки — в интерьере с высокими
-        потолками и панорамными окнами.
-      </p>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener" data-magnetic>Построить маршрут</a>
-        <a class="btn btn--ghost" href="#prices" data-magnetic>Меню и цены</a>
-      </div>
-      <div class="hero__stats">
-        <div class="hero__stat"><b>4.9</b><span>рейтинг на картах</span></div>
-        <div class="hero__stat"><b><span data-count="2"></span></b><span>кофейни рядом</span></div>
-        <div class="hero__stat"><b><span data-count="16"></span>ч</b><span>в день варим кофе</span></div>
-        <div class="hero__stat"><b><span data-count="40" data-suffix="+"></span></b><span>напитков и десертов</span></div>
-      </div>
-    </div>
+<header class="hero" id="hero">
+  <div class="hero__scene" aria-hidden="true">
+    <div class="hero__photo"></div>
+    <svg class="floaty bean bean--1" data-depth="0.9" viewBox="0 0 40 56"><ellipse cx="20" cy="28" rx="18" ry="26" fill="#7a4a26"/><path d="M20 4Q31 28 20 52Q9 28 20 4Z" fill="#3d2210"/></svg>
+    <svg class="floaty bean bean--2" data-depth="1.3" viewBox="0 0 40 56"><ellipse cx="20" cy="28" rx="18" ry="26" fill="#95602f"/><path d="M20 4Q31 28 20 52Q9 28 20 4Z" fill="#4a2c17"/></svg>
+    <svg class="floaty bean bean--3" data-depth="0.7" viewBox="0 0 40 56"><ellipse cx="20" cy="28" rx="18" ry="26" fill="#7a4a26"/><path d="M20 4Q31 28 20 52Q9 28 20 4Z" fill="#3d2210"/></svg>
+    <svg class="floaty bean bean--4" data-depth="1.1" viewBox="0 0 40 56"><ellipse cx="20" cy="28" rx="18" ry="26" fill="#8a5730"/><path d="M20 4Q31 28 20 52Q9 28 20 4Z" fill="#432714"/></svg>
+    <svg class="floaty hero__cup" data-depth="0.5" viewBox="0 0 200 250">
+      <defs>
+        <linearGradient id="cupB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe3d0"/><stop offset="1" stop-color="#cdb99a"/></linearGradient>
+        <linearGradient id="cupS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e9a45c"/><stop offset=".5" stop-color="#d5813b"/><stop offset="1" stop-color="#b3652a"/></linearGradient>
+      </defs>
+      <ellipse cx="100" cy="238" rx="60" ry="10" fill="rgba(0,0,0,.4)"/>
+      <path d="M42 60 L158 60 L146 226 Q100 238 54 226 Z" fill="url(#cupB)"/>
+      <rect x="46" y="112" width="108" height="52" fill="url(#cupS)"/>
+      <text x="100" y="145" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="700" font-size="20" fill="#20140a" letter-spacing="1">BRU CUP</text>
+      <rect x="36" y="44" width="128" height="18" rx="9" fill="#2a1c11"/>
+      <rect x="60" y="30" width="80" height="16" rx="8" fill="#22160d"/>
+      <path d="M96 8 Q102 18 96 26 M108 4 Q114 14 108 22" stroke="rgba(245,238,226,.5)" fill="none" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div class="hero__grain"></div>
+    <div class="hero__vig"></div>
+  </div>
 
-    <!-- 3D scene -->
-    <div class="scene" id="scene" aria-hidden="true">
-      <div class="scene__inner" id="sceneInner">
-        <div class="orbit orbit--1"><i></i></div>
-        <div class="orbit orbit--2"><i></i></div>
-        <div class="orbit orbit--3"></div>
-
-        <div class="steam"><span></span><span></span><span></span></div>
-
-        <div class="cup">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="gLid" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#3a2718"/>
-                <stop offset="1" stop-color="#1c120a"/>
-              </linearGradient>
-              <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#2e1f13"/>
-                <stop offset=".55" stop-color="#191009"/>
-                <stop offset="1" stop-color="#0e0905"/>
-              </linearGradient>
-              <linearGradient id="gSleeve" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#ffd9a0"/>
-                <stop offset=".5" stop-color="#f0a35c"/>
-                <stop offset="1" stop-color="#c96f3b"/>
-              </linearGradient>
-              <linearGradient id="gShine" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="rgba(255,255,255,0)"/>
-                <stop offset=".5" stop-color="rgba(255,224,190,.28)"/>
-                <stop offset="1" stop-color="rgba(255,255,255,0)"/>
-              </linearGradient>
-            </defs>
-            <!-- sip lid top -->
-            <rect x="62" y="14" width="76" height="16" rx="8" fill="url(#gLid)" stroke="rgba(255,190,120,.35)" stroke-width="1"/>
-            <!-- lid -->
-            <rect x="40" y="28" width="120" height="20" rx="10" fill="url(#gLid)" stroke="rgba(255,190,120,.3)" stroke-width="1"/>
-            <rect x="30" y="46" width="140" height="16" rx="8" fill="#241811" stroke="rgba(255,190,120,.3)" stroke-width="1"/>
-            <!-- body -->
-            <path d="M36 62 L164 62 L149 240 Q100 252 51 240 Z" fill="url(#gBody)" stroke="rgba(255,190,120,.28)" stroke-width="1.2"/>
-            <!-- vertical shine -->
-            <path d="M74 62 L96 62 L92 244 L74 240 Z" fill="url(#gShine)" opacity=".6"/>
-            <!-- sleeve -->
-            <path d="M41 118 L159 118 L153 182 L47 182 Z" fill="url(#gSleeve)"/>
-            <path d="M41 118 L159 118 L158 129 L42 129 Z" fill="rgba(255,255,255,.25)"/>
-            <text x="100" y="152" text-anchor="middle" font-family="Unbounded, sans-serif" font-weight="800" font-size="19" fill="#1a0f07" letter-spacing="1">BRU CUP</text>
-            <text x="100" y="171" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="700" font-size="9" fill="rgba(26,15,7,.7)" letter-spacing="3">STAVROPOL</text>
-          </svg>
-        </div>
-
-        <!-- floating beans -->
-        <svg class="bean bean--1" viewBox="0 0 40 56" xmlns="http://www.w3.org/2000/svg"><ellipse cx="20" cy="28" rx="18" ry="26" fill="#6b3f1f"/><path d="M20 4 Q30 28 20 52 Q10 28 20 4Z" fill="#3d2210"/></svg>
-        <svg class="bean bean--2" viewBox="0 0 40 56" xmlns="http://www.w3.org/2000/svg"><ellipse cx="20" cy="28" rx="18" ry="26" fill="#8a5a34"/><path d="M20 4 Q30 28 20 52 Q10 28 20 4Z" fill="#4a2c17"/></svg>
-        <svg class="bean bean--3" viewBox="0 0 40 56" xmlns="http://www.w3.org/2000/svg"><ellipse cx="20" cy="28" rx="18" ry="26" fill="#6b3f1f"/><path d="M20 4 Q30 28 20 52 Q10 28 20 4Z" fill="#3d2210"/></svg>
-
-        <div class="scene__chip scene__chip--1">⚡ <b>Раф-карамель</b></div>
-        <div class="scene__chip scene__chip--2">🍡 <b>Моти</b>&nbsp;свежие</div>
-        <div class="scene__chip scene__chip--3">⭐ <b>4.9</b>&nbsp;рейтинг</div>
-
-        <div class="scene__floor"></div>
-      </div>
+  <div class="hero__inner">
+    <span class="hero__eyebrow">Ставрополь · ул. Тухачевского</span>
+    <h1 class="hero__title" id="heroTitle">
+      <span class="ln">Bru Cup</span>
+      <span class="ln ln--out">Coffee</span>
+    </h1>
+    <p class="hero__tag">Ценим каждый глоток</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener">Построить маршрут</a>
+      <a class="btn btn--ghost-d" href="#menu">Смотреть меню</a>
     </div>
   </div>
-</section>
+  <div class="hero__cue" aria-hidden="true">листайте<i></i></div>
+</header>
 
-<!-- ================= MARQUEE ================= -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track" id="marqueeTrack">
-    <span><b>·</b>SPECIALTY COFFEE</span><span><b>·</b>РАФ</span><span><b>·</b>МАТЧА</span><span><b>·</b>МОТИ</span><span><b>·</b>ЧИЗКЕЙКИ</span><span><b>·</b>BRU CUP</span><span><b>·</b>СТАВРОПОЛЬ</span><span><b>·</b>07:00–23:00</span>
-    <span><b>·</b>SPECIALTY COFFEE</span><span><b>·</b>РАФ</span><span><b>·</b>МАТЧА</span><span><b>·</b>МОТИ</span><span><b>·</b>ЧИЗКЕЙКИ</span><span><b>·</b>BRU CUP</span><span><b>·</b>СТАВРОПОЛЬ</span><span><b>·</b>07:00–23:00</span>
+<!-- ribbon -->
+<div class="ribbon ribbon--light" aria-hidden="true">
+  <div class="ribbon__track">
+    <span>О нас</span><span class="sl">/</span><span class="out">Bru Cup</span><span class="sl">/</span><span>Specialty</span><span class="sl">/</span><span class="out">Ставрополь</span><span class="sl">/</span>
+    <span>О нас</span><span class="sl">/</span><span class="out">Bru Cup</span><span class="sl">/</span><span>Specialty</span><span class="sl">/</span><span class="out">Ставрополь</span><span class="sl">/</span>
   </div>
 </div>
 
 <!-- ================= ABOUT ================= -->
-<section class="section" id="about">
-  <div class="container about__grid">
-    <div class="about__text reveal">
-      <span class="section__tag">// О нас</span>
-      <h2 style="font-size:clamp(1.7rem,3.4vw,2.6rem);margin:14px 0 22px">Не просто кофейня — <span class="grad-text">точка притяжения</span> района</h2>
-      <p>
-        BruCup Coffee открылся на Тухачевского и быстро стал местом, куда приходят
-        не только за кофе. <b>Высокие потолки, огромные окна, современный минимализм</b> —
-        интерьер, в котором хочется задержаться: поработать, встретиться, просто выдохнуть.
-      </p>
-      <p>
-        Мы варим на свежеобжаренном specialty-зерне, следим за каждой чашкой
-        и постоянно добавляем новинки — от сезонных рафов до десертов, которые
-        разлетаются по сторис.
-      </p>
-      <ul class="about__points">
-        <li><span class="dot">01</span><div><b>Своя посадка и to-go.</b> Уютные столики внутри — или стакан с собой за пару минут.</div></li>
-        <li><span class="dot">02</span><div><b>Две точки рядом.</b> ЖК «Новороссийский» и ЖК «Квартал 17/77» — кофе всегда по пути.</div></li>
-        <li><span class="dot">03</span><div><b>Открыты с 7 утра до 11 вечера.</b> От первого эспрессо до позднего раф-десерта.</div></li>
-      </ul>
-    </div>
-    <div class="about__panel reveal" data-tilt>
-      <div class="about__rating"><b>4.9</b><span class="stars">★★★★★</span></div>
-      <p class="about__rating-note">средняя оценка на Яндекс Картах и 2ГИС</p>
-      <div class="about__stats">
-        <div class="about__stat"><b><span data-count="1200" data-suffix="+"></span></b><span>оценок на картах</span></div>
-        <div class="about__stat"><b><span data-count="2"></span></b><span>кофейни в городе</span></div>
-        <div class="about__stat"><b>07:00</b><span>первый эспрессо</span></div>
-        <div class="about__stat"><b>23:00</b><span>последний раф</span></div>
-      </div>
+<section class="sec about" id="about">
+  <div class="wrap">
+    <p class="about__lead rv">Будь то первое свидание, встреча старых друзей или просто утро перед работой — <b>мы варим кофе, ради которого возвращаются.</b> BruCup вырос на Тухачевского и стал местом, куда приходят не только за стаканом, но и за настроением.</p>
+    <div class="stats">
+      <div class="stat rv"><b><span data-count="2"></span></b><span>кофейни в городе</span></div>
+      <div class="stat rv"><b><span data-count="1200" data-suffix="+"></span></b><span>оценок на картах</span></div>
+      <div class="stat rv"><b>4.9<span class="amber">★</span></b><span>средний рейтинг</span></div>
+      <div class="stat rv"><b>07–23</b><span>каждый день, часов</span></div>
+      <div class="stat rv"><b><span data-count="40" data-suffix="+"></span></b><span>напитков и десертов</span></div>
     </div>
   </div>
 </section>
 
 <!-- ================= FEATURES ================= -->
-<section class="section" id="features">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="section__tag">// Фичи</span>
-      <h2>Почему город выбирает <span class="grad-text">BruCup</span></h2>
-      <p>Шесть причин, по которым к нам возвращаются каждый день.</p>
+<section class="sec feat" id="features">
+  <div class="wrap">
+    <div class="sec__head rv">
+      <span class="sec__kicker">// Почему BruCup</span>
+      <h2 class="sec__title">Причины <span class="out">возвращаться</span></h2>
+      <p class="sec__lead">Шесть вещей, из-за которых кофейню на Тухачевского выбирают каждый день.</p>
     </div>
-    <div class="features__grid">
-      <article class="fcard reveal" data-tilt>
-        <div class="fcard__icon"><svg viewBox="0 0 24 24"><path d="M12 3c2 3 2 5 0 8s-2 5 0 8"/><path d="M12 3c-4.5 1-7 4.5-7 9s2.5 8 7 9c4.5-1 7-4.5 7-9s-2.5-8-7-9z"/></svg></div>
+    <div class="feat__grid">
+      <article class="fcard rv">
+        <div class="fcard__i"><span class="fcard__n">01</span><svg class="fcard__ic" viewBox="0 0 24 24"><path d="M12 3c2 3 2 5 0 8s-2 5 0 8"/><path d="M12 3c-4.5 1-7 4.5-7 9s2.5 8 7 9c4.5-1 7-4.5 7-9s-2.5-8-7-9z"/></svg></div>
         <h3>Specialty-зерно</h3>
-        <p>Свежая обжарка, откалиброванные рецепты и стабильный вкус — эспрессо, за который не стыдно перед кофе-гиками.</p>
+        <p>Свежая обжарка и откалиброванные рецепты — стабильный эспрессо, за который не стыдно перед кофе-гиками.</p>
+        <div class="fcard__rule"></div>
       </article>
-      <article class="fcard reveal" data-tilt>
-        <div class="fcard__icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.8 5.6H20l-4.7 3.4 1.8 5.6L12 13.2 6.9 16.6l1.8-5.6L4 7.6h6.2z"/></svg></div>
+      <article class="fcard rv">
+        <div class="fcard__i"><span class="fcard__n">02</span><svg class="fcard__ic" viewBox="0 0 24 24"><path d="M12 2l1.8 5.6H20l-4.7 3.4 1.8 5.6L12 13.2 6.9 16.6l1.8-5.6L4 7.6h6.2z"/></svg></div>
         <h3>Авторские напитки</h3>
         <p>Карамельный раф, матча-латте, бамбл — сезонное меню обновляется быстрее, чем тренды в ленте.</p>
+        <div class="fcard__rule"></div>
       </article>
-      <article class="fcard reveal" data-tilt>
-        <div class="fcard__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M9 13a3 3 0 0 1 6 0"/><path d="M8 4c1-1.5 3-1.5 4 0s3 1.5 4 0"/></svg></div>
+      <article class="fcard rv">
+        <div class="fcard__i"><span class="fcard__n">03</span><svg class="fcard__ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M9 13a3 3 0 0 1 6 0"/><path d="M8 4c1-1.5 3-1.5 4 0s3 1.5 4 0"/></svg></div>
         <h3>Моти и чизкейки</h3>
-        <p>Нежные моти, чизкейки и свежая выпечка — десерты, ради которых приходят даже те, кто «не пьёт кофе».</p>
+        <p>Нежные моти, чизкейки и свежая выпечка — десерты, ради которых заходят даже те, кто «не пьёт кофе».</p>
+        <div class="fcard__rule"></div>
       </article>
-      <article class="fcard reveal" data-tilt>
-        <div class="fcard__icon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+      <article class="fcard rv">
+        <div class="fcard__i"><span class="fcard__n">04</span><svg class="fcard__ic" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
         <h3>Скорость to-go</h3>
         <p>Стакан с собой за пару минут — идеально по дороге на работу, учёбу или прогулку по району.</p>
+        <div class="fcard__rule"></div>
       </article>
-      <article class="fcard reveal" data-tilt>
-        <div class="fcard__icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <article class="fcard rv">
+        <div class="fcard__i"><span class="fcard__n">05</span><svg class="fcard__ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>
         <h3>Атмосфера</h3>
         <p>Высокие потолки, панорамные окна, много света и воздуха — интерьер, в котором рождаются лучшие сторис.</p>
+        <div class="fcard__rule"></div>
       </article>
-      <article class="fcard reveal" data-tilt>
-        <div class="fcard__icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+      <article class="fcard rv">
+        <div class="fcard__i"><span class="fcard__n">06</span><svg class="fcard__ic" viewBox="0 0 24 24"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <h3>Две точки рядом</h3>
         <p>Тухачевского 27/4 и 31 к1 — какая бы сторона улицы ни была твоей, BruCup уже там.</p>
+        <div class="fcard__rule"></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= SHOWCASE ================= -->
-<section class="section" id="showcase">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="section__tag">// Примеры</span>
-      <h2>Хиты, за которыми <span class="grad-text">приходят снова</span></h2>
-      <p>Четыре напитка, с которых стоит начать знакомство с BruCup.</p>
+<!-- ribbon -->
+<div class="ribbon ribbon--warm ribbon--rev" aria-hidden="true">
+  <div class="ribbon__track">
+    <span class="out">Меню</span><span class="sl">/</span><span>Хиты</span><span class="sl">/</span><span class="out">Раф</span><span class="sl">/</span><span>Матча</span><span class="sl">/</span><span class="out">Моти</span><span class="sl">/</span>
+    <span class="out">Меню</span><span class="sl">/</span><span>Хиты</span><span class="sl">/</span><span class="out">Раф</span><span class="sl">/</span><span>Матча</span><span class="sl">/</span><span class="out">Моти</span><span class="sl">/</span>
+  </div>
+</div>
+
+<!-- ================= MENU ================= -->
+<section class="sec menu" id="menu">
+  <div class="wrap">
+    <div class="sec__head rv">
+      <span class="sec__kicker">// Примеры</span>
+      <h2 class="sec__title">Хиты, за которыми <span class="out">приходят снова</span></h2>
+      <p class="sec__lead">Четыре напитка, с которых стоит начать знакомство с BruCup.</p>
     </div>
-    <div class="show__grid">
-      <article class="dcard reveal" style="--tone:rgba(240,163,92,.4)">
-        <div class="dcard__art">
-          <span class="dcard__badge">Хит</span>
-          <svg viewBox="0 0 100 130"><path d="M22 30 L78 30 L71 118 Q50 126 29 118 Z" fill="#d9a066" stroke="rgba(255,255,255,.25)"/><path d="M22 30 L78 30 L76 52 L24 52 Z" fill="#f6e3c8"/><rect x="26" y="62" width="48" height="30" rx="6" fill="#1a0f07" opacity=".85"/><text x="50" y="82" text-anchor="middle" font-family="Unbounded,sans-serif" font-size="11" font-weight="800" fill="#ffd9a0">РАФ</text><path d="M42 8 Q46 16 42 24 M56 4 Q60 12 56 20" stroke="rgba(255,255,255,.5)" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <div class="menu__grid">
+      <article class="drink rv rv-z" data-tilt style="--tone:rgba(213,129,59,.42)">
+        <div class="drink__art"><span class="drink__tag">Хит</span>
+          <svg viewBox="0 0 100 130"><path d="M22 30 L78 30 L71 118 Q50 126 29 118 Z" fill="#d9a066" stroke="rgba(120,70,30,.25)"/><path d="M22 30 L78 30 L76 52 L24 52 Z" fill="#f6e3c8"/><rect x="26" y="62" width="48" height="30" rx="6" fill="#20140a"/><text x="50" y="82" text-anchor="middle" font-family="Oswald,sans-serif" font-size="12" font-weight="700" fill="#eaa45c">РАФ</text><path d="M42 8 Q46 16 42 24 M56 4 Q60 12 56 20" stroke="rgba(120,70,30,.4)" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
         </div>
-        <div class="dcard__body">
-          <h3>Карамельный раф</h3>
-          <p>Фирменный бархатный раф на сливках с карамелью — визитная карточка BruCup.</p>
-          <div class="dcard__price">260 ₽ <small>/ 300 мл</small></div>
-        </div>
+        <div class="drink__b"><h3>Карамельный раф</h3><p>Фирменный бархатный раф на сливках с карамелью — визитная карточка BruCup.</p><div class="drink__price">260 ₽ <small>/ 300 мл</small></div></div>
       </article>
-      <article class="dcard reveal" style="--tone:rgba(125,232,195,.35)">
-        <div class="dcard__art">
-          <span class="dcard__badge dcard__badge--mint">Тренд</span>
-          <svg viewBox="0 0 100 130"><path d="M24 22 L76 22 L70 120 Q50 127 30 120 Z" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.35)"/><path d="M27 56 L73 56 L70 118 Q50 125 30 118 Z" fill="#8fd9b8"/><path d="M27 56 L73 56 L72 70 L28 70 Z" fill="#c4eeda"/><rect x="46" y="6" width="7" height="52" rx="3.5" fill="#f0a35c" transform="rotate(8 50 30)"/></svg>
+      <article class="drink rv rv-z" data-tilt style="--tone:rgba(127,191,154,.4)">
+        <div class="drink__art"><span class="drink__tag drink__tag--m">Тренд</span>
+          <svg viewBox="0 0 100 130"><path d="M24 22 L76 22 L70 120 Q50 127 30 120 Z" fill="rgba(120,70,30,.1)" stroke="rgba(120,70,30,.25)"/><path d="M27 56 L73 56 L70 118 Q50 125 30 118 Z" fill="#8fd0a8"/><path d="M27 56 L73 56 L72 70 L28 70 Z" fill="#c4e6d2"/><rect x="46" y="6" width="7" height="52" rx="3.5" fill="#d5813b" transform="rotate(8 50 30)"/></svg>
         </div>
-        <div class="dcard__body">
-          <h3>Матча-латте</h3>
-          <p>Церемониальная матча на молоке — мягкая, без горечи, со льдом или тёплая.</p>
-          <div class="dcard__price">280 ₽ <small>/ 300 мл</small></div>
-        </div>
+        <div class="drink__b"><h3>Матча-латте</h3><p>Церемониальная матча на молоке — мягкая, без горечи, со льдом или тёплая.</p><div class="drink__price">280 ₽ <small>/ 300 мл</small></div></div>
       </article>
-      <article class="dcard reveal" style="--tone:rgba(255,196,80,.35)">
-        <div class="dcard__art">
-          <svg viewBox="0 0 100 130"><path d="M24 22 L76 22 L70 120 Q50 127 30 120 Z" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.35)"/><path d="M26 44 L74 44 L72 76 L28 76 Z" fill="#ffb648"/><path d="M28 76 L72 76 L70 118 Q50 125 30 118 Z" fill="#5a3317"/><circle cx="38" cy="34" r="4" fill="rgba(255,255,255,.6)"/><circle cx="52" cy="30" r="3" fill="rgba(255,255,255,.45)"/><circle cx="63" cy="36" r="3.5" fill="rgba(255,255,255,.5)"/></svg>
+      <article class="drink rv rv-z" data-tilt style="--tone:rgba(240,170,80,.4)">
+        <div class="drink__art">
+          <svg viewBox="0 0 100 130"><path d="M24 22 L76 22 L70 120 Q50 127 30 120 Z" fill="rgba(120,70,30,.1)" stroke="rgba(120,70,30,.25)"/><path d="M26 44 L74 44 L72 76 L28 76 Z" fill="#ffb648"/><path d="M28 76 L72 76 L70 118 Q50 125 30 118 Z" fill="#5a3317"/><circle cx="38" cy="34" r="4" fill="rgba(255,255,255,.6)"/><circle cx="52" cy="30" r="3" fill="rgba(255,255,255,.45)"/><circle cx="63" cy="36" r="3.5" fill="rgba(255,255,255,.5)"/></svg>
         </div>
-        <div class="dcard__body">
-          <h3>Бамбл-кофе</h3>
-          <p>Эспрессо с апельсиновым фрешем и льдом — заряд цитрусовой бодрости.</p>
-          <div class="dcard__price">270 ₽ <small>/ 300 мл</small></div>
-        </div>
+        <div class="drink__b"><h3>Бамбл-кофе</h3><p>Эспрессо с апельсиновым фрешем и льдом — заряд цитрусовой бодрости.</p><div class="drink__price">270 ₽ <small>/ 300 мл</small></div></div>
       </article>
-      <article class="dcard reveal" style="--tone:rgba(233,160,190,.3)">
-        <div class="dcard__art">
-          <span class="dcard__badge">Сладкое</span>
-          <svg viewBox="0 0 100 130"><ellipse cx="50" cy="96" rx="34" ry="12" fill="rgba(0,0,0,.4)"/><path d="M50 34 Q82 34 82 70 Q82 96 50 96 Q18 96 18 70 Q18 34 50 34Z" fill="#f2c4d5"/><path d="M50 34 Q66 34 74 48 Q60 42 50 42 Q40 42 26 48 Q34 34 50 34Z" fill="#fadeE9"/><circle cx="42" cy="62" r="3" fill="rgba(255,255,255,.7)"/></svg>
+      <article class="drink rv rv-z" data-tilt style="--tone:rgba(233,160,190,.35)">
+        <div class="drink__art"><span class="drink__tag">Сладкое</span>
+          <svg viewBox="0 0 100 130"><ellipse cx="50" cy="98" rx="34" ry="11" fill="rgba(120,70,30,.18)"/><path d="M50 36 Q82 36 82 72 Q82 98 50 98 Q18 98 18 72 Q18 36 50 36Z" fill="#f2c4d5"/><path d="M50 36 Q66 36 74 50 Q60 44 50 44 Q40 44 26 50 Q34 36 50 36Z" fill="#fadee9"/><circle cx="42" cy="64" r="3" fill="rgba(255,255,255,.7)"/></svg>
         </div>
-        <div class="dcard__body">
-          <h3>Моти</h3>
-          <p>Нежное рисовое тесто и кремовые начинки: манго, клубника, фисташка.</p>
-          <div class="dcard__price">190 ₽ <small>/ шт</small></div>
-        </div>
+        <div class="drink__b"><h3>Моти</h3><p>Нежное рисовое тесто и кремовые начинки: манго, клубника, фисташка.</p><div class="drink__price">190 ₽ <small>/ шт</small></div></div>
       </article>
     </div>
   </div>
 </section>
 
 <!-- ================= REVIEWS ================= -->
-<section class="section" id="reviews">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="section__tag">// Отзывы</span>
-      <h2><span class="grad-text">4.9 из 5</span> — говорят сами гости</h2>
-      <p>Более 1200 оценок на Яндекс Картах и 2ГИС.</p>
+<section class="sec rev" id="reviews">
+  <div class="wrap">
+    <div class="sec__head rv">
+      <span class="sec__kicker">// Отзывы</span>
+      <h2 class="sec__title">4.9 из 5 — <span class="out">говорят гости</span></h2>
+      <p class="sec__lead">Более 1200 оценок на Яндекс Картах и 2ГИС.</p>
     </div>
-    <div class="reviews__grid">
-      <article class="rcard reveal">
-        <div class="rcard__stars">★★★★★</div>
-        <p class="rcard__text">«Лучший раф в городе, без преувеличений. Карамельный — это любовь. Бариста всегда приветливые, помнят постоянных гостей».</p>
-        <div class="rcard__meta"><div class="rcard__ava">А</div><div><b>Анна</b><span>Яндекс Карты</span></div></div>
-      </article>
-      <article class="rcard reveal">
-        <div class="rcard__stars">★★★★★</div>
-        <p class="rcard__text">«Атмосфера топ: высокие потолки, огромные окна, стильно и светло. Отличное место поработать с ноутбуком за чашкой флэт уайта».</p>
-        <div class="rcard__meta"><div class="rcard__ava rcard__ava--mint">Д</div><div><b>Дмитрий</b><span>2ГИС</span></div></div>
-      </article>
-      <article class="rcard reveal">
-        <div class="rcard__stars">★★★★★</div>
-        <p class="rcard__text">«Моти просто нежнейшие, а кофе стабильно вкусный в любое время дня. Приятно, что открываются в 7 утра — успеваю до работы».</p>
-        <div class="rcard__meta"><div class="rcard__ava">К</div><div><b>Карина</b><span>Яндекс Карты</span></div></div>
-      </article>
-      <article class="rcard reveal">
-        <div class="rcard__stars">★★★★★</div>
-        <p class="rcard__text">«Беру кофе с собой почти каждый день — готовят быстро, ни разу не промахнулись с заказом. Матча-латте советую всем».</p>
-        <div class="rcard__meta"><div class="rcard__ava rcard__ava--mint">И</div><div><b>Игорь</b><span>2ГИС</span></div></div>
-      </article>
-      <article class="rcard reveal">
-        <div class="rcard__stars">★★★★★</div>
-        <p class="rcard__text">«Самая инстаграмная кофейня Ставрополя. Красиво, вкусно, десерты обновляются — каждый раз пробуем что-то новое».</p>
-        <div class="rcard__meta"><div class="rcard__ava">М</div><div><b>Мария</b><span>Яндекс Карты</span></div></div>
-      </article>
-      <article class="rcard reveal">
-        <div class="rcard__stars">★★★★★</div>
-        <p class="rcard__text">«Чизкейк и капучино — идеальная пара. Цены адекватные, порции честные. Теперь это наша семейная точка выходного дня».</p>
-        <div class="rcard__meta"><div class="rcard__ava rcard__ava--mint">С</div><div><b>Сергей</b><span>2ГИС</span></div></div>
-      </article>
+    <div class="rev__grid">
+      <article class="rcard rv"><div class="rcard__stars">★★★★★</div><p class="rcard__q">«Лучший раф в городе, без преувеличений. Карамельный — это любовь. Бариста всегда приветливые, помнят постоянных гостей».</p><div class="rcard__m"><div class="rcard__av">А</div><div><b>Анна</b><span>Яндекс Карты</span></div></div></article>
+      <article class="rcard rv"><div class="rcard__stars">★★★★★</div><p class="rcard__q">«Атмосфера топ: высокие потолки, огромные окна, стильно и светло. Отличное место поработать с ноутбуком за флэт уайтом».</p><div class="rcard__m"><div class="rcard__av rcard__av--m">Д</div><div><b>Дмитрий</b><span>2ГИС</span></div></div></article>
+      <article class="rcard rv"><div class="rcard__stars">★★★★★</div><p class="rcard__q">«Моти просто нежнейшие, а кофе стабильно вкусный в любое время дня. Приятно, что открываются в 7 утра — успеваю до работы».</p><div class="rcard__m"><div class="rcard__av">К</div><div><b>Карина</b><span>Яндекс Карты</span></div></div></article>
+      <article class="rcard rv"><div class="rcard__stars">★★★★★</div><p class="rcard__q">«Беру кофе с собой почти каждый день — готовят быстро, ни разу не промахнулись с заказом. Матча-латте советую всем».</p><div class="rcard__m"><div class="rcard__av rcard__av--m">И</div><div><b>Игорь</b><span>2ГИС</span></div></div></article>
+      <article class="rcard rv"><div class="rcard__stars">★★★★★</div><p class="rcard__q">«Самая инстаграмная кофейня Ставрополя. Красиво, вкусно, десерты обновляются — каждый раз пробуем что-то новое».</p><div class="rcard__m"><div class="rcard__av">М</div><div><b>Мария</b><span>Яндекс Карты</span></div></div></article>
+      <article class="rcard rv"><div class="rcard__stars">★★★★★</div><p class="rcard__q">«Чизкейк и капучино — идеальная пара. Цены адекватные, порции честные. Теперь это наша точка выходного дня».</p><div class="rcard__m"><div class="rcard__av rcard__av--m">С</div><div><b>Сергей</b><span>2ГИС</span></div></div></article>
     </div>
-    <p class="reviews__note reveal">Отзывы — собирательные, по мотивам реальных оценок BruCup Coffee на <a href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener" style="color:var(--amber)">Яндекс Картах</a> и <a href="https://2gis.ru/stavropol/firm/70000001059461555" target="_blank" rel="noopener" style="color:var(--amber)">2ГИС</a>.</p>
+    <p class="rev__note rv">Отзывы — собирательные, по мотивам реальных оценок BruCup Coffee на <a href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener">Яндекс Картах</a> и <a href="https://2gis.ru/stavropol/firm/70000001059461555" target="_blank" rel="noopener">2ГИС</a>.</p>
   </div>
 </section>
 
-<!-- ================= PRICING ================= -->
-<section class="section" id="prices">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="section__tag">// Pricing</span>
-      <h2>Меню и <span class="grad-text">цены</span></h2>
-      <p>Честные порции и понятные цены — от классики до авторских экспериментов.</p>
+<!-- ================= PRICES ================= -->
+<section class="sec prices" id="prices">
+  <div class="wrap">
+    <div class="sec__head rv">
+      <span class="sec__kicker">// Меню и цены</span>
+      <h2 class="sec__title">Честные <span class="out">порции</span></h2>
+      <p class="sec__lead">От классики до авторских экспериментов — понятные цены без сюрпризов.</p>
     </div>
     <div class="prices__grid">
-      <article class="pcard reveal">
-        <h3>Классика</h3>
-        <p class="pcard__sub">База, доведённая до идеала</p>
+      <article class="pcard rv">
+        <h3>Классика</h3><p class="pcard__sub">База, доведённая до идеала</p>
         <ul>
           <li>Эспрессо <b>140 ₽</b></li>
           <li>Американо <b>160 ₽</b></li>
-          <li>Капучино 250 / 350 мл <b>200 / 240 ₽</b></li>
-          <li>Латте 300 / 400 мл <b>220 / 260 ₽</b></li>
+          <li>Капучино 250/350 <b>200/240 ₽</b></li>
+          <li>Латте 300/400 <b>220/260 ₽</b></li>
           <li>Флэт уайт <b>230 ₽</b></li>
         </ul>
         <a class="btn btn--ghost" href="#contacts">Как нас найти</a>
       </article>
-      <article class="pcard pcard--hot reveal">
-        <span class="pcard__flag">Хиты BruCup</span>
-        <h3>Авторское</h3>
-        <p class="pcard__sub">То, ради чего едут через весь город</p>
+      <article class="pcard pcard--hot rv"><span class="pcard__flag">Хиты BruCup</span>
+        <h3>Авторское</h3><p class="pcard__sub">То, ради чего едут через весь город</p>
         <ul>
           <li>Раф классический <b>250 ₽</b></li>
           <li>Раф карамельный <b>260 ₽</b></li>
@@ -745,11 +563,10 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.15;letter
           <li>Бамбл-кофе <b>270 ₽</b></li>
           <li>Айс-латте <b>250 ₽</b></li>
         </ul>
-        <a class="btn btn--primary" href="tel:+79614999080" data-magnetic>Заказать по телефону</a>
+        <a class="btn btn--primary" href="tel:+79614999080">Заказать по телефону</a>
       </article>
-      <article class="pcard reveal">
-        <h3>Десерты</h3>
-        <p class="pcard__sub">Свежие каждый день</p>
+      <article class="pcard rv">
+        <h3>Десерты</h3><p class="pcard__sub">Свежие каждый день</p>
         <ul>
           <li>Моти <b>190 ₽</b></li>
           <li>Чизкейк <b>260 ₽</b></li>
@@ -760,324 +577,245 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.15;letter
         <a class="btn btn--ghost" href="https://www.instagram.com/bru_cup_coffee/" target="_blank" rel="noopener">Новинки в Instagram*</a>
       </article>
     </div>
-    <p class="prices__note reveal">Цены ориентировочные — актуальное меню и сезонные позиции уточняйте в кофейне или по телефону <a href="tel:+79614999080" style="color:var(--amber)">+7 961 499-90-80</a>.</p>
+    <p class="prices__note rv">Цены ориентировочные — актуальное меню и сезонные позиции уточняйте в кофейне или по телефону <a href="tel:+79614999080">+7 961 499-90-80</a>.</p>
   </div>
 </section>
 
 <!-- ================= FAQ ================= -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="section__tag">// FAQ</span>
-      <h2>Частые <span class="grad-text">вопросы</span></h2>
+<section class="sec faq" id="faq">
+  <div class="wrap">
+    <div class="sec__head rv" style="margin-bottom:40px">
+      <span class="sec__kicker">// FAQ</span>
+      <h2 class="sec__title">Частые <span class="out">вопросы</span></h2>
     </div>
-    <div class="faq">
-      <details class="reveal">
-        <summary>Где находятся кофейни BruCup?</summary>
-        <div class="faq__a">Обе точки — на улице Тухачевского в Ставрополе: <b>дом 27/4</b> (ЖК «Новороссийский») и <b>дом 31 к1</b> (ЖК «Квартал 17/77»). Ссылки на карты — в разделе <a href="#contacts">контактов</a>.</div>
-      </details>
-      <details class="reveal">
-        <summary>Какой у вас график работы?</summary>
-        <div class="faq__a">Ежедневно с <b>07:00 до 23:00</b>, без выходных. Утренний эспрессо перед работой и поздний раф после кино — успеваете и на то, и на другое.</div>
-      </details>
-      <details class="reveal">
-        <summary>Можно взять кофе с собой?</summary>
-        <div class="faq__a">Конечно — любой напиток готовим to-go за пару минут. Хотите ещё быстрее — позвоните заранее по номеру <a href="tel:+79614999080">+7 961 499-90-80</a>, и заказ будет ждать вас на кассе.</div>
-      </details>
-      <details class="reveal">
-        <summary>Есть ли альтернативное молоко?</summary>
-        <div class="faq__a">Да, готовим напитки на альтернативном молоке. Актуальный список вариантов и сиропов уточняйте у бариста — он всегда подскажет, что лучше подойдёт к выбранному напитку.</div>
-      </details>
-      <details class="reveal">
-        <summary>Какие десерты бывают?</summary>
-        <div class="faq__a">Фирменные <b>моти</b> с разными начинками, <b>чизкейки</b>, свежая выпечка и сезонные новинки. Витрина обновляется ежедневно — самые свежие анонсы публикуем в <a href="https://www.instagram.com/bru_cup_coffee/" target="_blank" rel="noopener">Instagram*</a>.</div>
-      </details>
-      <details class="reveal">
-        <summary>Как с вами связаться?</summary>
-        <div class="faq__a">Телефон: <a href="tel:+79614999080">+7 961 499-90-80</a>. Мы также есть на <a href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener">Яндекс Картах</a> и в <a href="https://2gis.ru/stavropol/firm/70000001059461555" target="_blank" rel="noopener">2ГИС</a> — там же можно оставить отзыв.</div>
-      </details>
+    <div class="faq__list">
+      <details class="rv"><summary>Где находятся кофейни BruCup?</summary><div class="a">Обе точки — на улице Тухачевского в Ставрополе: <b>дом 27/4</b> (ЖК «Новороссийский») и <b>дом 31 к1</b> (ЖК «Квартал 17/77»). Ссылки на карты — в разделе <a href="#contacts">контактов</a>.</div></details>
+      <details class="rv"><summary>Какой у вас график работы?</summary><div class="a">Ежедневно с <b>07:00 до 23:00</b>, без выходных. Утренний эспрессо перед работой и поздний раф после кино — успеваете и на то, и на другое.</div></details>
+      <details class="rv"><summary>Можно взять кофе с собой?</summary><div class="a">Конечно — любой напиток готовим to-go за пару минут. Хотите ещё быстрее — позвоните заранее по номеру <a href="tel:+79614999080">+7 961 499-90-80</a>, и заказ будет ждать вас на кассе.</div></details>
+      <details class="rv"><summary>Есть ли альтернативное молоко?</summary><div class="a">Да, готовим напитки на альтернативном молоке. Актуальный список вариантов и сиропов уточняйте у бариста — он всегда подскажет, что лучше подойдёт к выбранному напитку.</div></details>
+      <details class="rv"><summary>Какие десерты бывают?</summary><div class="a">Фирменные <b>моти</b> с разными начинками, <b>чизкейки</b>, свежая выпечка и сезонные новинки. Витрина обновляется ежедневно — анонсы в <a href="https://www.instagram.com/bru_cup_coffee/" target="_blank" rel="noopener">Instagram*</a>.</div></details>
+      <details class="rv"><summary>Как с вами связаться?</summary><div class="a">Телефон: <a href="tel:+79614999080">+7 961 499-90-80</a>. Мы также на <a href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener">Яндекс Картах</a> и в <a href="https://2gis.ru/stavropol/firm/70000001059461555" target="_blank" rel="noopener">2ГИС</a> — там же можно оставить отзыв.</div></details>
     </div>
   </div>
 </section>
 
 <!-- ================= CTA ================= -->
 <section class="cta">
-  <div class="container">
-    <div class="cta__box reveal">
-      <h2>Загляни на кофе <span class="grad-text">сегодня</span></h2>
-      <p>Мы на Тухачевского, варим с 7 утра до 11 вечера. Первый глоток карамельного рафа всё объяснит лучше любого лэндинга.</p>
-      <div class="cta__actions">
-        <a class="btn btn--primary" href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener" data-magnetic>Построить маршрут</a>
-        <a class="btn btn--ghost" href="tel:+79614999080" data-magnetic>+7 961 499-90-80</a>
-      </div>
+  <div class="wrap">
+    <h2 class="cta__t rv">Загляни на кофе <span class="out">сегодня</span></h2>
+    <p class="rv">Мы на Тухачевского, варим с 7 утра до 11 вечера. Первый глоток карамельного рафа объяснит всё лучше любого лендинга.</p>
+    <div class="cta__actions rv">
+      <a class="btn btn--primary" href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener">Построить маршрут</a>
+      <a class="btn btn--ghost-d" href="tel:+79614999080">+7 961 499-90-80</a>
     </div>
   </div>
 </section>
 
 <!-- ================= CONTACTS ================= -->
-<section class="section" id="contacts" style="padding-top:0">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="section__tag">// Контакты</span>
-      <h2>Где нас <span class="grad-text">найти</span></h2>
+<section class="sec contacts" id="contacts">
+  <div class="wrap">
+    <div class="sec__head rv">
+      <span class="sec__kicker">// Контакты</span>
+      <h2 class="sec__title">Где нас <span class="out">найти</span></h2>
     </div>
     <div class="contacts__grid">
-      <div class="ccard reveal" data-tilt>
+      <div class="loc rv rv-l" data-tilt>
         <h3><span class="pin">◉</span> Тухачевского, 27/4</h3>
-        <p class="ccard__sub">ЖК «Новороссийский» · Ставрополь</p>
-        <div class="ccard__links">
-          <a class="btn btn--ghost btn--sm" href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener">Яндекс Карты</a>
-          <a class="btn btn--ghost btn--sm" href="https://2gis.ru/stavropol/firm/70000001059461555" target="_blank" rel="noopener">2ГИС</a>
+        <p class="loc__sub">ЖК «Новороссийский» · Ставрополь</p>
+        <div class="loc__links">
+          <a class="btn btn--ghost" href="https://yandex.ru/maps/org/bru_cup_coffee/5981794537/" target="_blank" rel="noopener">Яндекс Карты</a>
+          <a class="btn btn--ghost" href="https://2gis.ru/stavropol/firm/70000001059461555" target="_blank" rel="noopener">2ГИС</a>
         </div>
       </div>
-      <div class="ccard reveal" data-tilt>
+      <div class="loc rv rv-r" data-tilt>
         <h3><span class="pin">◉</span> Тухачевского, 31 к1</h3>
-        <p class="ccard__sub">ЖК «Квартал 17/77» · Ставрополь</p>
-        <div class="ccard__links">
-          <a class="btn btn--ghost btn--sm" href="https://2gis.ru/stavropol/firm/70000001090719717" target="_blank" rel="noopener">2ГИС</a>
+        <p class="loc__sub">ЖК «Квартал 17/77» · Ставрополь</p>
+        <div class="loc__links">
+          <a class="btn btn--ghost" href="https://2gis.ru/stavropol/firm/70000001090719717" target="_blank" rel="noopener">2ГИС</a>
         </div>
       </div>
     </div>
     <div class="contacts__row">
-      <div class="ccard ccard--mini reveal"><span>Телефон</span><a href="tel:+79614999080">+7 961 499-90-80</a></div>
-      <div class="ccard ccard--mini reveal"><span>Режим работы</span><b>Ежедневно 07:00–23:00</b></div>
-      <div class="ccard ccard--mini reveal"><span>Instagram*</span><a href="https://www.instagram.com/bru_cup_coffee/" target="_blank" rel="noopener">@bru_cup_coffee</a></div>
+      <div class="mini rv"><span>Телефон</span><a href="tel:+79614999080">+7 961 499-90-80</a></div>
+      <div class="mini rv"><span>Режим работы</span><b>Ежедневно 07:00–23:00</b></div>
+      <div class="mini rv"><span>Instagram*</span><a href="https://www.instagram.com/bru_cup_coffee/" target="_blank" rel="noopener">@bru_cup_coffee</a></div>
     </div>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <div class="container footer__inner">
-    <div>© <span id="year"></span> BruCup Coffee · Ставрополь</div>
-    <div>Сварено с ❤ и кофеином на ул. Тухачевского</div>
-    <p class="footer__note">* Instagram принадлежит компании Meta, признанной экстремистской организацией, деятельность которой запрещена на территории РФ.</p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <a href="#hero" class="foot__logo">
+        <svg class="cup" viewBox="0 0 40 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h26v7a9 9 0 0 1-9 9H13a9 9 0 0 1-9-9z"/><path d="M30 13h3a4 4 0 0 1 0 8h-3"/><path d="M11 3c-1.4 1.6-1.4 3.4 0 5M19 3c-1.4 1.6-1.4 3.4 0 5"/></svg>
+        Bru<b>Cup</b>
+      </a>
+      <nav class="foot__nav">
+        <a href="#about">О нас</a><a href="#features">Фичи</a><a href="#menu">Меню</a><a href="#reviews">Отзывы</a><a href="#prices">Цены</a><a href="#faq">FAQ</a><a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+    <div class="foot__mid">
+      <div>ул. Тухачевского, 27/4 и 31 к1 · Ставрополь</div>
+      <a href="tel:+79614999080">+7 961 499-90-80</a>
+      <div>Ежедневно 07:00–23:00</div>
+    </div>
+    <p class="foot__note">© <span id="year"></span> BruCup Coffee · Ставрополь. Сварено с ❤ и кофеином на ул. Тухачевского.<br>
+    * Instagram принадлежит компании Meta, признанной экстремистской организацией, деятельность которой запрещена на территории РФ.</p>
   </div>
 </footer>
 
 <script>
 /* ============================================================
    BruCup Coffee · interactions
+   Fresh module — parallax controller, expo reveals w/ stagger,
+   Ken-Burns is CSS-only, ribbon marquee is CSS-only.
    ============================================================ */
 (function () {
   "use strict";
+  var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var lerp = function (a, b, t) { return a + (b - a) * t; };
+  var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-  const doc = document;
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  const lerp = (a, b, t) => a + (b - a) * t;
-  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  /* --- nav: swap to light theme once we leave the dark hero --- */
+  function nav() {
+    var el = $("#nav");
+    var onScroll = function () { el.classList.toggle("is-light", window.scrollY > window.innerHeight * 0.82); };
+    onScroll();
+    addEventListener("scroll", onScroll, { passive: true });
+  }
 
-  /* ---------- custom cursor ---------- */
-  function initCursor() {
-    if (!finePointer || reduced) return;
-    const cursor = doc.querySelector(".cursor");
-    const dot = doc.querySelector(".cursor__dot");
-    const ring = doc.querySelector(".cursor__ring");
-    if (!cursor || !dot || !ring) return;
-    doc.body.classList.add("cursor-on");
+  /* --- single rAF parallax: pointer + scroll drive [data-depth]
+         + hero title scroll parallax/fade (Etlon cinematic) --- */
+  function parallax() {
+    if (reduced) return;
+    var layers = $$("[data-depth]");
+    var title = $("#heroTitle");
+    var hero = $("#hero");
+    var mx = 0, my = 0, tx = 0, ty = 0;
+    if (fine && hero) {
+      hero.addEventListener("pointermove", function (e) {
+        var r = hero.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      });
+      hero.addEventListener("pointerleave", function () { tx = 0; ty = 0; });
+    }
+    (function frame() {
+      mx = lerp(mx, tx, 0.06); my = lerp(my, ty, 0.06);
+      var sy = window.scrollY;
+      for (var i = 0; i < layers.length; i++) {
+        var d = parseFloat(layers[i].dataset.depth) || 0;
+        layers[i].style.transform = "translate3d(" + (mx * d * 28).toFixed(1) + "px," + (my * d * 22 + sy * d * 0.14).toFixed(1) + "px,0)";
+      }
+      if (title) {
+        title.style.transform = "translateY(" + (sy * 0.22).toFixed(1) + "px)";
+        title.style.opacity = clamp(1 - sy / 640, 0, 1);
+      }
+      requestAnimationFrame(frame);
+    })();
+  }
 
-    let mx = innerWidth / 2, my = innerHeight / 2;
-    let rx = mx, ry = my, moved = false;
-    const hotSel = "a, button, summary, [data-cursor]";
+  /* --- reveal on scroll: slow expo, staggered per entering batch --- */
+  function reveal() {
+    var items = $$(".rv");
+    if (reduced || !("IntersectionObserver" in window)) {
+      items.forEach(function (i) { i.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      var n = 0;
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.style.transitionDelay = Math.min(n * 90, 360) + "ms";
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+          n++;
+        }
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+    items.forEach(function (i) { io.observe(i); });
+  }
 
-    const sync = () => {
-      const el = doc.elementFromPoint(mx, my);
-      cursor.classList.toggle("is-hover", !!(el && el.closest(hotSel)));
+  /* --- count-up stats --- */
+  function counters() {
+    var nums = $$("[data-count]");
+    if (!nums.length) return;
+    var fill = function (n) { n.textContent = n.dataset.count + (n.dataset.suffix || ""); };
+    if (reduced || !("IntersectionObserver" in window)) { nums.forEach(fill); return; }
+    var run = function (el) {
+      var target = parseInt(el.dataset.count, 10), suf = el.dataset.suffix || "", start = performance.now();
+      (function step(now) {
+        var p = clamp((now - start) / 1500, 0, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suf;
+        if (p < 1) requestAnimationFrame(step);
+      })(start);
     };
-    addEventListener("mousemove", (e) => {
-      mx = e.clientX; my = e.clientY;
-      if (!moved) { moved = true; rx = mx; ry = my; cursor.classList.remove("is-hidden"); }
-      dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-      sync();
-    }, { passive: true });
-    addEventListener("scroll", () => { if (moved) sync(); }, { passive: true });
-    doc.addEventListener("mousedown", () => cursor.classList.add("is-down"));
-    doc.addEventListener("mouseup", () => cursor.classList.remove("is-down"));
-    doc.addEventListener("mouseleave", () => cursor.classList.add("is-hidden"));
-    doc.addEventListener("mouseenter", () => cursor.classList.remove("is-hidden"));
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    nums.forEach(function (n) { io.observe(n); });
+  }
 
+  /* --- subtle tilt on product / contact cards --- */
+  function tilt() {
+    if (!fine || reduced) return;
+    $$("[data-tilt]").forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = "perspective(900px) rotateX(" + (-py * 5).toFixed(2) + "deg) rotateY(" + (px * 5).toFixed(2) + "deg) translateY(-6px)";
+      });
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+  }
+
+  /* --- adaptive blend cursor --- */
+  function cursor() {
+    if (!fine || reduced) return;
+    var c = $(".cursor");
+    if (!c) return;
+    document.body.classList.add("cursor-on");
+    var x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y, moved = false;
+    addEventListener("pointermove", function (e) {
+      x = e.clientX; y = e.clientY;
+      if (!moved) { moved = true; cx = x; cy = y; c.classList.remove("hide"); }
+      var t = e.target.closest("a,button,summary,[data-tilt]");
+      c.classList.toggle("hot", !!t);
+    }, { passive: true });
+    document.addEventListener("mouseleave", function () { c.classList.add("hide"); });
     (function loop() {
-      rx = lerp(rx, mx, 0.18); ry = lerp(ry, my, 0.18);
-      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+      cx = lerp(cx, x, 0.2); cy = lerp(cy, y, 0.2);
+      c.style.transform = "translate(" + cx + "px," + cy + "px) translate(-50%,-50%)";
       requestAnimationFrame(loop);
     })();
   }
 
-  /* ---------- magnetic buttons ---------- */
-  function initMagnetic() {
-    if (!finePointer || reduced) return;
-    doc.querySelectorAll("[data-magnetic]").forEach((el) => {
-      el.addEventListener("mousemove", (e) => {
-        const r = el.getBoundingClientRect();
-        const x = e.clientX - (r.left + r.width / 2);
-        const y = e.clientY - (r.top + r.height / 2);
-        el.style.transform = `translate(${x * 0.3}px,${y * 0.3}px)`;
-      });
-      el.addEventListener("mouseleave", () => { el.style.transform = ""; });
-    });
-  }
-
-  /* ---------- tilt cards + spotlight ---------- */
-  function initTilt() {
-    if (!finePointer || reduced) return;
-    doc.querySelectorAll("[data-tilt], .fcard, .dcard").forEach((el) => {
-      const max = 6;
-      el.addEventListener("mousemove", (e) => {
-        const r = el.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = `perspective(900px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg) translateY(-6px)`;
-        el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        el.style.setProperty("--my", `${e.clientY - r.top}px`);
-      });
-      el.addEventListener("mouseleave", () => { el.style.transform = ""; });
-    });
-  }
-
-  /* ---------- hero 3D scene follows the pointer ---------- */
-  function initScene() {
-    if (!finePointer || reduced) return;
-    const scene = doc.getElementById("scene");
-    const inner = doc.getElementById("sceneInner");
-    if (!scene || !inner) return;
-    const hero = doc.getElementById("hero");
-    hero.addEventListener("mousemove", (e) => {
-      const r = hero.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      inner.style.transform = `rotateY(${(px * 16).toFixed(2)}deg) rotateX(${(-py * 10).toFixed(2)}deg)`;
-    });
-    hero.addEventListener("mouseleave", () => { inner.style.transform = ""; });
-  }
-
-  /* ---------- reveal on scroll ---------- */
-  function initReveal() {
-    const items = doc.querySelectorAll(".reveal");
-    if (reduced || !("IntersectionObserver" in window)) {
-      items.forEach((i) => i.classList.add("is-in"));
-      return;
-    }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en, i) => {
-        if (en.isIntersecting) {
-          setTimeout(() => en.target.classList.add("is-in"), Math.min(i * 60, 240));
-          io.unobserve(en.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
-    items.forEach((i) => io.observe(i));
-  }
-
-  /* ---------- animated counters ---------- */
-  function initCounters() {
-    const nums = doc.querySelectorAll("[data-count]");
-    if (!nums.length) return;
-    const fill = (n) => { n.textContent = n.dataset.count + (n.dataset.suffix || ""); };
-    if (reduced || !("IntersectionObserver" in window)) { nums.forEach(fill); return; }
-    const run = (el) => {
-      const target = parseInt(el.dataset.count, 10);
-      const suffix = el.dataset.suffix || "";
-      const start = performance.now();
-      const step = (now) => {
-        const p = clamp((now - start) / 1400, 0, 1);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
+  /* --- mobile menu --- */
+  function menu() {
+    var b = $("#burger"), m = $("#mmenu");
+    if (!b || !m) return;
+    var close = function () {
+      b.setAttribute("aria-expanded", "false"); m.classList.remove("open");
+      m.setAttribute("aria-hidden", "true"); document.body.style.overflow = "";
     };
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) { run(en.target); io.unobserve(en.target); }
-      });
-    }, { threshold: 0.6 });
-    nums.forEach((n) => io.observe(n));
-  }
-
-  /* ---------- header + scroll-spy ---------- */
-  function initHeader() {
-    const header = doc.querySelector(".header");
-    const navLinks = Array.from(doc.querySelectorAll(".nav a"));
-    const sections = navLinks.map((a) => doc.querySelector(a.getAttribute("href"))).filter(Boolean);
-
-    const onScroll = () => header && header.classList.toggle("is-stuck", scrollY > 24);
-    onScroll();
-    addEventListener("scroll", onScroll, { passive: true });
-
-    if ("IntersectionObserver" in window && sections.length) {
-      const spy = new IntersectionObserver((entries) => {
-        entries.forEach((en) => {
-          if (en.isIntersecting) {
-            const id = "#" + en.target.id;
-            navLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === id));
-          }
-        });
-      }, { rootMargin: "-45% 0px -50% 0px" });
-      sections.forEach((s) => spy.observe(s));
-    }
-  }
-
-  /* ---------- mobile menu ---------- */
-  function initMenu() {
-    const burger = doc.getElementById("burger");
-    const menu = doc.getElementById("mobileMenu");
-    if (!burger || !menu) return;
-    const close = () => {
-      burger.setAttribute("aria-expanded", "false");
-      menu.classList.remove("is-open");
-      menu.setAttribute("aria-hidden", "true");
-      doc.body.style.overflow = "";
-    };
-    burger.addEventListener("click", () => {
-      if (burger.getAttribute("aria-expanded") === "true") return close();
-      burger.setAttribute("aria-expanded", "true");
-      menu.classList.add("is-open");
-      menu.setAttribute("aria-hidden", "false");
-      doc.body.style.overflow = "hidden";
+    b.addEventListener("click", function () {
+      if (b.getAttribute("aria-expanded") === "true") return close();
+      b.setAttribute("aria-expanded", "true"); m.classList.add("open");
+      m.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden";
     });
-    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+    $$("a", m).forEach(function (a) { a.addEventListener("click", close); });
   }
 
-  /* ---------- parallax glows ---------- */
-  function initParallax() {
-    if (reduced) return;
-    const glows = doc.querySelectorAll(".bg__glow");
-    let ticking = false;
-    const apply = () => {
-      glows.forEach((g, i) => {
-        g.style.transform = `translateY(${scrollY * (i + 1) * 0.04}px)`;
-      });
-      ticking = false;
-    };
-    addEventListener("scroll", () => {
-      if (!ticking) { requestAnimationFrame(apply); ticking = true; }
-    }, { passive: true });
-  }
+  function misc() { var y = $("#year"); if (y) y.textContent = new Date().getFullYear(); }
 
-  /* ---------- misc ---------- */
-  function initMisc() {
-    const year = doc.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
-  }
-
-  function init() {
-    initCursor();
-    initMagnetic();
-    initTilt();
-    initScene();
-    initReveal();
-    initCounters();
-    initHeader();
-    initMenu();
-    initParallax();
-    initMisc();
-  }
-
-  if (doc.readyState === "loading") {
-    doc.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  function init() { nav(); parallax(); reveal(); counters(); tilt(); cursor(); menu(); misc(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();
 </script>
 </body>

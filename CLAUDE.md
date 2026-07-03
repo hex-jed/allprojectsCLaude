@@ -129,13 +129,21 @@ Landing page for a women's fitness studio in light, gentle pastel tones (cream /
 
 ## Project 5 — BruCup Coffee (`brucup/`)
 
-Futuristic dark-theme landing page for the **BruCup Coffee** coffee shop in Stavropol. Single self-contained file `brucup/index.html` (inline CSS + JS), Russian language, no build step — open directly in a browser.
+Editorial-cinematic landing page for the **BruCup Coffee** coffee shop in Stavropol. Single self-contained file `brucup/index.html` (inline CSS + JS), Russian language, no build step — open directly in a browser. Design is a deliberate blend of two real Russian coffee sites used as references — **Etlon Coffee** (etlon.ru) and **Baggins Coffee** (bagginscoffee.com), both built on Tilda — with the motion vocabulary studied from their Zero Block animation data-attributes. **Intentionally NOT a reskin of `333/`** (an earlier draft was and got rejected); do not fall back to the neon-on-black gaming-club look.
 
-**Design system** (CSS variables in `:root`): dark espresso `--bg` #0a0706, caramel/amber gradient accent (`--amber` #f0a35c, `--amber-soft` #ffd9a0, `--copper` #c96f3b), neon mint secondary `--mint` #7de8c3, fonts Unbounded (display) + Manrope (body).
+**Design system** (CSS variables in `:root`): two-tone — dark espresso `--ink` #140f0b (hero, CTA band, footer) alternating with warm cream `--cream` #f5eee2 / `--cream-2` (editorial body), caramel accent `--amber` #d5813b (+ `--amber-deep`, `--amber-soft`). Fonts **Oswald** (condensed uppercase display, Cyrillic — the Etlon "Muller" stand-in, skewed `-7deg` for the italic slant) + **Manrope** (body). Signature easing `--ease: cubic-bezier(.16,1,.3,1)`.
 
-**3D / futuristic elements:** CSS 3D hero scene (perspective container `#scene` with floating SVG takeaway cup, dashed neon orbit rings `rotateX(74deg)` + spin, rising steam particles, floating coffee beans, glass info-chips) that rotates toward the pointer; perspective grid floor (`.hero::after`); tilt cards with cursor spotlight (`--mx`/`--my` radial gradient); custom neon cursor; magnetic buttons; parallax glows; film-grain overlay.
+**Reference-derived elements (reinterpreted, not copied):**
+- Cinematic dark hero (Etlon): type-forward, huge `#heroTitle` with a filled line + outline line (`-webkit-text-stroke`), tagline «ЦЕНИМ КАЖДЫЙ ГЛОТОК»; warm out-of-focus "coffee photo" backdrop faked with layered radial gradients + SVG grain + vignette, animated by a slow **Ken-Burns** zoom (`@keyframes kenburns`, ~22s).
+- **Ribbon** kinetic headers (Etlon): `.ribbon__track` marquee mixing filled + `.out` outline words with amber `/` separators; `--rev` variant reverses direction.
+- Product-forward drink cards (Baggins): `.drink` with SVG drink art on a warm radial glow, **zoom-in reveal** (`.rv-z`) + hover tilt.
+- Floating pill navbar (Baggins): `#nav .nav__pill`, translucent dark glass over the hero, swaps to a solid cream pill (`.is-light`) once scrolled past the hero.
+- Dark editorial footer (Etlon): horizontal nav + phone/hours + legal + Meta disclaimer.
+- 3D depth kept tasteful: pointer + scroll **parallax** on `[data-depth]` layers (beans, cup) via one rAF loop, hero title scroll parallax/fade; **no** neon orbits, steam, or perspective grid from the old draft.
 
-**Page sections** (in order): Hero (#hero, 3D scene + stats) → Marquee → О нас (#about, rating panel 4.9) → Фичи (#features, 6 cards) → Хиты/примеры (#showcase, 4 drink cards with SVG art) → Отзывы (#reviews, 6 cards) → Цены (#prices, 3 menu columns) → FAQ (#faq, `<details>`) → CTA → Контакты (#contacts) → Footer
+**Motion vocabulary** (measured from the reference Tilda blocks): Etlon = slow ~2.7s fade-in-from-right/fade + Ken-Burns zoom, block-into-view stagger; Baggins = faster ~1s fade-in-down + zoom-in "pop". BruCup synthesises this as ~1.1s expo reveals (`.rv`, directional `.rv-r`/`.rv-l`/`.rv-z`) with per-batch stagger in the IntersectionObserver.
+
+**Page sections** (in order): Hero (#hero) → ribbon → О нас (#about, lead statement + 5 count-up stats) → Фичи (#features, 6-card editorial grid) → ribbon → Меню/примеры (#menu, 4 drink cards) → Отзывы (#reviews, 6 cards) → Цены (#prices, 3 menu columns, dark "Авторское" column) → FAQ (#faq, `<details>`) → CTA (dark band) → Контакты (#contacts, 2 locations) → dark Footer
 
 **Real business data** (from Yandex Maps / 2GIS):
 - Location 1: ул. Тухачевского, 27/4 (ЖК «Новороссийский») — [Yandex](https://yandex.ru/maps/org/bru_cup_coffee/5981794537/), [2GIS](https://2gis.ru/stavropol/firm/70000001059461555)
@@ -143,6 +151,6 @@ Futuristic dark-theme landing page for the **BruCup Coffee** coffee shop in Stav
 - Phone: +7 961 499-90-80 · Hours: daily 07:00–23:00 · Rating 4.9 (1200+ reviews)
 - Instagram: [@bru_cup_coffee](https://www.instagram.com/bru_cup_coffee/) (footer carries the required Meta disclaimer)
 
-**Approximate content to verify with the owner:** menu prices in #showcase/#prices, review texts (marked as "собирательные" on the page), drink lineup.
+**Approximate content to verify with the owner:** menu prices in #menu/#prices, review texts (marked as "собирательные" on the page), drink lineup.
 
-**JS interactions** (inline script, adapted from `333/assets/js/main.js`): custom cursor, magnetic buttons, tilt + spotlight, hero scene pointer-tracking, scroll reveal, animated counters, sticky header + scroll-spy, mobile burger menu, parallax glows. All honour `prefers-reduced-motion`.
+**JS interactions** (inline script, fresh module — not adapted from `333/`): floating-pill nav theme swap, single-rAF parallax controller (`[data-depth]` + hero title), expo scroll reveals with per-batch stagger, count-up stats, subtle tilt on `[data-tilt]`, adaptive blend-mode cursor, mobile burger menu. Ken-Burns + ribbon marquee are CSS-only. All honour `prefers-reduced-motion`.

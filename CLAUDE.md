@@ -12,6 +12,7 @@ allprojectsClaude/
 ├── bot/                   ← Telegram bot for the Tarot oracle
 ├── 333/                   ← Computer club kk333.ru website
 ├── fitness/               ← Fitness studio "Bloom" landing page
+├── brucup/                ← BruCup Coffee landing page (Stavropol)
 └── CLAUDE.md
 ```
 
@@ -123,3 +124,25 @@ Landing page for a women's fitness studio in light, gentle pastel tones (cream /
 **JS interactions** (inline script): scroll reveal (`.reveal` → `.is-in`), sticky header, scroll-spy nav, animated counters (`[data-count]`), mobile burger menu. All honour `prefers-reduced-motion`.
 
 **Placeholders to replace with real data:** phone `+7 999 000-00-00` / `wa.me/79990000000`, address «ул. Цветочная, 12», Telegram/VK/map links (`href="#"`), trainer names, schedule, prices.
+
+---
+
+## Project 5 — BruCup Coffee (`brucup/`)
+
+Futuristic dark-theme landing page for the **BruCup Coffee** coffee shop in Stavropol. Single self-contained file `brucup/index.html` (inline CSS + JS), Russian language, no build step — open directly in a browser.
+
+**Design system** (CSS variables in `:root`): dark espresso `--bg` #0a0706, caramel/amber gradient accent (`--amber` #f0a35c, `--amber-soft` #ffd9a0, `--copper` #c96f3b), neon mint secondary `--mint` #7de8c3, fonts Unbounded (display) + Manrope (body).
+
+**3D / futuristic elements:** CSS 3D hero scene (perspective container `#scene` with floating SVG takeaway cup, dashed neon orbit rings `rotateX(74deg)` + spin, rising steam particles, floating coffee beans, glass info-chips) that rotates toward the pointer; perspective grid floor (`.hero::after`); tilt cards with cursor spotlight (`--mx`/`--my` radial gradient); custom neon cursor; magnetic buttons; parallax glows; film-grain overlay.
+
+**Page sections** (in order): Hero (#hero, 3D scene + stats) → Marquee → О нас (#about, rating panel 4.9) → Фичи (#features, 6 cards) → Хиты/примеры (#showcase, 4 drink cards with SVG art) → Отзывы (#reviews, 6 cards) → Цены (#prices, 3 menu columns) → FAQ (#faq, `<details>`) → CTA → Контакты (#contacts) → Footer
+
+**Real business data** (from Yandex Maps / 2GIS):
+- Location 1: ул. Тухачевского, 27/4 (ЖК «Новороссийский») — [Yandex](https://yandex.ru/maps/org/bru_cup_coffee/5981794537/), [2GIS](https://2gis.ru/stavropol/firm/70000001059461555)
+- Location 2: ул. Тухачевского, 31 к1 (ЖК «Квартал 17/77») — [2GIS](https://2gis.ru/stavropol/firm/70000001090719717)
+- Phone: +7 961 499-90-80 · Hours: daily 07:00–23:00 · Rating 4.9 (1200+ reviews)
+- Instagram: [@bru_cup_coffee](https://www.instagram.com/bru_cup_coffee/) (footer carries the required Meta disclaimer)
+
+**Approximate content to verify with the owner:** menu prices in #showcase/#prices, review texts (marked as "собирательные" on the page), drink lineup.
+
+**JS interactions** (inline script, adapted from `333/assets/js/main.js`): custom cursor, magnetic buttons, tilt + spotlight, hero scene pointer-tracking, scroll reveal, animated counters, sticky header + scroll-spy, mobile burger menu, parallax glows. All honour `prefers-reduced-motion`.

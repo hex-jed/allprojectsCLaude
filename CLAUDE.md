@@ -137,9 +137,14 @@ Editorial-cinematic landing page for the **BruCup Coffee** coffee shop in Stavro
 - Cinematic dark hero (Etlon): type-forward, huge `#heroTitle` with a filled line + outline line (`-webkit-text-stroke`), tagline «ЦЕНИМ КАЖДЫЙ ГЛОТОК»; warm out-of-focus "coffee photo" backdrop faked with layered radial gradients + SVG grain + vignette, animated by a slow **Ken-Burns** zoom (`@keyframes kenburns`, ~22s).
 - **Ribbon** kinetic headers (Etlon): `.ribbon__track` marquee mixing filled + `.out` outline words with amber `/` separators; `--rev` variant reverses direction.
 - Product-forward drink cards (Baggins): `.drink` with SVG drink art on a warm radial glow, **zoom-in reveal** (`.rv-z`) + hover tilt.
-- Floating pill navbar (Baggins): `#nav .nav__pill`, translucent dark glass over the hero, swaps to a solid cream pill (`.is-light`) once scrolled past the hero.
+- Floating pill navbar (Baggins): `#nav .nav__pill`, a solid cream pill carrying the **brand logo mark** (orange rounded-square coffee-lid `.brand` SVG, recreated from the real BruCup logo) + condensed wordmark; `.is-stuck` deepens the shadow on scroll.
 - Dark editorial footer (Etlon): horizontal nav + phone/hours + legal + Meta disclaimer.
 - 3D depth kept tasteful: pointer + scroll **parallax** on `[data-depth]` layers (beans, cup) via one rAF loop, hero title scroll parallax/fade; **no** neon orbits, steam, or perspective grid from the old draft.
+
+**Brand-specific animation additions:**
+- **Preloader** (`#loader`): on every launch, coffee pours along an S-shaped path (`#pourPath`, drawn via `getTotalLength` + `stroke-dashoffset` transition) into an open SVG BruCup cup, the coffee surface fills (`.ld__coffee` scale-up), then a white **lid drops and seats** on top (`.ld__lid`), steam puffs, and the overlay fades. Click-to-skip; hidden entirely under `prefers-reduced-motion`.
+- **Branded cup SVG** recreated from the real product photo (rust-orange body `#b5501f`, white lid, ring logo mark, "BRUCUP COFFEE", S/M/L/XL) — defined once as `<symbol id="cupArt">` and reused as **45°-tilted decorative `.side-cup`s** down the edges of the cream sections (#about, #features, #reviews, #prices, #contacts). They **rise on scroll + get a springy jerk** from scroll velocity (computed in the parallax rAF loop); base tilt via `--rot` so reduced-motion still shows them angled. Hidden below 600px.
+- **No custom cursor** — uses the native OS cursor (the earlier blend-mode cursor was removed).
 
 **Motion vocabulary** (measured from the reference Tilda blocks): Etlon = slow ~2.7s fade-in-from-right/fade + Ken-Burns zoom, block-into-view stagger; Baggins = faster ~1s fade-in-down + zoom-in "pop". BruCup synthesises this as ~1.1s expo reveals (`.rv`, directional `.rv-r`/`.rv-l`/`.rv-z`) with per-batch stagger in the IntersectionObserver.
 
@@ -153,4 +158,4 @@ Editorial-cinematic landing page for the **BruCup Coffee** coffee shop in Stavro
 
 **Approximate content to verify with the owner:** menu prices in #menu/#prices, review texts (marked as "собирательные" on the page), drink lineup.
 
-**JS interactions** (inline script, fresh module — not adapted from `333/`): floating-pill nav theme swap, single-rAF parallax controller (`[data-depth]` + hero title), expo scroll reveals with per-batch stagger, count-up stats, subtle tilt on `[data-tilt]`, adaptive blend-mode cursor, mobile burger menu. Ken-Burns + ribbon marquee are CSS-only. All honour `prefers-reduced-motion`.
+**JS interactions** (inline script, fresh module — not adapted from `333/`): preloader control, floating-pill nav shadow state, single-rAF parallax controller (`[data-depth]` hero layers + hero title + `.side-cup` scroll-jerk), expo scroll reveals with per-batch stagger, count-up stats, subtle tilt on `[data-tilt]`, mobile burger menu. Ken-Burns + ribbon marquee + preloader lid/fill are CSS-driven. All honour `prefers-reduced-motion`.
